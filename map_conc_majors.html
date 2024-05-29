@@ -1,0 +1,667 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/css/tom-select.min.css" integrity="sha512-43fHB3GLgZfz8QXl1RPQ8O66oIgv3po9cJ5erMt1c4QISq9dYb195T3vr5ImnJPXuVroKcGBPXBFKETW8jrPNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/js/tom-select.complete.js" integrity="sha512-jeF9CfnvzDiw9G9xiksVjxR2lib44Gnovvkv+3CgCG6NXCD4gqlA5nDAVW5WjpA+i+/zKsUWV5xNEbW1X/HH0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 900px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="FM111">FM111</option>
+                                
+                                    <option value="FM121">FM121</option>
+                                
+                                    <option value="FM122">FM122</option>
+                                
+                                    <option value="FM114">FM114</option>
+                                
+                                    <option value="IL122">IL122</option>
+                                
+                                    <option value="FM213">FM213</option>
+                                
+                                    <option value="FM125">FM125</option>
+                                
+                                    <option value="FM215">FM215</option>
+                                
+                                    <option value="IL213">IL213</option>
+                                
+                                    <option value="FM211">FM211</option>
+                                
+                                    <option value="AI2001">AI2001</option>
+                                
+                                    <option value="IL224">IL224</option>
+                                
+                                    <option value="CS2001">CS2001</option>
+                                
+                                    <option value="BU2001">BU2001</option>
+                                
+                                    <option value="EC2001">EC2001</option>
+                                
+                                    <option value="BE2001">BE2001</option>
+                                
+                                    <option value="CP2001">CP2001</option>
+                                
+                                    <option value="ME2001">ME2001</option>
+                                
+                                    <option value="RO2001">RO2001</option>
+                                
+                                    <option value="FM214">FM214</option>
+                                
+                                    <option value="BE3002">BE3002</option>
+                                
+                                    <option value="BE3101">BE3101</option>
+                                
+                                    <option value="RO3001">RO3001</option>
+                                
+                                    <option value="BE2002">BE2002</option>
+                                
+                                    <option value="BE2003">BE2003</option>
+                                
+                                    <option value="AI3011">AI3011</option>
+                                
+                                    <option value="DS3001">DS3001</option>
+                                
+                                    <option value="CS2011">CS2011</option>
+                                
+                                    <option value="AI3021">AI3021</option>
+                                
+                                    <option value="CS2021">CS2021</option>
+                                
+                                    <option value="FM223">FM223</option>
+                                
+                                    <option value="BE3001">BE3001</option>
+                                
+                                    <option value="CS3021">CS3021</option>
+                                
+                                    <option value="HS3101">HS3101</option>
+                                
+                                    <option value="EC3101">EC3101</option>
+                                
+                                    <option value="HS2001">HS2001</option>
+                                
+                                    <option value="ME3001">ME3001</option>
+                                
+                                    <option value="FM112">FM112</option>
+                                
+                                    <option value="FM113">FM113</option>
+                                
+                                    <option value="IL111">IL111</option>
+                                
+                                    <option value="FM123">FM123</option>
+                                
+                                    <option value="FM124">FM124</option>
+                                
+                                    <option value="FM212">FM212</option>
+                                
+                                    <option value="BE2004">BE2004</option>
+                                
+                                    <option value="DE2202">DE2202</option>
+                                
+                                    <option value="HS2101">HS2101</option>
+                                
+                                    <option value="LS2001">LS2001</option>
+                                
+                                    <option value="CS3102">CS3102</option>
+                                
+                                    <option value="BU3001">BU3001</option>
+                                
+                                    <option value="EC3001">EC3001</option>
+                                
+                                    <option value="CP3001">CP3001</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+              <div id="filter-menu" class="card-header">
+                <div class="row no-gutters">
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'item')"
+                            id="select-item"
+                        >
+                        <option value="">Select a network item</option>
+                        <option value="edge">edge</option>
+                        <option value="node">node</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'property')"
+                            id="select-property"
+                        >
+                        <option value="">Select a property...</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="select-value"
+                        >
+                        <option value="">Select value(s)...</option>
+                    </select>
+                  </div>
+                  <div class="col-1 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="highlightFilter(filter);">Filter</button>
+                  </div>
+                  <div class="col-2 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="clearFilter(true)">Reset Selection</button>
+                  </div>
+                </div>
+              </div>
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+                  // explicitly using onItemAdd and this function as we need to save multiple values
+                  let updateValueFilter = function() {
+                      return function () {
+                      filter['value'].push(arguments[0])
+                      }
+                  }
+
+                  let valueControl = new TomSelect("#select-value",{
+                      maxItems: null,
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: updateValueFilter()
+                  });
+
+                  let addValues = function() {
+                      return function () {
+                          // clear the current value options and add the selected attribute values
+                          // tom-select handles duplicates
+                          let selectedProperty = arguments[0];
+                          valueControl.clear();
+                          valueControl.clearOptions();
+                          filter['value'] = []
+                          if (filter['item'] === 'node') {
+                              for (let each in allNodes) {
+                                  valueControl.addOption({
+                                      id:allNodes[each][selectedProperty],
+                                      title:allNodes[each][selectedProperty]
+                                  })
+                              }
+                          }
+                          else if (filter['item'] === 'edge') {
+                              for (let each in allEdges) {
+                                  valueControl.addOption({
+                                      id:allEdges[each][selectedProperty],
+                                      title:allEdges[each][selectedProperty]
+                                  })
+                              }
+                          }
+                      }
+                  };
+
+                  let propControl = new TomSelect("#select-property",{
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addValues()
+                  });
+
+                  let addProperties = function() {
+                      return function () {
+                          // loops through the selected network item and adds the attributes to dropdown
+                          // tom-select handles duplicates
+                          clearFilter(false)
+                          if (arguments[0] === 'edge') {
+                              for (let each in allEdges) {
+                                  if (allEdges.hasOwnProperty(each)) {
+                                      for (let eachProp in allEdges[each]) {
+                                          if (allEdges[each].hasOwnProperty(eachProp)) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                          else if (arguments[0] === 'node') {
+                              for (let each in allNodes) {
+                                  if (allNodes.hasOwnProperty(each)) {
+                                      for (let eachProp in allNodes[each]) {
+                                          if (allNodes[each].hasOwnProperty(eachProp)
+                                              && (eachProp !== 'hidden' && eachProp !== 'savedLabel'
+                                                  && eachProp !== 'hiddenLabel')) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  };
+
+                  let itemControl = new TomSelect("#select-item",{
+                      create: false,
+                      sortField:{
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addProperties()
+                  });
+
+                  function clearFilter(reset) {
+                      // utility function to clear all the selected filter options
+                      // if reset is set to true, the existing filter will be removed
+                      // else, only the dropdown options are cleared
+                      propControl.clear();
+                      propControl.clearOptions();
+                      valueControl.clear();
+                      valueControl.clearOptions();
+                      filter = {
+                          item : '',
+                          property : '',
+                          value : []
+                      }
+                      if (reset) {
+                          itemControl.clear();
+                          filterHighlight({nodes: []})
+                      }
+                  }
+
+                  function updateFilter(value, key) {
+                      // key could be 'item' or 'property' and value is as selected in dropdown
+                      filter[key] = value
+                  }
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"group": 1, "id": "FM111", "label": "FM111", "layer": 1, "physics": false, "shape": "dot", "size": 10, "title": "Course: Computational Thinking Major: FM\n\n    Learning Outcomes: \nBreakdown larger problems\n Reason and identify mathematical quantities\n Identify and implement computational structures\n Combine solutions\n Run test cases\n Assess computational complexity\n Knowledge of version control systems\n Understanding of open source programming\n\n    Skills: \nInstall Python\n use Python shell and IDE\n learn variables and primitive data types\n perform basic operations\n build tools (calculator)\n convert numbers to different base systems\n use Jupyter notebook\n define functions\n implement linear and nonlinear functions\n create calculator function\n create number base conversion function\n implement if else\n if elif statements\n implement for\n while loops\n implement bisection search\n implement Newton-Raphson method\n implement permutations\n understand time complexity\n develop mental model of password storage and cracking\n understand Python built-in data structures (lists\n tuple\n set\n dictionary)\n create and modify built-in data structures\n implement merge sort\n implement bubble sort\n install Ubuntu\n create Github account\n learn git\n    ", "x": 670.0, "y": -100.0}, {"group": 2, "id": "FM121", "label": "FM121", "layer": 2, "physics": false, "shape": "dot", "size": 10, "title": "Course: Programming \u0026 Data Structures Major: FM\n\n    Learning Outcomes: \nKnowledge of OOP principles\n familiarity with programming in C++/Java\n analytical skills\n subdividing complex problems\n computational approach analysis\n Big-O asymptotic notation\n data structures comprehension\n algorithm efficiency comparison\n\n    Skills: \nDesigning data structures\n implementing data structures\n problem-solving\n analyzing computational effort\n applying Big-O notation\n selecting efficient algorithms\n comparing solutions\n    ", "x": 640.0, "y": -200.0}, {"group": 2, "id": "FM122", "label": "FM122", "layer": 2, "physics": false, "shape": "dot", "size": 10, "title": "Course: Mathematics of Uncertainity Major: FM\n\n    Learning Outcomes: \nUnderstanding fundamental aspects of probability and statistics\n Application of theoretical knowledge to solve engineering problems through mathematical modeling\n Ability to calculate probabilities, make predictions, and perform statistical inferences\n Analysis of data using regression, principal component analyses, and hypothesis testing\n Decision-making under uncertainty for complex engineering problems\n\n\n    Skills: \nCalculate probabilities\n model stochastic phenomena\n perform statistical inferences\n analyze higher dimensional data\n make decisions under uncertainty\n    ", "x": 700.0, "y": -200.0}, {"group": 1, "id": "FM114", "label": "FM114", "layer": 1, "physics": false, "shape": "dot", "size": 10, "title": "Course: Design Thinking Major: FM\n\n    Learning Outcomes: \nUnderstand the fundamental concepts of design thinking for engineering, including the design process and project-based learning\n Gain knowledge of Computer Aided Design (CAD) and Spatial Visualization skills\n Comprehend the essence of design thinking for life, focusing on creating the future through innovative solutions\n Learn to navigate the unknown by developing skills beyond analytical problem-solving\n Appreciate the importance of wisdom and judgment in creating desirable designs\n\n\n    Skills: \nMaking of space frames, selecting and buying products, drawing 2D \u0026 3D objects, specifying materials, understanding manufacturing process and costing, writing papers, quick gestalt exercise, redesigning products, prototyping, forming groups, creating group name, logo badge, group poster, user surveys, interaction with people, making 1 min\n ad films, writing visual papers, exhibition planning\n    ", "x": 850.0, "y": -100.0}, {"group": 2, "id": "IL122", "label": "IL122", "layer": 2, "physics": false, "shape": "dot", "size": 10, "title": "Course: ILGC 2 Major: FM\n\n    Learning Outcomes: \nEmploy empathy\n user-centered design approach\n use agile thinking\n apply entrepreneurial mindset\n demonstrate critical thinking\n reflective thinking\n work with team members\n promote team unity\n inclusive culture\n equitable culture\n demonstrate communication with a range of audiences\n\n    Skills: \nEmpathy\n user-centered design\n agile thinking\n entrepreneurial mindset\n critical thinking\n reflective thinking\n teamwork\n communication\n project management\n problem-solving\n stakeholder interviews\n data insights\n design review\n documentation\n setting up experiments\n designing SMART metrics\n measuring key indicators\n    ", "x": 940.0, "y": -200.0}, {"group": 3, "id": "FM213", "label": "FM213", "layer": 3, "physics": false, "shape": "dot", "size": 10, "title": "Course: Electronic Systems Design Major: FM\n\n    Learning Outcomes: \nKnowledge about basic functioning of diodes, Use of diodes in devices, Overview of transistors, Interconnection of transistors, Real-world application of operational amplifiers, Understanding of oscillators, Function of application-specific ICs, Familiarity with communication techniques, Impact of noise on modulation techniques, Process of transmitting signals using multiplexing, Reduction of logical statements using boolean algebra, Optimizing hardware requirements, Exposure to number systems and codes, Comparison of logic families, Design and examination of sequential circuits, Integration of memory devices\n\n\n    Skills: \nUse of diodes in devices, Design of operational amplifier circuits, Solve engineering problems, Design of oscillator circuits, Application of voltage regulators and PLL, Use of communication techniques, Transmitting signals using multiplexing, Reduction of logical statements, Optimizing hardware for digital systems, Design of combinational and sequential circuits, Integration of memory devices\n\n    ", "x": 760.0, "y": -300.0}, {"group": 2, "id": "FM125", "label": "FM125", "layer": 2, "physics": false, "shape": "dot", "size": 10, "title": "Course: Re-imagining Technology \u0026 Society Major: FM\n\n    Learning Outcomes: \nThink critically\n Think creatively\n New understanding of technology\n Basic awareness of society\n Basic awareness of culture\n Basic awareness of technology\n Appreciation of humanities\n Appreciation of social sciences\n Be imaginative\n Be inventive\n\n    Skills: \nCritical writing and summarizing skills\n Reflective thinking and application abilities\n Integration of theoretical concepts into real-world scenarios\n Teamwork and collaboration in academic settings\n Research and analysis skills for exploring complex ideas and relationships\n\n    ", "x": 880.0, "y": -200.0}, {"group": 3, "id": "FM215", "label": "FM215", "layer": 3, "physics": false, "shape": "dot", "size": 10, "title": "Course: Technological Innovation_Ethics and Communication Major: FM\n\n    Learning Outcomes: \nBasic understanding of ethics\n critical grasp of global and local challenges\n awareness of ethical issues in technological innovation\n transforming thinking and actions\n\n    Skills: \nObservation\n Listening\n Questioning\n Realizing Interconnectedness\n Answerability of Being\n Navigating the Dialogical World\n Emotional Intelligence\n Embodying \u2018Othered\u2019 Worlds\n Effective Emotive Communication\n Affective World-building\n Recognizing the world of speech\n Performative Speech-Acts\n Indirect Speech-Acts\n Meaning-making\n Ways of Being\n Imagination\n Writing as creation\n Scientific writing\n    ", "x": 880.0, "y": -300.0}, {"group": 3, "id": "IL213", "label": "IL213", "layer": 3, "physics": false, "shape": "dot", "size": 10, "title": "Course: ILGC 3 Major: FM\n\n    Learning Outcomes: \nApply multidisciplinary approach\n Employ empathy\n User-centered design\n Employ Engineering Design\n Build a Working Prototype\n Situate project impact\n Demonstrate critical and reflective thinking\n Work with team members\n Develop professional relationships\n Promote team unity\n Demonstrate communication\n Document project need\n Document project approach\n Document project progress\n Document project outcome\n Document project challenges\n Project design process\n Project management\n Project transition\n\n    Skills: \nBuilding a working prototype\n Effective teamwork\n Reflective thinking\n Written communication\n Verbal communication\n Professional relationship development\n Team leadership\n Project documentation\n Project management\n    ", "x": 940.0, "y": -300.0}, {"group": 3, "id": "FM211", "label": "FM211", "layer": 3, "physics": false, "shape": "dot", "size": 10, "title": "Course: Data Science and Artificial Intelligence Major: FM\n\n    Learning Outcomes: \nRecall sampling methods\n basic hypothesis testing\n methods for dimensionality reduction\n classification\n big data and AI frameworks\n Understand the relation between population and sample\n central limit theorem\n searching as a strategy for problem solving\n Bayesian networks for reasoning under uncertainty\n Conduct exploratory data analysis and visualization\n employ statistical tests\n clustering\n and dimensionality reduction techniques on real data\n Use neural networks to implement simple functions\n Interpret data relationships\n Compare and contrast various search techniques\n Compare and contrast classical statistics and AI-based approaches (deductive vs inductive)\n Design sequence of data analysis steps to gain insights from real life data\n Develop plans for AI based solutions to real-world problems\n Assess the suitability of an analysis method for a dataset\n Appreciate the benefits of neural networks for image processing and natural language processing compared to classical techniques\n\n    Skills: \nPython programming\n Jupyter lab\n Google Colab\n PyCharm\n Spyder\n branching\n looping\n function\n exception\n import\n object-based programming\n I/O\n string formatting\n file I/O\n data exploration\n Pandas\n conditional expressions\n handling missing values\n computing statistics\n plotting data\n Numpy matrices\n arrays\n    ", "x": 640.0, "y": -300.0}, {"group": 4, "id": "AI2001", "label": "AI2001", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Introduction to Data Mining \u0026 Pattern Recognition Major: C\n\n    Learning Outcomes: \nRecognize data formats, recall definitions (correlation, covariance, clustering, classification, discrete data sequence), recognize types of time series, sources of web data, text data types, understand data attributes, proximity measures, dimensionality reduction, clustering techniques, classifiers, HMM, plot and visualize data, load data, clean data, reduce dimensionality, cluster and classify data, apply algorithms (web data ranking, recommendation), evaluate models, conduct time series transforms, apply AR and MA methods, forecast time series, encode text data, classify text documents, apply string matching algorithms, apply HMM, analyze data queries, algorithms, combine methods, compare and contrast data attributes, formats, dimensionality reduction, clustering, classification techniques, evaluate algorithms, methods for processing time series data\n\n\n    Skills: \nPlot and visualize data, load data in various formats, load data from relational databases, clean data, reduce dimensionality, cluster data, classify data, apply algorithms for web data ranking, recommendation, evaluate models, conduct time series data transforms, apply AR and MA methods, forecast from time series data, encode text data, classify text documents, apply string matching algorithms, apply HMM on discrete data sequences\n\n    ", "x": 440.0, "y": -400.0}, {"group": 4, "id": "IL224", "label": "IL224", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: ILGC 4 Major: C\n\n    Learning Outcomes: \nUnderstanding design thinking and the design process\n Developing problem-solving capabilities for addressing grand challenges\n Cultivating social consciousness and a mindset oriented towards solving global issues\n Gaining knowledge in value engineering and its application in project solutions\n Enhancing leadership skills, including decision-making and strategic thinking\n\n\n    Skills: \nDesign Thinking\n Design Process\n Teamwork\n Value Engineering\n Orientation to solve grand challenges\n Problem solving capability\n Social Consciousness\n Entrepreneurial Mindset\n Leadership Skills\n Decision making\n Strategic thinking\n Reflective thinking\n    ", "x": 740.0, "y": -400.0}, {"group": 4, "id": "CS2001", "label": "CS2001", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Programming Language Principles \u0026 Design Major: CSAI\n\n    Learning Outcomes: \nUnderstand design space of computer languages\n Need for newer languages\n Deeper insights into abstract computational models\n\n    Skills: \nAnalytical skills to evaluate and compare various programming languages like C/C++, Java/C#, Scheme, Haskell, etc\n Practical implementation skills in parsing, compiling, and code generation for block-structured and list-based languages\n Ability to outline implementations for object-oriented languages\n Understanding of type systems and information-flow based languages\n Application of logic-based and constraint-based programming concepts in real-world case studies such as Java, Rust, Julia, and Haskell\n\n    ", "x": 900.0, "y": -400.0}, {"group": 4, "id": "BU2001", "label": "BU2001", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Marketing Analytics Major: DSEB\n\n    Learning Outcomes: \nUnderstand interactions between data types\n use analytics to improve marketing outcomes\n demonstrate ROI to C-suite\n create effective marketing campaigns\n understand platform dynamics\n\n    Skills: \nWeb analytics fundamentals\n platform dynamics\n predictive analytics\n measuring online advertising effectiveness\n leveraging user-generated content\n measuring brand assets\n calculating customer lifetime value\n conducting marketing experiments\n understanding influencer marketing\n analyzing algorithmic bias\n pricing analytics\n programmatic advertising\n omnichannel marketing\n performing regressions\n    ", "x": 1060.0, "y": -400.0}, {"group": 4, "id": "EC2001", "label": "EC2001", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Macroeconomics Major: DSEB\n\n    Learning Outcomes: \nUnderstand global economy movements\n read and understand macroeconomic discussions in major publications\n\n    Skills: \nAnalytical skills to evaluate economic trends and policies\n Research skills to locate and analyze relevant economic articles and journals\n Presentation skills to effectively communicate economic concepts and analyses\n Critical thinking skills to assess the impacts of macroeconomic decisions and events\n Collaboration skills to engage in group activities and discussions related to macroeconomic topics\n\n    ", "x": 1120.0, "y": -400.0}, {"group": 4, "id": "BE2001", "label": "BE2001", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Material Science for Bioengineering Major: BSE\n\n    Learning Outcomes: \nUnderstand properties of materials\n Know why properties exist\n Measure properties\n Evaluate relationship between Structure\n Properties and Processing\n Select appropriate materials\n Design materials\n Identify parameters for use\n Describe disposal\n Consider long term effects\n\n    Skills: \nMeasure properties\n Determine impact on performance\n Select materials\n Design materials\n Identify safe use parameters\n Dispose materials\n Consider environmental effects\n    ", "x": 100.0, "y": -400.0}, {"group": 4, "id": "CP2001", "label": "CP2001", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Connected systems \u0026 IOT Major: RCPS\n\n    Learning Outcomes: \nUnderstanding the structure of computer networks in terms of network services, protocols, edge, core, and performance metrics\n Exploring the layered network architecture and protocol layering concept as a fundamental aspect of network design\n Gaining historical perspective on computer networking and the Internet to appreciate the evolution of network technologies\n Learning about network applications, including Web, Email, DNS, File Distribution, and Video Streaming, and their implementation through socket programming\n Grasping the functionalities of different network layers such as the transport layer, network layer (data plane and control plane), link layer, wireless, and mobile networks, and network security\n\n\n    Skills: \nNetwork Services, Network Protocols, Network Edge, Network Core, Packet Switching, Circuit Switching, Network Performance, Layered Network Architecture, Protocol Layering, Network Applications, Web and HTTP, Electronic Mail (SMTP), Domain Name Service (DNS), File Distribution, Video Streaming, Content Distribution, Reliable/Unreliable Transport Services, Multiplexing/Demultiplexing, UDP, ARQ, Pipelining, Stop-\u0026-Wait, Go-Back-N, Selective Repeat, TCP, Connection Management, Fairness in Network Resource Sharing, Forwarding, Routing, IPv4, IPv6, Network Address Translation (NAT), Software Defined Networking (SDN), Routing Algorithms, Link-State, Distance-Vector, Autonomous Systems (AS), OSPF, BGP, ICMP, SNMP, Network Management, Error Detection, Parity Checks, CRC, Multiple Access Protocols, ETHERNET, Link-Layer Switches, Virtual LANs (VLAN), Address Resolution Protocol (ARP), Link Virtualization, MPLS, Data Center Networks (DCNs), Wi-Fi 802\n\n    ", "x": 1560.0, "y": -400.0}, {"group": 4, "id": "ME2001", "label": "ME2001", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Fluids in Action Major: RCPS\n\n    Learning Outcomes: \nDefine system properties, continuum, mechanisms of energy transfer, evaluate hydrostatic forces, differentiate between Eulerian and Lagrangian description, illustrate physical significance of stream function, velocity potential function, vorticity, circulation, derive Navier-Stokes equation, Euler equation, solve laminar flow problems, obtain Bernoulli equation, apply to fluid dynamical systems, formulate and solve equations of the control volume, obtain forces using Reynolds transport theorem, calculate pressure drop, evaluate major and minor losses in piping networks, determine pumping power requirements, understand fundamentals of flow over bodies, calculate drag and lift forces, nondimensionalize governing equations, identify dimensionless groups, obtain functional relationship\n\n\n    Skills: \nEvaluate hydrostatic forces, solve laminar flow problems, apply Bernoulli equation, solve equations of control volume, calculate pressure drop, evaluate losses in piping networks, determine pumping power requirements, calculate drag and lift forces\n\n    ", "x": 1620.0, "y": -400.0}, {"group": 4, "id": "RO2001", "label": "RO2001", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: System Dynamics \u0026 Control Major: RCPS\n\n    Learning Outcomes: \nUnderstand principles\n significance\n relevance of systems and control in engineering\n Develop and analyze system models\n Evaluate system behavior\n Understand system performance\n Understand core concepts of control theory\n Learn techniques for analyzing and controlling linear systems\n Create\n evaluate\n and synthesize controllers\n Implement algorithms for programming behaviors\n\n    Skills: \nUse of MATLAB\n Physical modeling of mechanical\n fluidic\n pneumatic systems\n Analytical techniques (classical solution\n Laplace transforms\n state space)\n Dynamic performance analysis (Bode plot\n root-locus\n Nyquist plot)\n Controller design\n System performance evaluation\n    ", "x": 1680.0, "y": -400.0}, {"group": 3, "id": "FM214", "label": "FM214", "layer": 3, "physics": false, "shape": "dot", "size": 10, "title": "Course: Intelligent Machines Major: FM\n\n    Learning Outcomes: \nUnderstand operational basics of sensors and actuators\n analyze and apply modeling and control concepts\n apply concepts related to navigation\n perception\n and machine learning\n understand and apply compute and communication hardware\n create and evaluate simple robots\n understand latest trends in robotics and cyber-physical systems\n\n    Skills: \nDesign simple cyber-physical systems\n build robotic systems\n evaluate robotic systems\n implement algorithms for programming behaviors\n    ", "x": 820.0, "y": -300.0}, {"group": 5, "id": "BE3002", "label": "BE3002", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: Cell Biology Major: BSE\n\n    Learning Outcomes: \nPreparation of stock solutions, Preparation of growth medium, Methods of sterilization, Preparation of Competent Cells E\ncoli DH5 \u03b1, Preparation of Competent Cells E\ncoli BL21(DE3)pLysS, Transformation of pMAL -RAD51 in E\ncoli DH5 \u03b1, Transformation of Precission Protease in E\ncoli DH5 \u03b1, Isolation of plasmid from transformed cells, Agarose gel electrophoresis and size analysis, Spectrophotometric analysis of DNA, Transformation and Induction, Harvesting of pellet, Buffer preparation, Affinity chromatography, Elution, SDS -PAGE analysis of the purified protein, Amplification of SPRTN, Agarose Gel Electrophoresis of amplified products, Purification of PCR product, Spectrophotometric analysis of PCR product and vector, Restriction digestion of vector and insert, Agarose gel electrophoresis of restriction digested products, Gel excision and purification of excised products, Dephosphorylation of the vector, Ligation of vector and insert, Colony PCR, Agarose Gel Electrophoresis of PCR product, Analysis of sequencing data\n\n    Skills: \nPreparation of chemical stock\n Preparation of growth medium\n Sterilization methods\n Preparation of Competent Cells\n Transformation techniques\n Plasmid isolation\n Agarose gel electrophoresis\n Spectrophotometric analysis\n Protein induction\n Protein purification\n SDS-PAGE analysis\n PCR amplification\n PCR purification\n Restriction digestion\n Gel excision\n Ligation\n Colony screening\n Sequencing analysis\n    ", "x": 280.0, "y": -500.0}, {"group": 5, "id": "BE3101", "label": "BE3101", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: MCTAP Major: BSE\n\n    Learning Outcomes: \nUnderstand structural and functional framework of cellular systems\n Apply concepts of bio-transport and reactions\n Analyze functioning of cellular systems\n Synthesize deconstructed models into a whole living cell\n\n    Skills: \nPerform Fick\u0027s Law based modelling\n Model Passive and Active Transporters\n Derive kinetics of receptor-ligand binding\n Formulate and simulate multiscale transport-reaction modelling\n Critically analyze and discuss research papers\n Submit term project and seminar presentation\n    ", "x": 340.0, "y": -500.0}, {"group": 5, "id": "RO3001", "label": "RO3001", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: Sensor Actuation Major: C\n\n    Learning Outcomes: \nUnderstand transduction principles\n Appraise sensing and actuation techniques\n Build and apply selection criteria\n Plan and design simulation system\n Fabricate and evaluate CPS system\n\n    Skills: \nHands-on design\n Build components\n Conduct experiments\n Data acquisition\n Data processing\n Feedback \u0026 control\n Monitoring\n Display\n Interpretation\n Analysis\n Technical writing\n Presentation\n Critical analysis\n Team-work\n Leadership\n    ", "x": 620.0, "y": -500.0}, {"group": 4, "id": "BE2002", "label": "BE2002", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Biochemistry \u0026 Molecular Biology Major: BSE\n\n    Learning Outcomes: \nDescribe importance of biochemistry\n describe carbohydrates\n proteins\n lipids\n explain metabolic pathways\n explain enzymes\n vitamins\n hormones\n summarize basic biochemistry\n demonstrate biochemical techniques\n describe molecular biology\n map discoveries\n understand biological processes\n compare molecular biology techniques\n interpret experimental results\n design experiments\n\n    Skills: \nProtein estimation\n Precision-protease purification\n Serum glucose estimation\n Lipid estimation\n Buffer preparation\n Enzyme kinetics\n Proteolysis reaction\n DNA and RNA spectrophotometry\n Bacterial genomic DNA extraction\n Bacterial RNA extraction\n PCR amplification\n Real-time PCR\n DNA sequencing\n Species identification\n Phylogenetic analysis\n    ", "x": 160.0, "y": -400.0}, {"group": 4, "id": "BE2003", "label": "BE2003", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Bioinformatics and Computational Biology Major: BSE\n\n    Learning Outcomes: \nUnderstand important notions of bioinformatics and computational biology\n Retrieve\n explore and analyze biological and biomedical data\n Tackle simple bioinformatics-related problems in python or R\n Apply computational models to understand individual genes\n transcripts\n and proteins\n Perform molecular docking and ligand binding studies\n Understand basics of Microarray analysis\n RNA-seq analysis\n computational neuroscience\n\n    Skills: \nRetrieve biological data\n Explore biological data\n Analyze biological data\n Tackle bioinformatics problems in python\n Tackle bioinformatics problems in R\n Apply computational models\n Perform molecular docking\n Perform ligand binding studies\n Analyze Microarray data\n Analyze RNA-seq data\n Understand computational neuroscience\n    ", "x": 220.0, "y": -400.0}, {"group": 5, "id": "AI3011", "label": "AI3011", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: MLPR Major: C\n\n    Learning Outcomes: \nUnderstand basic concepts of Machine Learning\n Apply concepts to real-world problems\n Analyze real-world problems\n Synthesize knowledge from hands-on experiences\n Create working machine learning prototypes\n\n    Skills: \nHands-on working with real-world data\n Explore pattern recognition methods\n Demonstrate ability to find real-world problems\n Apply statistical techniques\n Evaluate efficacy of solutions\n Create prototypes\n Articulate characteristics and efficiency of prototypes\n    ", "x": 500.0, "y": -500.0}, {"group": 5, "id": "DS3001", "label": "DS3001", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: Advanced Statistics Major: C\n\n    Learning Outcomes: \nCompute estimators\n Derive tests of hypotheses\n Analyze complex data\n Compare and Contrast methods\n Design a detailed plan for data-driven problems\n\n    Skills: \nCompute estimators\n Derive tests of hypotheses\n Analyze complex data\n Design a data-driven problem-solving plan\n    ", "x": 560.0, "y": -500.0}, {"group": 4, "id": "CS2011", "label": "CS2011", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: FoCS Major: C\n\n    Learning Outcomes: \nUnderstanding the evolution of processor technology\n Knowledge of different computer architectures, including Von Neumann and Harvard architecture\n Familiarity with performance metrics and the differences between RISC and CISC processors\n Understanding memory organization, including cache memory design\n Knowledge of operating system components and features, including system calls and process management\n\n\n    Skills: \nApplying performance measures to evaluate processor architectures\n Analyzing and comparing microcontroller and System-on-Chip (SoC) specifications\n Implementing pipelining concepts to improve processing speed\n Addressing performance bottlenecks in instruction-level pipelining\n Managing memory efficiently, including memory organization, access times, and memory management techniques\n\n    ", "x": 500.0, "y": -400.0}, {"group": 5, "id": "AI3021", "label": "AI3021", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: Search Methods in Artificial Intelligence Major: CSAI\n\n    Learning Outcomes: \nAutonomous agent\n Intelligent behavior\n Problem solving\n Decision making\n Consequence analysis\n Search methods\n\n    Skills: \nApplication of different search methods in artificial intelligence to solve complex problems effectively\n Practical implementation of heuristic search algorithms like Best First Search, Hill Climbing, and Simulated Annealing in problem-solving tasks\n Proficiency in utilizing advanced search algorithms such as Genetic Algorithms, Ant Colony Optimization, and A for optimal problem-solving outcomes\n Ability to apply game playing algorithms like Minimax and AlphaBeta, as well as planning techniques like Forward/Backward Search and Goal Stack Planning\n Practical skills in developing rule-based expert systems, conducting reasoning in First Order Logic, and addressing Constraint Satisfaction Problems using relevant algorithms\n\n    ", "x": 780.0, "y": -500.0}, {"group": 4, "id": "CS2021", "label": "CS2021", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: DAA Major: C\n\n    Learning Outcomes: \nAnalyze computational complexity\n Design efficient algorithms\n Implement data structures\n Solve sorting\n searching\n optimization algorithms\n Analyze NP complexity\n Design approximation algorithms\n Design algorithms for real-world problems with limited memory\n\n    Skills: \nAnalyze algorithms\n Design algorithms\n Implement data structures\n Solve sorting problems\n Solve searching problems\n Solve optimization problems\n Analyze NP problems\n Design approximation algorithms\n Design real-world algorithms\n    ", "x": 560.0, "y": -400.0}, {"group": 4, "id": "FM223", "label": "FM223", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Optimization Major: C\n\n    Learning Outcomes: \nExposure to diverse optimization problems\n Exposure to reading research papers/texts\n Implementing methods discussed in research papers/texts\n\n    Skills: \nAnalyzing and solving optimization problems using various techniques\n Reading, interpreting, and applying optimization methods from research papers and texts effectively\n Presenting technical information clearly and concisely\n Engaging in class discussions and active participation\n Continuous evaluation and improvement of problem-solving skills through assignments and workbook activities\n\n    ", "x": 680.0, "y": -400.0}, {"group": 5, "id": "BE3001", "label": "BE3001", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: Stochastic Modeling in Biology Major: BSE\n\n    Learning Outcomes: \nUnderstand principles of stochastic modeling\n explore stochastic modeling approaches\n apply stochastic simulation methods\n investigate applications of stochastic modeling\n develop practical skills in constructing and interpreting stochastic models\n\n    Skills: \nConstructing stochastic models\n interpreting stochastic models\n applying stochastic simulation methods\n problem-solving in biological research\n interdisciplinary collaboration\n    ", "x": 220.0, "y": -500.0}, {"group": 5, "id": "CS3021", "label": "CS3021", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: ToC Major: CSAI\n\n    Learning Outcomes: \nExplain basic computation models\n model given problems\n find applications of regular expressions and context-free grammars\n explain difference between decidable and undecidable languages\n demonstrate fundamental limitations of computing devices\n\n    Skills: \nApply knowledge of computation models to solve computational problems effectively\n Formalize problems and solutions for computational analysis\n Utilize regular expressions and context-free grammars in practical applications\n Analyze and differentiate between decidable and undecidable languages\n Demonstrate limitations of computing devices through practical examples\n\n    ", "x": 840.0, "y": -500.0}, {"group": 5, "id": "HS3101", "label": "HS3101", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: Paradoxes Major: HS\n\n    Learning Outcomes: \nExplore fundamental logical paradoxes\n Resolve paradoxes\n Knowledge of elementary mathematical logic\n Analyse foundations of logic\n mathematics\n science\n probability\n rationality\n Team presentation skills\n Verbal skills\n Audio-visual skills\n Coherent deployment of knowledge\n Written report\n Critical thinking\n Clear expression\n Systematic analysis\n\n    Skills: \nTeam presentation\n Verbal skills\n Audio-visual skills\n Coherent deployment of knowledge\n Written report\n Critical thinking\n Clear expression\n Systematic analysis\n    ", "x": 1340.0, "y": -500.0}, {"group": 5, "id": "EC3101", "label": "EC3101", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: Microeconomics of Development Major: DSEB\n\n    Learning Outcomes: \nStylized facts around development\n Measurement of key development indicators\n Neo-classical growth theories\n Analyze market failures\n Evaluate empirical papers\n Human capital development\n Discrimination\n Psychology\n Corruption\n Civil conflict\n Synthesize findings\n Research proposal\n\n    Skills: \nApplication of economic theories to real-world problems\n Evaluation of empirical papers using data science techniques\n Synthesis of complex information to create a research proposal\n Writing skills to present technical research proposals effectively\n Critical thinking skills to analyze and evaluate market failures and policy interventions\n\n    ", "x": 1180.0, "y": -500.0}, {"group": 4, "id": "HS2001", "label": "HS2001", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Persuasive professional communication course file Major: HS\n\n    Learning Outcomes: \nDevelop understanding of an organisation\n Understand dynamics of working in organisations\n Build trust and credibility\n Understand negotiation and conflict resolution\n Construct engaging stories\n Understand professional communication mediums\n Appreciate AI tools for professional use\n\n    Skills: \nUse tools and strategies\n Build trust\n Manage conflict\n Negotiate effectively\n Construct stories\n Use professional communication mediums\n Integrate AI tools\n    ", "x": 1280.0, "y": -400.0}, {"group": 5, "id": "ME3001", "label": "ME3001", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: Engineering Mechanics Major: RCPS\n\n    Learning Outcomes: \nProficiency in statics and dynamics\n Analyze equilibrium and motion\n Set up governing differential equations\n Practical problem-solving skills\n\n    Skills: \nIsolate system elements\n Draw free-body diagrams\n Describe motion in various coordinates\n Apply laws of physics\n Solve equations of motion\n Characterize kinematics\n    ", "x": 1560.0, "y": -500.0}, {"group": 1, "id": "FM112", "label": "FM112", "layer": 1, "physics": false, "shape": "dot", "size": 10, "title": "Course: Engineering Mathematics in Action Major: FM\n\n    Learning Outcomes: \nConstruct matrix representations\n Compute orthonormal bases\n Compute eigenvalues and eigenvectors\n Solve higher order linear differential equations\n Perform stability analysis\n Perform complex mini-projects\n\n    Skills: \nNumerical solutions of linear equations\n Analytical and numerical computation of orthonormal bases\n Analytical and numerical computation of eigenvalues and eigenvectors\n Analytical and numerical solutions of differential equations\n Stability analysis of dynamical models\n Execution of complex mini-projects\n    ", "x": 730.0, "y": -100.0}, {"group": 1, "id": "FM113", "label": "FM113", "layer": 1, "physics": false, "shape": "dot", "size": 10, "title": "Course: Foundations of Physical World Major: FM\n\n    Learning Outcomes: \nAbility to construct mathematical models of mechanical systems and solve them analytically and using simulation tools\n Understanding and application of physical phenomena principles like diffraction, interference, and quantum mechanics in various devices\n Application of thermodynamics principles in designing heating and cooling systems, such as engines and refrigerators\n Skills in solving circuit problems and explaining the operation of electrical machines like transformers and generators\n Understanding theoretical and empirical aspects of devices like transistors and amplifiers, along with associated engineering challenges\n\n\n    Skills: \nMathematical modeling\n computational modeling\n analytical problem-solving\n simulation tools\n application of physical principles\n thermodynamic machine design\n circuit problem-solving\n theoretical and empirical device analysis\n    ", "x": 790.0, "y": -100.0}, {"group": 1, "id": "IL111", "label": "IL111", "layer": 1, "physics": false, "shape": "dot", "size": 10, "title": "Course: ILGC 1 Major: FM\n\n    Learning Outcomes: \nCreate whole system map\n Set priorities for design\n Develop ideas for design\n Evaluate design solutions\n Select ideal design\n Ask questions that inspire growth\n Analyze strengths and weaknesses\n Make connections between domains\n Evaluate social\n economic\n environmental factors\n Create ideas for new products/processes/services\n Identify own identities\n Classify project tasks\n Evaluate team assets\n Demonstrate equitable teamwork\n Reflect on team dynamics\n Take initiative in executing roles\n Critically reflect on project experience\n Conceptualize and connect observations\n Communicate design ideas effectively\n\n    Skills: \nWhole system mapping\n Life Cycle Analysis\n Brainstorming\n Decision metrics\n Questioning for growth\n Analyzing products/processes/services\n Connecting knowledge domains\n Evaluating social/economic/environmental factors\n Creating new ideas\n Identifying identities and assets\n Classifying tasks\n Evaluating team development\n Demonstrating teamwork\n Reflecting on team dynamics\n Taking initiative\n Critical reflection\n Conceptualizing observations\n Effective communication\n    ", "x": 910.0, "y": -100.0}, {"group": 2, "id": "FM123", "label": "FM123", "layer": 2, "physics": false, "shape": "dot", "size": 10, "title": "Course: Natures Machine Major: FM\n\n    Learning Outcomes: \nUnderstand biological hierarchy\n organization\n functions of human organs and organ systems\n Quantify biological transport and reactions in human respiratory and cardiovascular systems\n Understand human muscular system from macro and molecular levels\n Apply knowledge in physical activities like sports\n Design artificial machines and organs through reverse engineering\n Understand molecular level interactions in key biochemical processes in plants\n Describe wastewater treatment through bioremediation\n Compare advantages of bioremediation with other remediation methods\n\n    Skills: \nBioinformatics\n Computational Physiology\n Biomechanics\n Antioxidant enzyme assay from plants\n DNA isolation\n Electrophoresis\n Bioremediation\n Bacterial transformation\n Antibiotic screening\n Screening of industrially important enzymes\n    ", "x": 760.0, "y": -200.0}, {"group": 2, "id": "FM124", "label": "FM124", "layer": 2, "physics": false, "shape": "dot", "size": 10, "title": "Course: Fundamentals of Microeconomics Major: FM\n\n    Learning Outcomes: \nThink like a microeconomist\n understand individual and firm decision-making\n maximize utility and profits\n develop tools of modern microeconomic theory\n discuss applications\n\n    Skills: \nAnalytical thinking: Apply microeconomic principles to analyze individual, firm, and policy decisions\n Problem-solving: Solve economic problems through the application of microeconomic models\n Communication: Present real-world examples to illustrate economic concepts effectively\n Critical thinking: Evaluate the efficiency and well-being implications of economic decisions\n Application of theory: Translate theoretical microeconomic concepts into practical scenarios to understand market dynamics\n\n    ", "x": 820.0, "y": -200.0}, {"group": 3, "id": "FM212", "label": "FM212", "layer": 3, "physics": false, "shape": "dot", "size": 10, "title": "Course: Calculus in Higher Dimension Major: FM\n\n    Learning Outcomes: \nExtend one-dimensional derivative to complex functions\n Geometry of analytical functions\n Conformal mapping\n Geometry of complex integrals\n Use of complex series\n Fourier expansions\n Vector calculus beyond two-dimensional complex plane\n\n    Skills: \nApplying complex analysis concepts to solve problems in science and engineering\n Utilizing programming languages such as Matlab, Python, and R for mathematical computations\n Analyzing and interpreting complex functions and their properties\n Applying complex integrals and series in practical scenarios\n Applying vector calculus techniques in higher dimensions for real-world applications\n\n    ", "x": 700.0, "y": -300.0}, {"group": 4, "id": "BE2004", "label": "BE2004", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Bioprocess Engineering Major: BSE\n\n    Learning Outcomes: \nUnderstand metabolic and kinetic processes\n Quantify cellular processes\n Design bioreactors\n Analyze bioreactor dynamics and stability\n Optimize bioreactor parameters\n Differentiate and evaluate suspended vs immobilized processes\n\n    Skills: \nEnzyme screening\n Determining thermal death point and time\n Alcohol production via fermentation\n Enzyme immobilization\n Bioremediation\n    ", "x": 280.0, "y": -400.0}, {"group": 4, "id": "DE2202", "label": "DE2202", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: The Elements of Design Major: C\n\n    Learning Outcomes: \nObserve\n visualize\n visually communicate conceptual ideas\n design problem solving\n understanding design principles\n create meaning in design practice\n\n    Skills: \nVisual communication\n intuitive design sensibilities\n 2-D and 3-D visual communication\n typography\n use of grids\n colour combinations\n pattern generation\n understanding form and functionality\n    ", "x": 620.0, "y": -400.0}, {"group": 4, "id": "HS2101", "label": "HS2101", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Critical Readings in Philosophy, Religion and Art Major: HS\n\n    Learning Outcomes: \nCritical readings\n close reading\n contrapuntal reading\n critical thinking\n creative thinking\n understanding of Philosophy\n Religious Studies\n Art History\n awareness of society\n culture\n technology\n appreciation of humanities\n social sciences\n imaginative capability\n inventive capability\n\n    Skills: \nCritical readings\n close reading\n contrapuntal reading\n critical thinking\n creative thinking\n imaginative capability\n inventive capability\n    ", "x": 1340.0, "y": -400.0}, {"group": 4, "id": "LS2001", "label": "LS2001", "layer": 4, "physics": false, "shape": "dot", "size": 10, "title": "Course: Introduction\u00a0to\u00a0Psychology Major: HS\n\n    Learning Outcomes: \nUnderstand foundational psychological theories and findings in psychology\n Gain knowledge of the physical basis of mental health through an introduction to neuroscience\n Explore psychological research related to thinking, language, cognition, emotions, social perceptions, and relationships\n Comprehend the role of genes and environment in shaping personality and intelligence\n Learn about happiness and well-being in the context of psychology\n\n\n    Skills: \nApply foundational psychological theories to analyze behaviors and mental processes\n Utilize knowledge of neuroscience to understand the biological underpinnings of mental health\n Demonstrate critical thinking skills in evaluating research on cognition, emotions, and social interactions\n Apply theories of personality and intelligence to explain individual differences\n Develop strategies for enhancing happiness and well-being based on psychological principles\n\n    ", "x": 1400.0, "y": -400.0}, {"group": 5, "id": "CS3102", "label": "CS3102", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: Cybersecurity Practice Major: CSAI\n\n    Learning Outcomes: \nAbility to apply various machine learning methods such as Neural Networks, SVM, and Random Forest\n - Understanding the process of training, testing, and deploying machine learning models\n\n\n    Skills: \nImplement malware detection system\n use TensorFlow\n use Scikit Learn\n feature extraction\n data processing\n parsing file analysis tool output\n training and testing machine learning models\n    ", "x": 900.0, "y": -500.0}, {"group": 5, "id": "BU3001", "label": "BU3001", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: Finance Major: DSEB\n\n    Learning Outcomes: \nComprehend Financial Markets\n Analyze Financial Statements\n Apply Time Value of Money\n Explore Financial Models\n Integrate Data Science in Finance\n\n    Skills: \nEvaluate balance sheets\n Evaluate income statements\n Evaluate flow statements\n Utilize time value of money principles\n Assess project viability\n Assess investment choices\n Examine cost of capital\n Examine Capital Asset Pricing Model (CAPM)\n Leverage Python\n Analyze financial data\n    ", "x": 1060.0, "y": -500.0}, {"group": 5, "id": "EC3001", "label": "EC3001", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: Econometrics Major: DSEB\n\n    Learning Outcomes: \ncausal inference\n random assignment\n bivariate regression\n multiple regression\n difference-in-differences\n instrumental variables\n regression discontinuity\n Stata Software\n\n    Skills: \nrunning regression models\n using Stata Software\n interpreting regression results\n applying econometric techniques\n summarizing academic papers\n presenting research findings\n    ", "x": 1120.0, "y": -500.0}, {"group": 5, "id": "CP3001", "label": "CP3001", "layer": 5, "physics": false, "shape": "dot", "size": 10, "title": "Course: Embedded Systems Major: RCPS\n\n    Learning Outcomes: \nUnderstanding the fundamental principles of embedded systems design\n Knowledge of key components and their functions in embedded systems\n Familiarity with programming languages commonly used in embedded systems\n Ability to analyze and troubleshoot embedded systems\n Awareness of industry standards and best practices in embedded systems development\n\n\n    Skills: \nProgramming microcontrollers for embedded systems applications\n Designing and implementing circuits for embedded systems\n Debugging and testing embedded systems for functionality and performance\n Applying theoretical knowledge to practical projects in embedded systems\n Following technical documentation and utilizing reference materials effectively in embedded systems development\n\n    ", "x": 1500.0, "y": -500.0}]);
+                  edges = new vis.DataSet([{"from": "FM111", "title": 87, "to": "FM121", "width": 1}, {"from": "FM111", "title": 83, "to": "FM122", "width": 1}, {"from": "FM114", "title": 80, "to": "IL122", "width": 1}, {"from": "FM122", "title": 91, "to": "FM213", "width": 1}, {"from": "FM125", "title": 100, "to": "FM215", "width": 1}, {"from": "FM125", "title": 81, "to": "IL213", "width": 1}, {"from": "IL122", "title": 99, "to": "IL213", "width": 1}, {"from": "FM211", "title": 100, "to": "AI2001", "width": 1}, {"from": "FM211", "title": 92, "to": "IL224", "width": 1}, {"from": "FM211", "title": 100, "to": "CS2001", "width": 1}, {"from": "FM211", "title": 89, "to": "BU2001", "width": 1}, {"from": "FM211", "title": 82, "to": "EC2001", "width": 1}, {"from": "FM213", "title": 80, "to": "BE2001", "width": 1}, {"from": "FM213", "title": 88, "to": "CS2001", "width": 1}, {"from": "FM213", "title": 82, "to": "CP2001", "width": 1}, {"from": "FM213", "title": 94, "to": "ME2001", "width": 1}, {"from": "FM213", "title": 100, "to": "RO2001", "width": 1}, {"from": "FM214", "title": 87, "to": "AI2001", "width": 1}, {"from": "FM214", "title": 100, "to": "RO2001", "width": 1}, {"from": "FM215", "title": 82, "to": "CS2001", "width": 1}, {"from": "IL213", "title": 100, "to": "IL224", "width": 1}, {"from": "IL213", "title": 81, "to": "CS2001", "width": 1}, {"from": "BE2001", "title": 83, "to": "BE3002", "width": 1}, {"from": "BE2001", "title": 83, "to": "BE3101", "width": 1}, {"from": "BE2001", "title": 81, "to": "RO3001", "width": 1}, {"from": "BE2002", "title": 100, "to": "BE3002", "width": 1}, {"from": "BE2003", "title": 80, "to": "BE3002", "width": 1}, {"from": "BE2003", "title": 89, "to": "AI3011", "width": 1}, {"from": "BE2003", "title": 89, "to": "DS3001", "width": 1}, {"from": "AI2001", "title": 89, "to": "AI3011", "width": 1}, {"from": "AI2001", "title": 89, "to": "DS3001", "width": 1}, {"from": "CS2011", "title": 85, "to": "AI3011", "width": 1}, {"from": "CS2011", "title": 81, "to": "AI3021", "width": 1}, {"from": "CS2021", "title": 89, "to": "AI3011", "width": 1}, {"from": "FM223", "title": 80, "to": "BE3002", "width": 1}, {"from": "FM223", "title": 85, "to": "AI3011", "width": 1}, {"from": "IL224", "title": 81, "to": "BE3001", "width": 1}, {"from": "IL224", "title": 81, "to": "AI3021", "width": 1}, {"from": "CS2001", "title": 84, "to": "BE3001", "width": 1}, {"from": "CS2001", "title": 84, "to": "AI3011", "width": 1}, {"from": "CS2001", "title": 81, "to": "DS3001", "width": 1}, {"from": "CS2001", "title": 84, "to": "AI3021", "width": 1}, {"from": "CS2001", "title": 99, "to": "CS3021", "width": 1}, {"from": "CS2001", "title": 100, "to": "HS3101", "width": 1}, {"from": "EC2001", "title": 91, "to": "EC3101", "width": 1}, {"from": "HS2001", "title": 82, "to": "AI3021", "width": 1}, {"from": "CP2001", "title": 86, "to": "AI3011", "width": 1}, {"from": "RO2001", "title": 100, "to": "BE3101", "width": 1}, {"from": "RO2001", "title": 86, "to": "ME3001", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
