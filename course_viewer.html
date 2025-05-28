@@ -45,11 +45,27 @@
             return;
           }
           const course = data[selected];
+
+          // Helper function to pretty-print list items
+          const formatList = (title, items) => {
+            if (!items || items.length === 0) return '';
+            return `
+              <strong>${title}:</strong>
+              <ul>
+                ${items.map(item => `<li>${item}</li>`).join('')}
+              </ul>
+            `;
+          };
+          
           infoBox.innerHTML = `
             <strong>Course Code:</strong> ${selected}<br>
-            <strong>Semester:</strong> ${course.semester}<br>
             <strong>Course Name:</strong> ${course.course}<br>
+            <strong>Semester:</strong> ${course.semester}<br>
             ${course.credits ? `<strong>Credits:</strong> ${course.credits}<br>` : ''}
+            ${formatList('Concepts', course.concepts)}
+            ${formatList('Prerequisites', course.prereqs)}
+            ${formatList('Learning Outcomes', course.learning_outcomes)}
+            ${formatList('Skills', course.skills)}
           `;
           infoBox.style.display = 'block';
         });
