@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Info Viewer</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    select { font-size: 16px; margin-bottom: 10px; }
+    .info { margin-top: 20px; border: 1px solid #ccc; padding: 10px; width: fit-content; }
+  </style>
+</head>
+<body>
+
+  <h2>Select a Course</h2>
+  <select id="courseSelector">
+    <option value="">-- Choose a course --</option>
+  </select>
+
+  <div id="courseInfo" class="info" style="display:none;"></div>
+
+  <script>
+    const jsonURL = './data/data_2025.json';  // Relative path to the JSON file
+
+    async function loadCourses() {
+      try {
+        const res = await fetch(jsonURL);
+        const data = await res.json();
+
+        const selector = document.getElementById('courseSelector');
+        const infoBox = document.getElementById('courseInfo');
+
+        // Populate dropdown
+        for (const code in data) {
+          const course = data[code];
+          const option = document.createElement('option');
+          option.value = code;
+          option.textContent = `${code}: ${course.course}`;
+          selector.appendChild(option);
+        }
+
+        selector.addEventListener('change', () => {
+          const selected = selector.value;
+          if (!selected) {
+            infoBox.style.display = 'none';
+            return;
+          }
+          const course = data[selected];
+          infoBox.innerHTML = `
+            <strong>Course Code:</strong> ${selected}<br>
+            <strong>Semester:</strong> ${course.semester}<br>
+            <strong>Course Name:</strong> ${course.course}<br>
+            ${course.credits ? `<strong>Credits:</strong> ${course.credits}<br>` : ''}
+          `;
+          infoBox.style.display = 'block';
+        });
+
+      } catch (error) {
+        document.body.innerHTML = "<p>Failed to load course data. Make sure the JSON file is in the correct location.</p>";
+      }
+    }
+
+    loadCourses();
+  </script>
+
+</body>
+</html>
