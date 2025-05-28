@@ -1,0 +1,3614 @@
+{
+    "FM111": {
+        "semester": 1,
+        "course": "Fundamentals of Computational Thinking",
+        "concepts": [
+            "Computational Thinking",
+            "Programming Foundations",
+            "Conditional Branching",
+            "Iterative Approach",
+            "Recursion",
+            "Exhaustive Search",
+            "Object Oriented Programming",
+            "Python Programming",
+            "Problem Solving",
+            "Algorithms",
+            "Data Structures",
+            "Divide and Conquer",
+            "Polymorphism"
+        ],
+        "prereqs": [
+            "Basic Programming Concepts",
+            "Problem Solving Techniques",
+            "Logical Reasoning",
+            "Mathematical Thinking",
+            "Basic Knowledge of Programming Languages",
+            "Understanding of Variables and Data Types",
+            "Understanding of Loops and Conditional Statements",
+            "Foundational Mathematics",
+            "Basic Understanding of Functions",
+            "Understanding of Object-Oriented Programming Principles"
+        ],
+        "learning_outcomes": [
+            "Describe/explain how programming can be used to solve problems",
+            "Describe/explain the various elements and paradigms of programming",
+            "Demonstrate problem solving through programming",
+            "Design programs combining the various elements and paradigms of programming",
+            "Demonstrate programming using Python"
+        ],
+        "skills": [
+            "Apply programming concepts to solve problems",
+            "Synthesize programs for problem-solving",
+            "Design programs using various programming elements",
+            "Demonstrate programming proficiency in Python",
+            "Implement problem-solving techniques through programming"
+        ]
+    },
+    "FM116": {
+        "semester": 1,
+        "course": "Advanced Calculus with Python",
+        "concepts": [
+            "Multivariable functions",
+            "Limits",
+            "Continuity",
+            "Differentiability",
+            "Double integrals",
+            "Triple integrals",
+            "Vector valued functions",
+            "Line integral",
+            "Surface integral",
+            "Infinite sequences",
+            "Series",
+            "Optimization problems",
+            "Area calculation",
+            "Volume calculation",
+            "Real world problem solving",
+            "Python programming for calculus"
+        ],
+        "prereqs": [
+            "High School Calculus",
+            "Functions and their graphs",
+            "Limits and continuity",
+            "Differentiation",
+            "Integration",
+            "Vector calculus basics",
+            "Basic understanding of sequences and series",
+            "Python programming basics"
+        ],
+        "learning_outcomes": [
+            "Engage in computer lab activities in Python to model and solve complex problems in science and engineering",
+            "Implement advanced calculus concepts using Python libraries",
+            "Create and analyze visual representation of functions, surfaces, and vector fields",
+            "Cultivate critical thinking and problem-solving skills through rigorous study of calculus and Python coding exercises",
+            "Lay a strong foundation for further studies in Mathematics, engineering, and data science"
+        ],
+        "skills": [
+            "Apply knowledge of calculus with Python to solve optimization problems",
+            "Evaluate areas of planar regions and volumes under surfaces",
+            "Learn line and surface integrals and their applications",
+            "Synthesize calculus learning to solve real-world problems in science and engineering fields using Python programming",
+            "Visualize the geometry of functions via Python coding"
+        ]
+    },
+    "FM117": {
+        "semester": 1,
+        "course": "Design and Innovation",
+        "concepts": [
+            "Design Thinking Process",
+            "Empathy in Problem Solving",
+            "Human-Centric Approach",
+            "Prototyping",
+            "Engineering Drawing",
+            "Materials Identification and Knowledge",
+            "Makerspace Tools and Equipment",
+            "Types of Design",
+            "Design Process Application",
+            "Prototype Development",
+            "Physical Materials Classification",
+            "Visual Interpretation",
+            "Problem Solving with Design Process"
+        ],
+        "prereqs": [
+            "Open Mindset",
+            "Empathy Development",
+            "Analytical Problem Solving",
+            "Basic Understanding of Engineering Drawing",
+            "Fundamental Materials Knowledge",
+            "Concept of Prototyping",
+            "Awareness of Design Principles",
+            "History of Industrial Design",
+            "Iterative Design Thinking",
+            "Collaborative Work Skills",
+            "Human-Centered Design Concepts"
+        ],
+        "learning_outcomes": [
+            "Develop ability to make precise drawings and gain a working knowledge of basic materials",
+            "Be able to classify, describe and interpret the physical materials they come across in daily life",
+            "Distinguish, correlate, and infer the visuals that they see both in the 3D world as well as on the 2D digital platform and develop a more discerning eye",
+            "Think independently, work collaboratively, tackle ambiguity and incorporate a human-centered empathy-based approach to problem-solving",
+            "The ability to use the design process to solve problems in various situations and be able to build working solutions which can be tested and improved upon"
+        ],
+        "skills": [
+            "Build prototypes and models in various materials using hand skills as well as workshop techniques",
+            "Communication through Drawing, Orthographic Projections, Dimensioning & Lettering",
+            "Introduction to identification and essential knowledge of common metals, woods, and plastics. Their normal availability, use and processing of materials",
+            "Exposure to and knowledge of various tools and equipment in the makerspace",
+            "Ability to modify, organize, construct, create, and design using the design process in all future projects"
+        ]
+    },
+    "FM118": {
+        "semester": 1,
+        "course": "The World of AI",
+        "concepts": [
+            "Introduction to Artificial Intelligence",
+            "AI History and Features",
+            "Applications of AI in Daily Life",
+            "AI in Healthcare",
+            "AI in Finance",
+            "AI in Education",
+            "Bias and Ethics in AI",
+            "AI and Society",
+            "AI and the Anthropocene",
+            "Machine Learning Algorithms",
+            "Supervised Learning",
+            "Unsupervised Learning",
+            "Reinforcement Learning",
+            "Types of ML Systems"
+        ],
+        "prereqs": [
+            "Basic Understanding of Artificial Intelligence",
+            "Machine Learning Fundamentals",
+            "Neural Networks",
+            "Deep Learning",
+            "Data Analysis",
+            "Data-driven Decision Making",
+            "Programming Concepts",
+            "Labeled Data vs. Unlabeled Data",
+            "Clustering Algorithms"
+        ],
+        "learning_outcomes": [
+            "Understand key terminologies and functioning of diverse AI techniques and applications",
+            "Gain a strong understanding of AI fundamentals",
+            "Differentiate between various types of machine learning systems",
+            "Explain the history and evolution of AI",
+            "Identify the importance of bias and ethics in AI and society"
+        ],
+        "skills": [
+            "Apply machine learning algorithms to real-world problems",
+            "Extract features to build AI models",
+            "Utilize supervised learning for labeled data",
+            "Implement unsupervised learning for clustering",
+            "Apply reinforcement learning to learn from mistakes"
+        ]
+    },
+    "HS1003": {
+        "semester": 1,
+        "course": "Integrated Communication for Engineering - 1 (ICE-1)",
+        "concepts": [
+            "Integrated Communication",
+            "Cognitive Skills",
+            "Linguistic Skills",
+            "Foundational Communication Skills",
+            "Empathy in Communication",
+            "Academic Tech Narratives",
+            "Reading Skills",
+            "Writing Skills",
+            "Speaking Skills",
+            "Listening Skills",
+            "Academic Outputs Creation",
+            "Engineering Solutions",
+            "Persuasive Speech",
+            "Interpersonal Relationships",
+            "Academic Hypothesis Formulation"
+        ],
+        "prereqs": [],
+        "learning_outcomes": [
+            "Understand that excellence in engineering requires effective communication with stakeholders",
+            "Apply critical reading and writing skills in technical and non-technical contexts",
+            "Analyze academic texts and diverse perspectives to derive insights for problem-solving",
+            "Synthesize communication components to create academic outputs and projects",
+            "Engage in strategic communication about technology across various contexts"
+        ],
+        "skills": [
+            "Develop language competence in reading, writing, speaking, and listening",
+            "Evaluate intellectual viewpoints in academic literature and team perspectives",
+            "Create academic hypotheses supported by evidence for engineering solutions",
+            "Articulate and present arguments and project outcomes persuasively",
+            "Build collaborative partnerships and engage in effective interpersonal relationships"
+        ]
+    },
+    "IL102": {
+        "semester": 1,
+        "course": "Innovation Lab & Grand Challenge Studio I",
+        "concepts": [
+            "Societal grand challenges",
+            "Technology solutions",
+            "Sustainable Development Goals (SDGs)",
+            "Community engagement",
+            "Course reflection",
+            "Final exhibition"
+        ],
+        "prereqs": [
+            "Sustainability",
+            "Understanding of societal issues",
+            "Teamwork",
+            "Presentation skills"
+        ],
+        "learning_outcomes": [
+            "Understand society's 'grand challenges'",
+            "Analyze societal issues through fieldwork",
+            "Evaluate Sustainable Development Goals (SDGs)",
+            "Reflect on course learnings for societal impact",
+            "Apply theoretical knowledge to real-world challenges"
+        ],
+        "skills": [
+            "Collaboration in a team setting",
+            "Conducting field observations and compiling data",
+            "Presentation skills for sharing insights",
+            "Critical thinking for problem-solving",
+            "Application of sustainable development principles"
+        ]
+    },
+    "FM102": {
+        "semester": 2,
+        "course": "Coding Caf\u00e9",
+        "concepts": [
+            "Unix operating systems",
+            "Shell scripting",
+            "C programming basics",
+            "Problem-solving in C programming",
+            "Memory management in C",
+            "File operations in Unix",
+            "Data structures in C",
+            "Programming proficiency"
+        ],
+        "prereqs": [
+            "Basic programming concepts",
+            "Problem-solving strategies",
+            "Understanding of operating systems",
+            "Data structures basics",
+            "Memory management principles"
+        ],
+        "learning_outcomes": [
+            "Perform Unix operations using basic and advanced commands",
+            "Automate tasks through shell scripts in Unix environment",
+            "Write C programs to solve computational problems",
+            "Develop C programs utilizing various components like arrays and structures",
+            "Apply Unix and C programming concepts to solve real-world computational problems"
+        ],
+        "skills": [
+            "Navigate and operate within a Unix-based operating system",
+            "Create efficient shell scripts for task automation",
+            "Implement solutions using C programming language",
+            "Utilize data structures like arrays and structures in C programming",
+            "Apply Unix and C programming knowledge to practical computational problem-solving"
+        ]
+    },
+    "FM119": {
+        "semester": 2,
+        "course": "Fundamentals of Economics",
+        "concepts": [
+            "Microeconomics",
+            "Macroeconomics",
+            "Supply and Demand",
+            "Production Decisions",
+            "Market Prices",
+            "Efficiency and Equity",
+            "Game Theory",
+            "Market Failures",
+            "Externalities",
+            "Aggregate Demand",
+            "Aggregate Supply",
+            "Unemployment",
+            "Inflation",
+            "Economic Growth",
+            "Fiscal Policy",
+            "Monetary Policy",
+            "National Income Measurement",
+            "Cost of Living Measurement",
+            "Perfect Competition",
+            "Monopoly",
+            "Public Goods"
+        ],
+        "prereqs": [
+            "Economics Basics",
+            "Mathematics",
+            "Analytical Thinking",
+            "Policy Instruments",
+            "Market Dynamics",
+            "Budget Constraints",
+            "Cost Functions",
+            "GDP Relationships",
+            "Inflation-Unemployment Trade-offs"
+        ],
+        "learning_outcomes": [
+            "Apply economics theory to real-world organizational problems and challenges",
+            "Understand policy instruments and the basic economic rationale behind them",
+            "Discuss nature of markets in firms and various issues to resolve market failures",
+            "Examine contemporary economics issues from a rational lens",
+            "Evaluate impact of Public Policy (Taxes, Subsidies, Price controls)"
+        ],
+        "skills": [
+            "Evaluate Profit Maximization by Firms",
+            "Analyze nature of competition and externalities in markets",
+            "Apply learnings to understand impact of policies and evaluate how preferences, budget constraints on the demand-side interact with cost functions on the supply side",
+            "Evaluate and understand Relationship between GDP, unemployment and inflation in macroeconomics",
+            "Build and solve mathematical models and analytical frameworks of social behaviour"
+        ]
+    },
+    "FM120": {
+        "semester": 2,
+        "course": "Art of Thinking",
+        "concepts": [
+            "Foundations of Thinking",
+            "Forms of Thinking",
+            "Future Minds",
+            "Reflection",
+            "Analytical Thinking",
+            "Thinking and Critique",
+            "Imagination and Creative Thinking",
+            "Interpretation: Explanation and Understanding",
+            "Question and Answer",
+            "Cosmological Thinking and Scientific Communication",
+            "Human-Technology Thinking",
+            "Computers and Thinking",
+            "Robots and Imagination"
+        ],
+        "prereqs": [
+            "Critical Thinking",
+            "Scientific Reasoning",
+            "Human Thinking",
+            "Reflective Thinking",
+            "Analysis",
+            "Interpretation",
+            "Creative Thinking",
+            "Memory and Remembering",
+            "Language and Communication",
+            "Knowledge and Knowing",
+            "Experience and Perception",
+            "Imagination",
+            "Critique vs. Criticism",
+            "Philosophical Dialogue",
+            "Scientific Communication",
+            "Human-Technology Interaction",
+            "Artificial Intelligence and Robotics",
+            "Questioning Skills"
+        ],
+        "learning_outcomes": [
+            "Discernment of Cognitive Processes",
+            "Critical Thinking Proficiency",
+            "Scientific Reasoning Competence",
+            "Cogent Reasoning and Argumentation",
+            "Understanding the relationship between thinking and knowing"
+        ],
+        "skills": [
+            "Practice reflective thinking",
+            "Analyze information effectively",
+            "Develop a posture of critique",
+            "Exercise creativity and imagination",
+            "Articulate arguments with clarity and persuasiveness"
+        ]
+    },
+    "FM123": {
+        "semester": 2,
+        "course": "Nature's Machines",
+        "concepts": [
+            "Human Physiology",
+            "Fundamental Biology",
+            "Immunology",
+            "The Science and Art of Biomimicry",
+            "Organization of Human Body",
+            "Homeostasis",
+            "Organ Systems Functionality",
+            "Micro and Nano Machinery in Cells",
+            "Defense Mechanisms in Human Body",
+            "Vaccines and Infectious Diseases",
+            "Autoimmune Disorders",
+            "Biomimicry Principles",
+            "Function-Strategy-Context in Biomimicry",
+            "Nature-Inspired Design Solutions",
+            "Sustainable Solutions Development"
+        ],
+        "prereqs": [
+            "Cellular Biology",
+            "Organ Systems",
+            "Microbiology",
+            "Genetics",
+            "Evolution",
+            "Homeostasis",
+            "Molecular Biology",
+            "Immunology Basics",
+            "Cell Division",
+            "Innate and Adaptive Immunity",
+            "Gene Expression",
+            "Hierarchy of Life",
+            "Central Dogma of Molecular Biology"
+        ],
+        "learning_outcomes": [
+            "Understand the organization of the human body into different organ systems and explain the principles of homeostasis",
+            "Gain insights into the working mechanisms of key organ systems, including the nervous, muscular, and cardiopulmonary systems, and evaluate their responses to stimuli like exercise",
+            "Explore the microscopic world of cells and familiarize themselves with the intricacies of molecular machines in living organisms",
+            "Comprehend the central dogma of life, the concept of evolution, and life's hierarchical organization from cells to organisms",
+            "Grasp the basic principles of biomimicry and understand the significance of function-strategy-context in developing biomimicry solutions"
+        ],
+        "skills": [
+            "Apply and analyze various biomimicry tools to design nature-inspired, sustainable solutions for real-world challenges like air pollution, water pollution, safe sanitation, reduced use of chemical pesticides, and eco-friendly structures",
+            "Create nature-inspired solutions for challenges of air pollution, water pollution, safe sanitation, reducing use of chemical pesticides, building resilient and eco-friendly structures, etc.",
+            "Design and solve real-world problems using biomimicry principles",
+            "Analyze the significance of learning from nature to develop sustainable solutions",
+            "Synthesize the connection between the immune system response and the specific case studies covered in the module"
+        ]
+    },
+    "FM126": {
+        "semester": 2,
+        "course": "Computational Linear Algebra",
+        "concepts": [
+            "Matrix Operations",
+            "Vector Spaces",
+            "Systems of Linear Equations",
+            "Matrix Decompositions",
+            "Eigenvalue Problems",
+            "Computational Techniques",
+            "Google PageRank Algorithm",
+            "Applications in Engineering Systems",
+            "Financial Accounting Systems"
+        ],
+        "prereqs": [
+            "College Algebra",
+            "Vectors",
+            "Matrices",
+            "Basic Theoretical Knowledge",
+            "Python Programming",
+            "Linear Transformations",
+            "Orthonormal Bases",
+            "Linear Independence",
+            "Spanning Vectors",
+            "Basis of a Vector Space"
+        ],
+        "learning_outcomes": [
+            "Construct matrix representations of systems of linear equations and find their numerical solutions",
+            "Compute orthonormal bases of vector spaces both analytically and numerically",
+            "Compute eigenvalues and eigenvectors of matrices analytically and numerically",
+            "Perform linear transformations (change of basis) of simple models",
+            "Use concepts in matrix algebra to frame engineering and scientific problems in mathematical language and obtain their solutions"
+        ],
+        "skills": [
+            "Implement solutions for linear systems using Python",
+            "Model dynamical systems as eigenvalue problems and obtain their solutions",
+            "Apply matrix decomposition methods (LU, QR, Cholesky) and eigenvalue techniques to solve engineering problems",
+            "Use a computer and programming framework to solve mathematical problems relevant to engineering",
+            "Solve real-world problems such as banking systems and the Google PageRank algorithm using computational techniques"
+        ]
+    },
+    "FM132": {
+        "semester": 2,
+        "course": "Foundations of Physical world",
+        "concepts": [
+            "Mechanics",
+            "Statics",
+            "Thermodynamics",
+            "First Law",
+            "Energy Conservation",
+            "Second Law",
+            "Entropy",
+            "Electricity",
+            "Magnetism",
+            "Circuits",
+            "Vector Algebra",
+            "Free-Body Diagrams",
+            "Force Balance",
+            "Moment Balance",
+            "Trusses",
+            "Mechanisms",
+            "Frames",
+            "Harmonic Oscillator",
+            "Electromagnetism Laws",
+            "Gauss Law",
+            "Ampere\u2019s Law",
+            "Faraday\u2019s Law",
+            "Circuit Theory",
+            "Alternating Current"
+        ],
+        "prereqs": [
+            "High School Physics",
+            "Elementary Linear Algebra",
+            "Basic Calculus",
+            "Vector Algebra",
+            "Basic Laws of Mechanics",
+            "Basic Thermodynamics Principles",
+            "Electricity Fundamentals",
+            "Magnetism Fundamentals",
+            "Circuit Fundamentals"
+        ],
+        "learning_outcomes": [
+            "Understand the basic laws of mechanics, especially statics",
+            "Understand the basic laws of thermodynamics, especially the first law",
+            "Understand the basic laws of Electricity and Magnetism, especially their reduction to elementary circuit analysis",
+            "Know the standard units used for work and energy, and power",
+            "Maintain a meaningful intelligent discussion using vocabulary and concepts related to mechanics, thermodynamics, and electromagnetism"
+        ],
+        "skills": [
+            "Competently perform calculations using vectors in 2D and 3D, including dot and cross products",
+            "Convert linear algebraic equations to matrix form and solve them computationally",
+            "Analyze situations involving statics using Free Body Diagrams and Vector algebra for particles, rigid objects, trusses, and structures in 2D and 3D",
+            "Derive and simulate the equations of a harmonic oscillator on a computer",
+            "Apply laws of thermodynamics to estimate work done and energy transfers in engineering and biological systems"
+        ]
+    },
+    "FM133": {
+        "semester": 2,
+        "course": "Probability and Statistics",
+        "concepts": [
+            "Descriptive Methods",
+            "Probability Concepts",
+            "Random Variables",
+            "Statistical Distributions",
+            "Data Visualization",
+            "Simulations",
+            "Probability Rules",
+            "Discrete Distributions",
+            "Continuous Distributions",
+            "Joint Densities",
+            "Sampling Methods",
+            "Central Limit Theorem",
+            "Hypothesis Testing",
+            "Statistical Inference"
+        ],
+        "prereqs": [
+            "Calculus",
+            "Descriptive Statistics",
+            "Basic Probability Concepts",
+            "Python Programming",
+            "Data Analysis",
+            "Probability Distributions",
+            "Statistical Measures",
+            "Data Visualization Techniques"
+        ],
+        "learning_outcomes": [
+            "Develop computational proficiency for statistical analysis using Python programming",
+            "Apply theoretical concepts to real-world problems through sampling methods and hypothesis testing",
+            "Integrate theoretical and practical approaches in statistical analysis using Python coding",
+            "Gain proficiency in basic and advanced probability concepts and their application in data analysis",
+            "Master hypothesis testing concepts and apply statistical tests to real-world problems"
+        ],
+        "skills": [
+            "Visualize data effectively using Python for statistical analysis",
+            "Simulate experiments and analyze probability distributions using Python programming",
+            "Implement hypothesis testing and interpret results accurately",
+            "Compute statistical measures and explore real-world datasets using Python coding",
+            "Combine theoretical knowledge with hands-on Python programming for statistical analysis"
+        ]
+    },
+    "HS2004": {
+        "semester": 2,
+        "course": "Integrated Communication for Engineering - 2 (ICE-2)",
+        "concepts": [
+            "Integrated Communication",
+            "Engineering Communication",
+            "Research Fundamentals",
+            "Business Communication",
+            "Professional Skill Development",
+            "Global Communication Competencies",
+            "Research Script Writing",
+            "Presentation Skills",
+            "Interview Skills",
+            "Literature Review",
+            "Research Design",
+            "Research Methodology",
+            "Pitching",
+            "Micro-credentials",
+            "Interdisciplinary Communication",
+            "Publishable Research Writing"
+        ],
+        "prereqs": [
+            "Communication Capacities and Competencies",
+            "Academic Communication",
+            "Interpersonal Communication",
+            "Technical Expertise",
+            "Business Communication Skills",
+            "Global Competencies",
+            "Team Communication",
+            "Conflict Management",
+            "Research Question Formulation",
+            "Data Collection and Analysis",
+            "CV Building",
+            "Research Ethics",
+            "Literature Review Skills",
+            "Research Project Design",
+            "Presentation Skills",
+            "Academic Writing Skills"
+        ],
+        "learning_outcomes": [
+            "Presenting oneself professionally through CV and self-introduction",
+            "Developing global communication competencies",
+            "Performing literature review to identify gaps in research",
+            "Understanding research fundamentals and articulating viable research questions",
+            "Writing a research script of publishable quality"
+        ],
+        "skills": [
+            "Crafting a professional CV",
+            "Practicing interview skills for HR and technical rounds",
+            "Pitching ideas persuasively to technical and non-technical audiences",
+            "Designing research projects and choosing appropriate methodologies",
+            "Producing research scripts with critical apparatus and structure"
+        ]
+    },
+    "IL122": {
+        "semester": 2,
+        "course": "Innovation Lab & Grand Challenge Studio II",
+        "concepts": [
+            "Societal Challenges",
+            "Root Cause Analysis",
+            "Literature Review",
+            "Community Engagement",
+            "Problem-Solution Fit",
+            "Teamwork",
+            "Exhibition Planning"
+        ],
+        "prereqs": [
+            "Sustainability",
+            "Sustainable Development Goals (SDGs)",
+            "Problem Identification",
+            "Research Methods",
+            "Team Collaboration"
+        ],
+        "learning_outcomes": [
+            "Identify and articulate problems from varied perspectives that contribute to existing societal Grand Challenges",
+            "Empathize with the needs of communities around them",
+            "Be able to create problem-solutions fit relevant to a given context",
+            "Be able to synthesize diverse inputs in identifying problems and potential solutions"
+        ],
+        "skills": [
+            "Deconstruct societal challenges into actionable problems",
+            "Conduct comprehensive literature review and analyze the results",
+            "Work effectively in teams",
+            "Use tools like problem tree creation, root cause analysis, semi-structured interviews, and focused group discussions"
+        ]
+    },
+    "FM135": {
+        "semester": 3,
+        "course": "Reimagining Technology and Society",
+        "concepts": [
+            "Technology and Society Relationship",
+            "Meanings of Technology",
+            "Philosophical Perspectives on Technology",
+            "Social Anthropology of Technology",
+            "Human Evolution and Technology",
+            "Civilizational Studies on Technology",
+            "Interdisciplinary Perspectives on Technology",
+            "Critical Thinking",
+            "Creative Thinking",
+            "Understanding Technology Functions",
+            "Theories Concerning Technology",
+            "Socio-economic Impacts of Technology",
+            "Frameworks for Technology Understanding",
+            "Evaluation of New Technologies",
+            "Modeling Technology in Context",
+            "Innovative Definitions of Technology"
+        ],
+        "prereqs": [
+            "Critical Thinking Skills",
+            "Creative Thinking Skills",
+            "Basic Understanding of Society and Culture",
+            "Interdisciplinary Approach to Humanities and Social Sciences",
+            "Historical Perspectives",
+            "Philosophical Concepts",
+            "Social Anthropology Basics",
+            "Human Evolution Concepts",
+            "Civilizational Studies Fundamentals",
+            "Knowledge of Thinking Processes",
+            "Understanding of Socio-economic Impacts",
+            "Evaluation Skills",
+            "Interdisciplinary Thinking",
+            "Design Thinking",
+            "Ethical and Political Considerations of Technology",
+            "Engineering Knowledge",
+            "Robots and Algorithms",
+            "Ethics in Technology",
+            "Political Implications of Technology"
+        ],
+        "learning_outcomes": [
+            "Understand the functions and meanings of technology in society",
+            "Acquire an overview of important theories concerning technology",
+            "Demonstrate competence in perceiving socio-economic impacts of technology",
+            "Design frameworks to understand the embeddedness and impacts of technology",
+            "Evaluate functioning and future impacts of new technologies"
+        ],
+        "skills": [
+            "Ability to perceive socio-economic impacts of technology",
+            "Capability to design frameworks for understanding impacts of technology",
+            "Competence in evaluating future impacts of technologies",
+            "Skill in constructing models placing technology within social contexts",
+            "Ability to articulate innovative definitions of technology"
+        ]
+    },
+    "FM213": {
+        "semester": 3,
+        "course": "Electronic Systems Engineering",
+        "concepts": [
+            "Electric Circuits",
+            "Semiconductor Devices",
+            "Analog Electronics",
+            "Digital Electronics",
+            "Operational Amplifiers",
+            "Communication Techniques",
+            "Logic Gates",
+            "Sequential Circuits",
+            "Memory Devices",
+            "Field-Effect Transistors",
+            "Number Systems",
+            "Boolean Algebra",
+            "Combinational Circuits",
+            "State Machines",
+            "Flip-Flops",
+            "Shift Registers",
+            "FPGAs"
+        ],
+        "prereqs": [
+            "Basics of Electronics",
+            "Basic Electronic Circuit Elements",
+            "Circuit Theory",
+            "Semiconductor Basics",
+            "Diode Functionality",
+            "Transistor Operations",
+            "Operational Amplifier Principles",
+            "Communication Basics",
+            "Logic Gates Fundamentals",
+            "Flip-Flop Understanding",
+            "Memory Device Concepts",
+            "Boolean Logic",
+            "Binary Arithmetic",
+            "Sequential Circuit Fundamentals"
+        ],
+        "learning_outcomes": [
+            "Understand basic electronics and major circuit components operation",
+            "Analyse AC circuits under steady state and transient conditions",
+            "Gain knowledge about the basic functioning of diodes and transistors",
+            "Design operational amplifier circuits to solve engineering problems",
+            "Integrate memory devices into various digital circuit types for real-world applications"
+        ],
+        "skills": [
+            "Build basic systems for sensing and controlling the physical world",
+            "Design synchronous and asynchronous sequential circuits using flip-flops",
+            "Analyse and integrate memory devices into digital circuit types",
+            "Develop skills to solve engineering problems using operational amplifiers",
+            "Apply knowledge of logic gates and logic families for designing circuits"
+        ]
+    },
+    "FM214": {
+        "semester": 3,
+        "course": "Intelligent Machines",
+        "concepts": [
+            "Robotics",
+            "Cyber-Physical Systems",
+            "Actuators",
+            "Sensors",
+            "System Modelling",
+            "Kinematics",
+            "Dynamics",
+            "Controls",
+            "Perception",
+            "Planning",
+            "Navigation",
+            "Machine Learning"
+        ],
+        "prereqs": [
+            "Mathematics",
+            "Physics",
+            "Sensors & Actuators",
+            "System Modelling",
+            "Kinematics",
+            "Dynamics",
+            "Controls",
+            "Algorithms"
+        ],
+        "learning_outcomes": [
+            "Understand the fundamental problems in robotics and cyber-physical systems",
+            "Apply algorithms and methods to build simple robotic systems",
+            "Analyze the feasibility of methods and algorithms in robotic applications",
+            "Synthesize methods to build autonomy into simple robots",
+            "Evaluate the right approach to design solutions in different scenarios"
+        ],
+        "skills": [
+            "Design, build, and evaluate simple robotic and cyber-physical systems",
+            "Deploy solutions to robotic problems on simple robots",
+            "Apply learned skills to build and solve projects in lab sessions",
+            "Evaluate and choose the right approach for designing solutions",
+            "Synthesize algorithms for autonomy in robots"
+        ]
+    },
+    "FM216": {
+        "semester": 3,
+        "course": "Computational Methods and Optimization",
+        "concepts": [
+            "Numerical methods",
+            "Root finding techniques",
+            "Gradient descent algorithms",
+            "Numerical integration",
+            "Vector Calculus",
+            "Multivariate functions",
+            "Extrema of multivariate functions",
+            "Gradient of a scalar function",
+            "Divergence and curl of vector field",
+            "Constrained optimization",
+            "Unconstrained optimization",
+            "Linear Programming Principles",
+            "Dynamic Programming Principles",
+            "Operations research",
+            "Mathematical modeling"
+        ],
+        "prereqs": [
+            "Calculus",
+            "Linear algebra",
+            "Differential equations",
+            "Python programming language",
+            "Root finding methods",
+            "Trapezoidal rule",
+            "Simpson's rule",
+            "Partial derivatives",
+            "Total derivative",
+            "Directional derivatives",
+            "Taylor series",
+            "Lagrange multipliers",
+            "Hessian matrix"
+        ],
+        "learning_outcomes": [
+            "Compute integration of complex mathematical functions using numerical techniques",
+            "Analyze vector valued functions to find extrema and saddle points",
+            "Compute curl and divergence of vector fields",
+            "Solve operations research problems using optimization techniques like linear programming and dynamic programming",
+            "Critically analyze the performance and effectiveness of optimization methods"
+        ],
+        "skills": [
+            "Implement optimization algorithms using Python programming language",
+            "Apply key concepts of vector calculus such as gradients, divergence, and Hessian matrix",
+            "Implement unconstrained and constrained optimization of functions",
+            "Utilize numerical techniques for root-finding and integration of functions",
+            "Develop mathematical modeling skills through applied engineering projects"
+        ]
+    },
+    "FM217": {
+        "semester": 3,
+        "course": "Introduction to Data Science",
+        "concepts": [
+            "Data Science",
+            "Scientific Methods",
+            "Visualization",
+            "Statistics",
+            "Computing",
+            "Data Collection Strategies",
+            "Data Visualization",
+            "Exploratory Analysis",
+            "Hypothesis Formulation",
+            "Statistical Testing",
+            "Regression Methods",
+            "Data Attributes Relationships",
+            "Machine Learning Applications"
+        ],
+        "prereqs": [
+            "Basic Statistics",
+            "Python Programming Language",
+            "Data Handling in Python",
+            "Data Formats",
+            "Statistical Methods",
+            "Data Wrangling",
+            "Plotting and Visualization",
+            "Sampling Strategies",
+            "Hypothesis Testing",
+            "Analysis of Variance",
+            "Linear Regression",
+            "Multiple Regression",
+            "Logistic Regression",
+            "Classification Techniques",
+            "Ensemble Techniques",
+            "Clustering Methods"
+        ],
+        "learning_outcomes": [
+            "Learn the basic vocabulary of data science",
+            "Understand data formats and statistical methods",
+            "Visualize data and make inferences",
+            "Interpret data relationships and results of statistical analysis",
+            "Evaluate the pros and cons of various data formats, critique various methods for collecting data and making conclusions from data"
+        ],
+        "skills": [
+            "Use Python for data analysis",
+            "Perform data visualization for exploratory analysis",
+            "Design strategies for collecting and analyzing data",
+            "Apply statistical methods to draw conclusions from data",
+            "Utilize regression methods to analyze relationships between data attributes"
+        ]
+    },
+    "IL213": {
+        "semester": 3,
+        "course": "Innovation Lab & Grand Challenge Studio - III",
+        "concepts": [
+            "Grand Challenges",
+            "Problem Framing",
+            "Perspective Taking",
+            "Negotiating",
+            "Social Viability Checks",
+            "Financial Viability Checks",
+            "Interdisciplinary Teamwork",
+            "Value Proposition Design",
+            "Solution Evaluation",
+            "Active Learning",
+            "Community Engagement",
+            "Hands-on Activities",
+            "Group Discussions",
+            "Interactive Sessions",
+            "Presenting Solutions"
+        ],
+        "prereqs": [
+            "Innovation Lab and Grand Challenges Freshmore Program (Previous Semesters)",
+            "Foundational Knowledge in Grand Challenges",
+            "Exploratory Skills in Problem-Solving",
+            "Design Thinking",
+            "Understanding of Community Needs",
+            "Problem-Solving Strategies",
+            "Perspective Integration",
+            "Social Impact Assessment",
+            "Financial Impact Assessment",
+            "Interdisciplinary Collaboration",
+            "Effective Communication Skills",
+            "Critical Thinking",
+            "Analytical Skills"
+        ],
+        "learning_outcomes": [
+            "Identify and articulate key aspects of Grand Challenge",
+            "Empathize with and consider the needs and concerns of different communities when designing solutions for a chosen problem in Grand Challenge",
+            "Advocate for one's perspective while balancing and integrating the viewpoints of other team members to collaboratively design feasible solutions",
+            "Design value and viable solution-proposition to a real-world problem",
+            "Evaluate the social and financial viability of solutions"
+        ],
+        "skills": [
+            "Problem-framing for addressing grand challenges",
+            "Perspective-taking and considering diverse community needs in solution design",
+            "Negotiation skills for team collaboration in solution design",
+            "Creating and synthesizing value-driven solutions",
+            "Evaluating social and financial viability of proposed solutions"
+        ]
+    },
+    "AI2102": {
+        "semester": 4,
+        "course": "Web Development using AI",
+        "concepts": [
+            "Web Development",
+            "AI Integration",
+            "Large Language Models (LLMs)",
+            "Prompt Engineering",
+            "Database Integration",
+            "API Creation",
+            "Web Interface Development",
+            "LLM based Experiences",
+            "Agentic and RAG Frameworks",
+            "Structured Data Generation",
+            "Unstructured Data Handling"
+        ],
+        "prereqs": [
+            "Python Programming",
+            "Basic Web Technologies",
+            "Responsive Design",
+            "Backend Design",
+            "HTML",
+            "JavaScript",
+            "Database Design Basics",
+            "Authentication",
+            "Custom API Endpoints",
+            "Visualizations",
+            "Reasoning Models",
+            "Memory Orchestration",
+            "Multi-Agent Systems"
+        ],
+        "learning_outcomes": [
+            "Understand basic web technologies and responsive design",
+            "Learn to use LLMs for custom applications",
+            "Create web prototypes with basic features like authentication and visualizations",
+            "Add AI integrations to web prototypes",
+            "Synthesize outcomes to develop software applications using LLMs"
+        ],
+        "skills": [
+            "Web interface development",
+            "Database development",
+            "API creation",
+            "Building LLM-based experiences for users",
+            "Prompt engineering for static websites and databases"
+        ]
+    },
+    "AI3011": {
+        "semester": 4,
+        "course": "Machine Learning and Pattern Recognition",
+        "concepts": [
+            "Machine Learning",
+            "Pattern Recognition",
+            "Features Extraction",
+            "Features Clustering",
+            "Features Dimension Reduction",
+            "Features Classification",
+            "ML Systems Challenges",
+            "Real-world Applications",
+            "Neural Networks",
+            "Multi-layer Neural Networks",
+            "Deep Neural Networks",
+            "Other ML Methods"
+        ],
+        "prereqs": [
+            "Artificial Intelligence Fundamentals",
+            "Pattern Recognition Basics",
+            "Data Analysis",
+            "Python Programming",
+            "Supervised Learning",
+            "Unsupervised Learning",
+            "Reinforcement Learning"
+        ],
+        "learning_outcomes": [
+            "Understand the design, analysis, and methodology of algorithms for pattern recognition in real-world data",
+            "Gain a strong understanding of fundamental concepts in Machine Learning",
+            "Recognize and differentiate between different types of Machine Learning methods",
+            "Identify real-world applications of Machine Learning",
+            "Explain the history and evolution of Artificial Intelligence and Machine Learning"
+        ],
+        "skills": [
+            "Code solutions in Python for Machine Learning problems",
+            "Discuss and present project ideas effectively",
+            "Collaborate in groups for project development",
+            "Apply Machine Learning algorithms to real-world problems",
+            "Develop and deploy Machine Learning solutions at Plaksha University"
+        ]
+    },
+    "BE2002": {
+        "semester": 4,
+        "course": "Biochemistry and Molecular Biology",
+        "concepts": [
+            "Biochemistry",
+            "Molecular Biology",
+            "Proteins",
+            "Lipids",
+            "Carbohydrates",
+            "Enzymes",
+            "Vitamins",
+            "Hormones",
+            "Metabolic Pathways",
+            "Disease Models",
+            "Protein Structure",
+            "Protein Function",
+            "Protein Folding",
+            "Enzyme Kinetics",
+            "Metabolism",
+            "Diabetes Mellitus",
+            "Lipid Metabolism",
+            "Cholesterol",
+            "Buffers",
+            "Acid-Base Concept",
+            "Detoxification Processes",
+            "Protein Purification",
+            "Laboratory Techniques"
+        ],
+        "prereqs": [
+            "Cellular Processes",
+            "Human Physiology",
+            "Evolution",
+            "Nutrition",
+            "Amino Acids",
+            "Molecular Forces",
+            "Protein Folding Disorders",
+            "Digestion Processes",
+            "Glycolysis",
+            "Insulin and Glucagon",
+            "Enzyme Actions",
+            "Hormone Functions",
+            "Buffers and pH",
+            "Enzyme Kinetics",
+            "Vitamins Functions",
+            "Biomarkers",
+            "Detoxication Processes",
+            "Electrophoresis",
+            "Western Blotting"
+        ],
+        "learning_outcomes": [
+            "Describe the importance of biochemistry in understanding cellular processes",
+            "Explain metabolic pathways of carbohydrates, proteins, and lipids and associated disease models",
+            "Summarize the impact of enzymes, vitamins, and hormones on homeostasis and disease",
+            "Understand how basic biochemistry knowledge relates to everyday life",
+            "Demonstrate basic biochemical laboratory techniques"
+        ],
+        "skills": [
+            "Perform basic laboratory techniques in biochemistry",
+            "Analyze and explain protein, lipid, and carbohydrate structures and functions",
+            "Apply knowledge of metabolic pathways to disease models",
+            "Identify and explain the roles of enzymes, vitamins, and hormones in biological systems",
+            "Utilize biochemical knowledge to understand and address health-related issues"
+        ]
+    },
+    "BE2005": {
+        "semester": 4,
+        "course": "Material Science for Bioengineering",
+        "concepts": [
+            "Atomic structure",
+            "Bonding in materials",
+            "Mechanical properties",
+            "Defects and dislocations",
+            "Phase rules and phase diagram",
+            "Corrosion",
+            "Materials for surgical implants",
+            "Composites",
+            "Ceramics for biomedical applications",
+            "Polymers for biomedical applications",
+            "Optical absorption and emission in materials",
+            "Chemistry in aqueous media",
+            "Heterogeneous catalysis",
+            "Artificial photosynthesis",
+            "Nanomaterials",
+            "Size dependent properties",
+            "Chemical binding in molecules",
+            "Crystalline solid materials",
+            "Non-crystalline materials",
+            "Energy bands in metals and semiconductors"
+        ],
+        "prereqs": [
+            "Solid materials fundamentals",
+            "Key characterizations of materials",
+            "Basic understanding of atomic structure and bonding",
+            "Mechanical properties of materials",
+            "Fundamentals of chemistry",
+            "Basic knowledge of quantum mechanics",
+            "Understanding of molecular structures",
+            "Knowledge of electronic structure and energy bands",
+            "Familiarity with nanoscale materials",
+            "Basic measurement techniques for material characterization"
+        ],
+        "learning_outcomes": [
+            "Understand the fundamentals of various classes of biomedical materials",
+            "Know how to alter material properties for specific applications",
+            "Measure and evaluate properties of materials for structure-property correlation",
+            "Select or design appropriate materials for biomedical or technology applications",
+            "Demonstrate knowledge of optical absorption and emission in materials for sensing applications"
+        ],
+        "skills": [
+            "Perform material property measurements",
+            "Conduct structure-property correlation analysis",
+            "Design materials for specific biomedical or technology applications",
+            "Utilize optical absorption for sensing applications",
+            "Present a technical seminar on materials science topics"
+        ]
+    },
+    "BE2006": {
+        "semester": 4,
+        "course": "Introductory Bioinformatics",
+        "concepts": [
+            "Foundations of Bioinformatics",
+            "Intro to Bioinfo",
+            "Molecular Biology for Bioinfo",
+            "Biological Databases & Data Retrieval",
+            "Evolution & Genomics",
+            "Sequence Alignment & Phylogenetics",
+            "Genomics & NGS Tech",
+            "Genome Assembly, Annotation & Editing",
+            "Functional and Transcriptomic Analysis",
+            "Transcriptomics & RNA Seq Analysis",
+            "Proteomics - Intro and AlphaFold",
+            "Intro to Other Omics",
+            "Metagenomics & Microbiome Analysis",
+            "Epigenomics",
+            "Single-cell Bioinformatics",
+            "Population Genomics",
+            "GWAS",
+            "Vaccine Development",
+            "Advancements & ELSI in Bioinformatics"
+        ],
+        "prereqs": [
+            "Nature Machines",
+            "Intro to DS and AI",
+            "Mathematics of Uncertainty",
+            "Sequence Analysis",
+            "Genomics",
+            "Transcriptomics",
+            "Phylogenetics",
+            "Proteomics",
+            "CRISPR",
+            "Systems Biology",
+            "Bioinformatics Databases",
+            "Biological Sequences",
+            "CRISPR Design",
+            "Machine Learning Techniques",
+            "Bioinformatics Pipelines"
+        ],
+        "learning_outcomes": [
+            "Understand the foundational concepts and interdisciplinary nature of bioinformatics",
+            "Gain familiarity with key bioinformatics databases, tools, and file formats",
+            "Develop skills in CRISPR design and functional analysis of genes",
+            "Apply bioinformatics techniques to real-world challenges like vaccine development and drug resistance studies",
+            "Use machine learning techniques to analyze large biological datasets"
+        ],
+        "skills": [
+            "Analyze biological sequences, construct phylogenetic trees, and annotate genomes",
+            "Perform multi-omics data integration, including transcriptomics and proteomics",
+            "Explore systems biology approaches to map biological pathways and predict interactions",
+            "Build confidence in designing and implementing bioinformatics pipelines",
+            "Utilize CRISPR guide design tools for functional validation studies"
+        ]
+    },
+    "BE2007": {
+        "semester": 4,
+        "course": "Bioprocess Engineering",
+        "concepts": [
+            "Bioprocess Engineering",
+            "Enzyme Kinetics",
+            "Cellular Growth and Metabolism",
+            "Bioreactor Design",
+            "Recovery and Purification of Products",
+            "Immobilization Techniques",
+            "Bioreactor Instrumentation",
+            "Downstream Processing",
+            "Cell Disruption Techniques"
+        ],
+        "prereqs": [
+            "Enzyme Mechanism",
+            "Microbial Growth",
+            "Product Formation",
+            "Fundamentals of Bioprocesses",
+            "Kinetics of Cellular Growth",
+            "Bioreactor Types (Batch, Continuous, Fed-Batch)",
+            "Diffusional Limitations in Immobilized Systems",
+            "Fluidized and Packed Bed Reactors",
+            "Sterilization Techniques",
+            "Principles of Death Kinetics",
+            "Separation Techniques for Products"
+        ],
+        "learning_outcomes": [
+            "Define bioprocess engineering and its importance in manufacturing products using biological processes",
+            "Calculate parameters related to enzyme kinetics and cellular growth using mathematical models",
+            "Describe techniques of immobilization and understand diffusional limitations",
+            "Explain principles of bioreactor design and considerations for aeration, agitation, and heat transfer",
+            "Combine learned concepts to design bioreactors for specific applications"
+        ],
+        "skills": [
+            "Calculate enzyme kinetics and cellular growth parameters using mathematical models",
+            "Describe techniques for cell disruption and separation of products",
+            "Design bioreactors based on specific application requirements",
+            "Apply principles of bioreactor design including aeration, agitation, and heat transfer",
+            "Combine concepts to optimize bioreactor performance"
+        ]
+    },
+    "CP2003": {
+        "semester": 4,
+        "course": "Signals and Systems",
+        "concepts": [
+            "Signals and Systems",
+            "Mathematical representation of signals",
+            "Linear time-invariant systems",
+            "Time-domain analysis",
+            "Frequency-domain analysis",
+            "Fourier transform",
+            "Laplace transform",
+            "Z-transform",
+            "Convolution operation",
+            "Filter analysis"
+        ],
+        "prereqs": [
+            "Calculus",
+            "Differential Equations",
+            "Complex Numbers",
+            "Basic Circuit Theory",
+            "Continuous-time signals",
+            "Discrete-time signals",
+            "LTI systems properties",
+            "Convolution operation",
+            "Fourier series",
+            "Sampling theorem",
+            "Laplace transform",
+            "Frequency-domain analysis"
+        ],
+        "learning_outcomes": [
+            "Develop mathematical maturity in handling signals and systems for analysis",
+            "Apply concepts of Signals and Systems to analyze engineering systems theoretically",
+            "Analyze the functioning of Linear Time-Invariant (LTI) systems in response to input signals",
+            "Understand signal analysis in time domain through convolution operations to interpret system behavior",
+            "Analyze signals in frequency domain using Fourier, Laplace, and Z-transform to infer system characteristics"
+        ],
+        "skills": [
+            "Apply mathematical concepts to analyze signals and systems effectively",
+            "Conduct theoretical analysis of engineering systems using Signals and Systems principles",
+            "Perform convolution operations to analyze signal behavior in the time domain",
+            "Utilize Fourier, Laplace, and Z-transform techniques for signal analysis in the frequency domain",
+            "Interpret system responses and characteristics based on frequency domain analysis"
+        ]
+    },
+    "CS2002": {
+        "semester": 4,
+        "course": "Computer Networks",
+        "concepts": [
+            "Layered Network Architectures",
+            "Packet Switching Techniques",
+            "Performance Metrics",
+            "Network Layer Operations",
+            "Routing Algorithms",
+            "Transport Layer Protocols",
+            "Congestion Control",
+            "Application Layer Protocols",
+            "Network Programming",
+            "Peer-to-Peer Architecture",
+            "Client-Server Architecture",
+            "DNS",
+            "HTTP",
+            "FTP",
+            "SMTP",
+            "VLAN Configuration",
+            "Access Control Lists (ACLs)",
+            "Firewall Configuration",
+            "Network Analysis with Wireshark",
+            "Packet Sniffing",
+            "IPsec Configuration",
+            "Campus Network Design"
+        ],
+        "prereqs": [
+            "Programming Fundamentals",
+            "Data Structures",
+            "Computer Organization and Architecture",
+            "Data Communication",
+            "Binary, Decimal, Hexadecimal Conversion",
+            "Networking Device Configuration Commands",
+            "Bandwidth, Signal-to-Noise Ratio",
+            "Modulation, Demodulation",
+            "Memory Hierarchy (RAM, ROM, Cache)",
+            "I/O Systems and Interfacing",
+            "Basic Networking Concepts",
+            "Routing Protocols",
+            "Protocol Analysis",
+            "SDN and 5G Technology"
+        ],
+        "learning_outcomes": [
+            "Comprehend Layered Network Architectures and Performance Metrics",
+            "Analyze Network and Routing Protocols for efficient network design",
+            "Apply Transport Layer Mechanisms for optimized communication in real-time applications",
+            "Understand Application Layer Protocols and network programming concepts",
+            "Integrate theoretical and practical knowledge for designing and managing networks"
+        ],
+        "skills": [
+            "Design and configure network topologies using Cisco Packet Tracer",
+            "Implement VLANs, ACLs, and IPsec for network security and access control",
+            "Analyze network traffic using Wireshark for troubleshooting",
+            "Configure routing protocols such as RIP, OSPF, EIGRP for efficient data flow",
+            "Design comprehensive campus network setups with VLANs, routing, and security policies"
+        ]
+    },
+    "CS2022": {
+        "semester": 4,
+        "course": "Design and Analysis of Algorithms",
+        "concepts": [
+            "Design and Analysis of Algorithms",
+            "Time Complexity",
+            "Space Complexity",
+            "Asymptotic Notations",
+            "Divide-and-Conquer",
+            "Dynamic Programming",
+            "Greedy Algorithms",
+            "Sorting Algorithms",
+            "Graph Traversal",
+            "Complexity Theory",
+            "Recursion",
+            "Binary Search",
+            "Selection Algorithms",
+            "Knapsack Problem",
+            "Longest Common Subsequence",
+            "Matrix Chain Multiplication",
+            "Breadth-first Search",
+            "Depth-first Search",
+            "Shortest Paths",
+            "Minimum Spanning Trees",
+            "Complexity Classes (P, NP)",
+            "NP-Hard",
+            "NP-Completeness",
+            "Polynomial-time Reduction",
+            "Cook's Theorem"
+        ],
+        "prereqs": [
+            "Programming",
+            "Data Structures",
+            "Discrete Mathematics",
+            "Mathematics of Uncertainty",
+            "Induction",
+            "Master Theorem",
+            "Graph Data Structures",
+            "Algorithms by Induction",
+            "Binary Search",
+            "Sorting Algorithms",
+            "Dynamic Programming",
+            "Greedy Techniques",
+            "Graph Algorithms",
+            "Complexity Classes",
+            "Asymptotic Notations"
+        ],
+        "learning_outcomes": [
+            "Apply asymptotic notations to measure algorithm complexity",
+            "Utilize key algorithm design paradigms like divide-and-conquer and dynamic programming",
+            "Implement graph traversal algorithms such as BFS and DFS",
+            "Analyze and implement graph algorithms for real-world problems",
+            "Understand complexity classes like P, NP, NP-Hard, and NP-Complete"
+        ],
+        "skills": [
+            "Implement algorithms with measured time and space complexity",
+            "Design algorithms using divide-and-conquer and dynamic programming techniques",
+            "Apply graph traversal algorithms in practical scenarios",
+            "Implement graph algorithms for solving real-world problems",
+            "Analyze and classify problems based on complexity classes"
+        ]
+    },
+    "CS2101": {
+        "semester": 4,
+        "course": "Discrete Maths",
+        "concepts": [
+            "Discrete Mathematics",
+            "Logic",
+            "Set Theory",
+            "Functions",
+            "Graphs",
+            "Modular Arithmetic",
+            "Mathematical Notations",
+            "Proof Techniques",
+            "Problem Solving Techniques",
+            "Group Theory"
+        ],
+        "prereqs": [
+            "High School Mathematics",
+            "Mathematical Proofs",
+            "Algorithms",
+            "Basic Logic",
+            "Basic Set Theory"
+        ],
+        "learning_outcomes": [
+            "Learn the basic vocabulary of Discrete Mathematics",
+            "Understand mathematical proofs and algorithms",
+            "Prove theorems and write algorithms for various problems",
+            "Choose the best way to solve a problem by breaking it into multiple smaller problems",
+            "Design fresh solutions for existing as well as new problems in the real world"
+        ],
+        "skills": [
+            "Formulate mathematical statements and write formal proofs",
+            "Write algorithms for problem-solving",
+            "Break down problems into smaller components for efficient solutions",
+            "Critically evaluate problem-solving techniques for efficacy and efficiency",
+            "Apply mathematical concepts to design solutions for real-world problems"
+        ]
+    },
+    "CS2102": {
+        "semester": 4,
+        "course": "Introduction to Logic",
+        "concepts": [
+            "Propositional Logic",
+            "Predicate Logic",
+            "Syntax and Semantics",
+            "Connectives and Truth Tables",
+            "Normal Forms",
+            "Resolution Calculus",
+            "Decision Algorithms",
+            "Formalization of Reasoning",
+            "Mathematical Proofs",
+            "Herbrand and Skolem Normal Forms",
+            "Undecidability of Predicate Logic",
+            "Logic Programming"
+        ],
+        "prereqs": [
+            "Philosophy of Computing",
+            "Foundations of Computing",
+            "Artificial Intelligence",
+            "Mathematical Logic",
+            "Formal Language",
+            "Mathematical Reasoning",
+            "Proof Techniques",
+            "Logic",
+            "Programming Logic"
+        ],
+        "learning_outcomes": [
+            "Master the vocabulary and rules of Propositional and Predicate Logic",
+            "Apply mathematical proofs rigorously",
+            "Utilize Resolution Calculus to prove theorems",
+            "Formalize reasoning into a formal language",
+            "Evaluate the correctness of proofs and identify errors"
+        ],
+        "skills": [
+            "Formalizing everyday reasoning into a formal language",
+            "Deducing logical conclusions from assumptions",
+            "Spotting and correcting errors in flawed proofs",
+            "Designing logical solutions for real-world problems",
+            "Evaluating the correctness of proofs and arguments"
+        ]
+    },
+    "CS2103": {
+        "semester": 4,
+        "course": "Databases Management Systems and Data Mining",
+        "concepts": [
+            "Database Design",
+            "Data Modeling",
+            "Data Integrity",
+            "Table Creation",
+            "Querying Data",
+            "Normalization",
+            "Advanced DBMS Concepts",
+            "Data Mining",
+            "Relational Database",
+            "SQL",
+            "ER Model",
+            "Data Storage",
+            "Query Processing",
+            "Database Indexing",
+            "Database Storage Techniques",
+            "Transaction Management",
+            "Database System Architecture",
+            "NoSQL Databases",
+            "Vector Databases"
+        ],
+        "prereqs": [],
+        "learning_outcomes": [
+            "Describe a relational database",
+            "Create, maintain, and manipulate a relational database using SQL",
+            "Describe ER model and normalization for database design",
+            "Examine issues in data storage and query processing and formulate appropriate solutions",
+            "Demonstrate principles behind systematic database design approaches"
+        ],
+        "skills": [
+            "Creating and maintaining relational databases using SQL",
+            "Manipulating relational databases effectively for data management",
+            "Applying ER model and normalization techniques in database design",
+            "Analyzing data storage issues and optimizing query processing",
+            "Designing databases systematically for efficiency and scalability"
+        ]
+    },
+    "DS3001": {
+        "semester": 4,
+        "course": "Advanced Statistics",
+        "concepts": [
+            "Sampling distributions",
+            "Inference principles",
+            "Bayesian inference",
+            "Maximum likelihood estimation",
+            "Goodness-of-fit tests",
+            "Bootstrapping",
+            "Likelihood ratio",
+            "Significance testing",
+            "Linear models",
+            "Least squares",
+            "Generalized linear models",
+            "ANOVA",
+            "Model selection",
+            "Probability models",
+            "Modeling complex datasets",
+            "Model assessment",
+            "Model validation",
+            "Residual diagnostics"
+        ],
+        "prereqs": [
+            "Math of Uncertainty",
+            "Introduction to Data Science",
+            "Probability models",
+            "Fundamental probabilistic concepts",
+            "Statistical concepts",
+            "Linear regression",
+            "Probability distributions",
+            "Transformations",
+            "Estimation techniques",
+            "Hypothesis testing",
+            "Bias and standard error estimation"
+        ],
+        "learning_outcomes": [
+            "Simulate sampling distributions and verify WLLN and CLT",
+            "Compute estimators using different techniques and compare performance",
+            "Derive tests of hypotheses for different parameters and compare power analytically and computationally",
+            "Analyze complex data using various statistical methods and identify limitations",
+            "Design a detailed plan for solving data-driven problems from population identification to insights for decision making"
+        ],
+        "skills": [
+            "Simulate sampling distributions and verify statistical theorems",
+            "Compute and compare estimators using statistical techniques",
+            "Derive and compare hypothesis tests for different parameters",
+            "Analyze complex data using statistical methods",
+            "Design detailed plans for data-driven problem-solving"
+        ]
+    },
+    "EC2101": {
+        "semester": 4,
+        "course": "Experimental Economics",
+        "concepts": [
+            "Experimental Economics",
+            "Behavioral Game Theory",
+            "Decision-making under Uncertainty",
+            "Market Behavior",
+            "Social Preferences",
+            "Laboratory Experiments",
+            "Behavioral Theories",
+            "Experimental Design",
+            "z-Tree/o-Tree Programming",
+            "Critical Assessment of Research"
+        ],
+        "prereqs": [
+            "Fundamentals of Economics",
+            "Intermediate Microeconomics"
+        ],
+        "learning_outcomes": [
+            "Understand the experimental toolkit used in economic analysis",
+            "Analyze and apply experimental paradigms in decision-making settings",
+            "Critically assess basic experimental and behavioral economics research",
+            "Gain knowledge of key behavioral theories with empirical applications",
+            "Comprehend the workings of a laboratory experiment and design"
+        ],
+        "skills": [
+            "Program a simple computerized experiment using z-Tree/o-Tree",
+            "Design and implement economic experiments",
+            "Analyze deviations from theoretical predictions",
+            "Critically evaluate experimental and behavioral economics research",
+            "Apply experimental methods to test economic theories"
+        ]
+    },
+    "IL224": {
+        "semester": 4,
+        "course": "Innovation Lab & Grand Challenge Studio - IV",
+        "concepts": [
+            "Grand Challenges",
+            "Interdisciplinary Appreciation",
+            "Engineering Projects",
+            "Innovation Challenges",
+            "Leadership Skills",
+            "Teamwork",
+            "Experiential Learning",
+            "Problem Solving",
+            "Project Planning",
+            "Collaboration",
+            "Research Skills",
+            "Documentation",
+            "Presentation Skills"
+        ],
+        "prereqs": [
+            "Interdisciplinary Thinking",
+            "Engineering Fundamentals",
+            "Problem Framing",
+            "Prototype Development",
+            "Project Execution",
+            "Team Collaboration",
+            "Research Methodology",
+            "Data Evaluation",
+            "Reflective Learning"
+        ],
+        "learning_outcomes": [
+            "Understand and frame real-world problems related to grand challenges",
+            "Develop innovative solutions for stakeholder needs by creating a prototype",
+            "Plan execution of all phases of a long-term project using interdisciplinary knowledge",
+            "Collaborate effectively within a team and demonstrate leadership",
+            "Conduct research and evaluate data to apply findings to the project"
+        ],
+        "skills": [
+            "Demonstrate experiential learning",
+            "Demonstrate problem-solving capability for engineering challenges",
+            "Develop leadership skills (Decision making, Strategic thinking)",
+            "Practice equitable teamwork",
+            "Document and reflect on learning progress"
+        ]
+    },
+    "RO2001": {
+        "semester": 4,
+        "course": "System Dynamics and Control",
+        "concepts": [
+            "Dynamic systems modeling",
+            "Differential equations",
+            "Ordinary Differential Equations (ODEs)",
+            "Linearity and time-invariance",
+            "Transfer functions",
+            "Laplace transforms",
+            "Feedback systems",
+            "Control systems design",
+            "Stability analysis",
+            "Performance analysis",
+            "PID Controller design"
+        ],
+        "prereqs": [
+            "Systems theory",
+            "Differential equations",
+            "Linear algebra",
+            "Physics (mechanics, electromagnetism)",
+            "Mathematical modeling",
+            "Analytical techniques (classical solution)",
+            "Frequency domain analysis",
+            "Root locus analysis",
+            "Bode plot analysis",
+            "State space representation",
+            "Control theory basics",
+            "MATLAB programming"
+        ],
+        "learning_outcomes": [
+            "Understand the principles, significance, and relevance of systems and associated control in engineering",
+            "Develop and analyze system models using analytical techniques like Laplace transforms and state space representation",
+            "Understand system performance and the selection of parameters for desired responses",
+            "Understand core concepts of control theory and techniques for analyzing linear systems",
+            "Create, evaluate, and synthesize PID controllers for simple systems"
+        ],
+        "skills": [
+            "Develop a unified concept of resistance, capacitance, and inductance for physical modeling of systems",
+            "Analyze system response through analytical techniques like Laplace transforms and state space representation",
+            "Implement MATLAB for dynamic behavior analysis of systems",
+            "Design and tune PID controllers for simple systems",
+            "Program algorithms for simple and complex behaviors in control systems"
+        ]
+    },
+    "AI3001": {
+        "semester": 5,
+        "course": "Deep Learning",
+        "concepts": [
+            "Neural Networks",
+            "Deep Learning Architectures",
+            "Embeddings",
+            "Attention Modules",
+            "Transformers",
+            "Memory Networks",
+            "Generative Adversarial Networks (GANs)",
+            "Self-supervised Learning",
+            "Energy-based Models",
+            "Stable Diffusion"
+        ],
+        "prereqs": [
+            "Machine Learning",
+            "Neural Networks",
+            "Convolutional Neural Networks (CNN)",
+            "Recurrent Neural Networks (RNN)",
+            "Graph Neural Networks",
+            "Natural Language Processing (NLP)",
+            "Computer Vision",
+            "Supervised Learning",
+            "Unsupervised Learning",
+            "Research Skills",
+            "State-of-the-art Implementations in AI"
+        ],
+        "learning_outcomes": [
+            "Understand the typical existing architectures in deep learning",
+            "Identify the applications of deep learning architectures and their significance",
+            "Investigate and evaluate the state of the art in deep learning applications",
+            "Contribute incrementally to existing solutions in deep learning",
+            "Develop intuition for applying deep learning elements in various applications"
+        ],
+        "skills": [
+            "Explain the function of deep learning architectures for specific applications",
+            "Explore and compare different types of deep learning solutions for applications",
+            "Code and modify deep learning architectures with training paradigm adjustments",
+            "Critically analyze and enhance existing systems using deep learning",
+            "Synthesize findings and proposed methods in a structured paper format"
+        ]
+    },
+    "AI3022": {
+        "semester": 5,
+        "course": "Search Methods in AI",
+        "concepts": [
+            "Search Methods",
+            "Artificial Intelligence",
+            "Problem Solving",
+            "State Space Search",
+            "Heuristic Functions",
+            "Stochastic Local Search",
+            "Algorithm A*",
+            "Goal Trees",
+            "Board Game Algorithms",
+            "Planning Algorithms",
+            "Rule-Based Systems",
+            "Deduction in Logic",
+            "Constraint Satisfaction"
+        ],
+        "prereqs": [
+            "Problem Solving",
+            "Artificial Intelligence Basics",
+            "State Space",
+            "Algorithm Analysis",
+            "Logic and Reasoning",
+            "Expert Systems",
+            "Game Theory",
+            "Logic Programming"
+        ],
+        "learning_outcomes": [
+            "Define domain functions to pose a problem as a search problem",
+            "Evaluate the benefit of heuristic functions in guiding search algorithms",
+            "Implement programs for specific problem-solving tasks like the Traveling Salesperson Problem and board games",
+            "Understand how rule-based systems work and their application in capturing expert knowledge",
+            "Familiarity with automated planning approaches and constraint processing as problem-solving methods"
+        ],
+        "skills": [
+            "Implementing DFS and BFS algorithms for search problems",
+            "Choosing and applying appropriate algorithms to solve specific problems like the Traveling Salesperson Problem",
+            "Developing programs to play board games like chess or Othello",
+            "Working with rule-based systems for capturing expert knowledge",
+            "Utilizing automated planning approaches and constraint processing to solve problems"
+        ]
+    },
+    "BE3002": {
+        "semester": 5,
+        "course": "Cell Biology",
+        "concepts": [
+            "Cell cycle",
+            "Cell division",
+            "Cell signaling",
+            "Replication",
+            "Recombination",
+            "Repair pathways",
+            "Cell death",
+            "Ageing",
+            "Mitosis",
+            "Meiosis",
+            "DNA packaging",
+            "DNA replication",
+            "Replication errors",
+            "Autophagy",
+            "Homeostatic environment",
+            "Cancer mechanisms",
+            "Premature ageing syndromes",
+            "DNA repair mechanisms",
+            "Recombination processes",
+            "Cell growth control",
+            "Signal transduction pathways",
+            "Cancer biology",
+            "Anti-cancer drugs",
+            "Molecular cloning",
+            "Protein purification"
+        ],
+        "prereqs": [
+            "Genetics",
+            "Molecular biology",
+            "Biochemistry",
+            "Cell structure",
+            "Basic biology",
+            "Fundamental understanding of DNA",
+            "Knowledge of proteins",
+            "Understanding of cell functions",
+            "Knowledge of cell processes",
+            "Concepts of molecular pathways",
+            "Understanding of genetic mutations",
+            "Basic laboratory techniques",
+            "Knowledge of cell signaling",
+            "Understanding of cellular homeostasis",
+            "DNA replication mechanisms"
+        ],
+        "learning_outcomes": [
+            "Explain the function of cell cycle and its stages",
+            "Discuss cell cycle checkpoints and their role in disease conditions",
+            "Understand major steps in mitosis and players involved in mitotic checkpoints",
+            "Explain the differences between mitosis and meiosis",
+            "Discuss the role of repair pathways in maintaining genome stability"
+        ],
+        "skills": [
+            "Perform transformation of cells",
+            "Conduct plasmid isolation and analyze DNA using agarose gel electrophoresis",
+            "Prepare competent cells and growth medium",
+            "Perform protein induction and purification using chromatography techniques",
+            "Analyze sequencing data and validate clonal sequences"
+        ]
+    },
+    "BE3011": {
+        "semester": 5,
+        "course": "Stochastic Modelling in Biology",
+        "concepts": [
+            "Stochastic modeling",
+            "Biological systems",
+            "Variability and uncertainty",
+            "Markov chains",
+            "Birth-death processes",
+            "Chemical master equation",
+            "Stochastic simulation algorithms",
+            "Temporal evolution of biological systems",
+            "Factors influencing biological behavior",
+            "Statistical analysis in biology",
+            "Population dynamics",
+            "Gene expression modeling",
+            "Ecological dynamics modeling",
+            "Epidemiology modeling",
+            "Drug pharmacokinetics modeling",
+            "Immunology modeling",
+            "Systems biology networks modeling"
+        ],
+        "prereqs": [
+            "Freshmore level understanding",
+            "Bioinformatics",
+            "Computational Biology",
+            "Mathematics of Uncertainty",
+            "Biostatistics",
+            "Probability with distribution models",
+            "Machine learning basics",
+            "Artificial intelligence basics",
+            "Mathematical modeling basics",
+            "Statistical modeling basics",
+            "Understanding of Markov chains",
+            "Understanding of birth-death processes",
+            "Data analysis skills",
+            "Interpretation of mathematical models"
+        ],
+        "learning_outcomes": [
+            "Comprehensive understanding of stochastic modeling principles in biology",
+            "Ability to apply theoretical models to interpret data in biological systems",
+            "Recognize the significance of stochastic modeling in studying dynamic behaviors",
+            "Investigate applications of stochastic modeling in various biological fields",
+            "Understand the temporal evolution of biological systems through stochastic simulation methods"
+        ],
+        "skills": [
+            "Construct and interpret stochastic models for biological research",
+            "Apply Markov chains and birth-death processes to analyze dynamic behaviors",
+            "Utilize stochastic simulation methods to predict complex biological phenomena",
+            "Develop problem-solving skills in biological research using stochastic modeling",
+            "Enhance interdisciplinary collaboration through application of stochastic modeling in biology"
+        ]
+    },
+    "BU3001": {
+        "semester": 5,
+        "course": "Finance",
+        "concepts": [
+            "Financial Markets",
+            "Time Value of Money",
+            "Present Value",
+            "Equity Markets",
+            "Bond Markets",
+            "Financial Models",
+            "Cost of Capital",
+            "Capital Asset Pricing Model (CAPM)",
+            "Financial Statements Analysis",
+            "Data Science in Finance",
+            "Derivatives",
+            "Portfolio Theory",
+            "Risk Management"
+        ],
+        "prereqs": [
+            "Business Finance Basics",
+            "Accounting Principles",
+            "Investment Fundamentals",
+            "Financial Reporting",
+            "Data Science Basics",
+            "Python Programming",
+            "Time Value of Money Principles",
+            "Financial Statement Interpretation",
+            "Risk Assessment Techniques"
+        ],
+        "learning_outcomes": [
+            "Comprehend Financial Markets",
+            "Apply Time Value of Money principles in project viability assessment",
+            "Explore Financial Models for optimal financing and risk assessment",
+            "Analyze Financial Statements",
+            "Integrate Data Science in Finance using Python and data tools"
+        ],
+        "skills": [
+            "Utilize Time Value of Money principles for project assessment",
+            "Apply Financial Models like Cost of Capital and CAPM for financing decisions",
+            "Analyze and interpret Financial Statements effectively",
+            "Integrate Python and data science tools for financial analysis",
+            "Apply risk management techniques in financial decision-making"
+        ]
+    },
+    "BU3101": {
+        "semester": 5,
+        "course": "Personnel Economics",
+        "concepts": [
+            "Personnel Economics",
+            "Sorting and Investing in Employees",
+            "Organizational and Evaluation Design",
+            "Paying for Performance",
+            "Recent Applications of Personnel Economics",
+            "Incentive Mechanisms",
+            "Performance Evaluation Design",
+            "Pay for Performance Schemes",
+            "Tradeoffs in Talent Evaluation",
+            "Applications in Management and Business",
+            "Real-world Organizational Issues",
+            "Economic Theories in Organizations",
+            "Data-centric Approaches",
+            "Personnel Policy Instruments",
+            "Data Science and Economics in Personnel Issues",
+            "Empirical Academic Papers",
+            "Business Case Studies"
+        ],
+        "prereqs": [
+            "Fundamentals of Economics",
+            "Economic Theories",
+            "Organizational Behavior",
+            "Human Resource Management",
+            "Basic Economic Rationale",
+            "Data Analysis",
+            "Mathematical Models in Organizations",
+            "Motivation Theories",
+            "Job Design Principles",
+            "Performance Management",
+            "Principal-Agent Problem",
+            "Incentive Theory",
+            "Organizational Structure",
+            "Team Dynamics",
+            "Data Collection and Analysis",
+            "Personnel Data Interpretation"
+        ],
+        "learning_outcomes": [
+            "Apply personnel economics theory to real-world organizational problems and challenges",
+            "Understand personnel policy instruments in business and the basic economic rationale behind them",
+            "Discuss various data-centric approaches developed for improving motivation, selection, and reducing turnover",
+            "Examine contemporary personnel and human resource issues in business from an economist\u2019s lens",
+            "Synthesize learnings from academic papers in personnel economics to solve organizational problems"
+        ],
+        "skills": [
+            "Analyze and evaluate correction of inefficiencies within firms through case studies and empirical papers",
+            "Apply learnings from academic papers in personnel economics to solve organizational problems",
+            "Synthesize learnings from the course to answer original questions in personnel economics through data collection and analysis",
+            "Conduct statistical analysis on personnel data to derive insights",
+            "Collaborate effectively in a team setting for data analysis and project completion"
+        ]
+    },
+    "CS2011": {
+        "semester": 5,
+        "course": "Foundations of Computer Systems",
+        "concepts": [
+            "Machine-level code",
+            "Optimizing compilers",
+            "Performance evaluation",
+            "Memory organization",
+            "Process management",
+            "Concurrency",
+            "Debugging programs",
+            "System APIs and abstractions",
+            "Memory and CPU performance",
+            "Security vulnerabilities",
+            "Program development tools",
+            "Reliable program creation",
+            "Program efficiency"
+        ],
+        "prereqs": [
+            "Numeric representations (unsigned, two\u2019s complement, floating point)",
+            "Arithmetic operations",
+            "Bit-level operations",
+            "C programming",
+            "Assembly code understanding",
+            "Program debugging",
+            "System interaction understanding",
+            "APIs and abstractions comprehension",
+            "Memory and CPU performance understanding",
+            "Compiler usage",
+            "Code analyzers",
+            "Consistency checkers",
+            "Program profilers",
+            "Modern computing system components understanding"
+        ],
+        "learning_outcomes": [
+            "Explain common bit-level representations of numeric values and their mathematical properties",
+            "Recognize the relation between programs in C and assembly code",
+            "Demonstrate the ability to understand a program through its binary representation",
+            "Investigate the programmer's interaction with underlying system APIs and abstractions",
+            "Analyze consequences of imperfect system usage on performance and security"
+        ],
+        "skills": [
+            "Debug programs using binary representations",
+            "Utilize tools for program development like compilers, debuggers, and profilers",
+            "Apply knowledge of memory organization and management in program optimization",
+            "Implement program optimizations for improved efficiency",
+            "Develop reliable programs exercising different components of a computing system"
+        ]
+    },
+    "CS3022": {
+        "semester": 5,
+        "course": "Theory of Computation",
+        "concepts": [
+            "Automata Theory",
+            "Computability Theory",
+            "Finite Automaton",
+            "Pushdown Automaton",
+            "Context-Free Grammar",
+            "Turing Machine",
+            "Decidability",
+            "Regular Languages",
+            "Nondeterministic Finite Automaton",
+            "Regular Expressions",
+            "Pumping Lemma",
+            "Context-Free Grammar",
+            "Pushdown Automaton",
+            "Chomsky Normal Form",
+            "Leftmost Derivation",
+            "Parse Tree",
+            "Turing Decidable Languages",
+            "Universal Turing Machines",
+            "Diagonalization Method",
+            "Halting Problem",
+            "Rice Theorem",
+            "Undecidability"
+        ],
+        "prereqs": [
+            "Discrete Mathematics",
+            "Alphabet and Languages",
+            "Deterministic Finite Automaton",
+            "Nondeterministic Finite Automaton",
+            "Regular Languages",
+            "Regular Expressions",
+            "Context-Free Grammar",
+            "Pushdown Automaton",
+            "Decidability",
+            "Recognizable Languages"
+        ],
+        "learning_outcomes": [
+            "Explain the basic computation models: finite automata, pushdown automata, context-free grammars, and Turing machines",
+            "Design a computational model for a given problem and validate its correctness formally",
+            "Identify applications of regular expressions and context-free grammars",
+            "Describe the difference between decidable and undecidable languages",
+            "Illustrate fundamental limitations of existing computing devices with examples"
+        ],
+        "skills": [
+            "Design computational models for various problems",
+            "Formally validate the correctness of computational models",
+            "Apply regular expressions and context-free grammars in practical scenarios",
+            "Analyze and categorize languages as decidable or undecidable",
+            "Demonstrate limitations of computing devices through examples"
+        ]
+    },
+    "EC3001": {
+        "semester": 5,
+        "course": "Econometrics",
+        "concepts": [
+            "Causal Inference",
+            "Regression Analysis",
+            "Bivariate Regression",
+            "Multivariate Regression",
+            "Difference-in-Differences",
+            "Instrumental Variables",
+            "Regression Discontinuity",
+            "Propensity Score Methods",
+            "Stata Software"
+        ],
+        "prereqs": [
+            "Economic Theory",
+            "Mathematics",
+            "Statistical Inference",
+            "Understanding of Variables",
+            "Understanding of Cause and Effect Relationships",
+            "Basic Regression Analysis",
+            "Quantitative Analysis",
+            "Research Methods"
+        ],
+        "learning_outcomes": [
+            "Understand the idea of causal inference and random assignment",
+            "Appreciate the value and limitations of bivariate and multiple regression models",
+            "Use difference-in-differences techniques for studying causality",
+            "Acquire an appreciation for the use of instrumental variables in real-world applications",
+            "Understand how regression discontinuity is used to draw inferences about causal effects"
+        ],
+        "skills": [
+            "Train in using Stata Software for running Econometric models",
+            "Interpret regression tables and results effectively",
+            "Apply instrumental variables for evaluating causality in complex scenarios",
+            "Use regression discontinuity to infer causal effects from behavioral constraints",
+            "Conduct causal inference using multiple techniques like instrumental variables and propensity score methods"
+        ]
+    },
+    "EC3105": {
+        "semester": 5,
+        "course": "Environmental Economics",
+        "concepts": [
+            "Environmental Economics",
+            "Economic Principles",
+            "Externalities",
+            "Public Goods",
+            "Property Rights",
+            "Cost-Benefit Analysis",
+            "Regulatory Measures",
+            "Market-Based Solutions",
+            "Sustainable Development",
+            "Clean Energy Transition",
+            "Non-Market Valuation Methods"
+        ],
+        "prereqs": [
+            "Microeconomic Principles",
+            "Environmental Issues",
+            "Natural Resource Management",
+            "Policy Approaches",
+            "Valuing Environmental Goods and Services",
+            "Basic Economic Rationale",
+            "Global Environmental Issues",
+            "Cost-Benefit Analyses"
+        ],
+        "learning_outcomes": [
+            "Apply solutions from environmental theory to real-world environmental problems and challenges",
+            "Understand environmental policy instruments and economic rationale",
+            "Discuss approaches for valuing environmental goods and services",
+            "Examine contemporary environmental issues through an economist's lens",
+            "Analyze global issues, current environmental policy, and economics' role in policy"
+        ],
+        "skills": [
+            "Utilize economic principles for environmental problem-solving",
+            "Evaluate and apply environmental policy instruments",
+            "Conduct valuation of environmental goods and services",
+            "Analyze environmental issues from an economic perspective",
+            "Understand the role of economics in shaping environmental policies"
+        ]
+    },
+    "HS3102": {
+        "semester": 5,
+        "course": "Memory, Time and Consciousness",
+        "concepts": [
+            "Memory",
+            "Time",
+            "Consciousness",
+            "Body",
+            "Subjectivity",
+            "Self",
+            "Embodiment",
+            "Cultural Memory",
+            "Historical Narratives",
+            "Humanistic Disciplines",
+            "Social Scientific Disciplines",
+            "Narratives",
+            "Symbols",
+            "Architecture",
+            "Visual Art",
+            "Expressive Performance",
+            "Linguistic Representation"
+        ],
+        "prereqs": [
+            "History",
+            "Anthropology",
+            "Religious Studies",
+            "Philosophy",
+            "Literature",
+            "Neurophysiology",
+            "Science",
+            "Psychology",
+            "Memory Models",
+            "Time Concepts",
+            "Subjectivity",
+            "Human Experience",
+            "Cultural Meaning",
+            "Identity",
+            "Narrative Construction"
+        ],
+        "learning_outcomes": [
+            "Gain an understanding of the past through narratives and cultural representations",
+            "Begin to grasp the interplay between history, memory, and time in scholarly and literary works",
+            "Develop relational perspectives on historical past, contemporary present, and imagined future",
+            "Enhance ability to present coherent arguments verbally and in writing on course materials",
+            "Cultivate critical thinking skills and interdisciplinary appreciation in academic and practical contexts"
+        ],
+        "skills": [
+            "Present clear and coherent arguments verbally and in writing",
+            "Think critically about historical narratives and cultural concepts",
+            "Apply theoretical concepts of time, memory, and consciousness to diverse fields of study",
+            "Analyze and evaluate competing concepts in historical studies",
+            "Synthesize diverse concepts in assignments and class discussions"
+        ]
+    },
+    "IL315": {
+        "semester": 5,
+        "course": "Innovation Lab & Grand Challenge Studio - V",
+        "concepts": [
+            "Innovation Lab",
+            "Grand Challenges",
+            "Team Presentations",
+            "Project Conduction",
+            "Assessment Criteria",
+            "Evaluation Scheme",
+            "Project Outcomes",
+            "Business Innovations"
+        ],
+        "prereqs": [
+            "Project Management",
+            "Teamwork Skills",
+            "Presentation Skills",
+            "Research Methodology",
+            "Problem Solving"
+        ],
+        "learning_outcomes": [
+            "Develop project management skills through conducting a serious project",
+            "Enhance presentation skills by delivering team presentations and Q&A sessions",
+            "Understand the importance of clarity and relevance in content creation for presentations",
+            "Gain experience in structuring and outlining objectives and outcomes in project presentations",
+            "Learn to summarize and highlight key points effectively in project presentations"
+        ],
+        "skills": [
+            "Project management: Planning, execution, and supervision of project work",
+            "Presentation skills: Delivering concise and effective presentations",
+            "Content creation: Ensuring clarity and relevance of content in presentations",
+            "Communication skills: Engaging in effective Q&A sessions",
+            "Summarization skills: Highlighting key information and outcomes in presentations"
+        ]
+    },
+    "ME3001": {
+        "semester": 5,
+        "course": "Engineering Mechanics",
+        "concepts": [
+            "Newtonian dynamics",
+            "Motion of particles",
+            "Systems of particles",
+            "Rigid bodies",
+            "Simple mechanisms",
+            "Simple harmonic oscillators",
+            "Impulse",
+            "Momentum",
+            "Angular momentum",
+            "Work",
+            "Energy",
+            "Two-dimensional kinematics",
+            "Differential equations of motion",
+            "Three-dimensional rigid-body dynamics",
+            "Robotics",
+            "Cyber Physical Systems",
+            "Engineering applications",
+            "Equilibrium",
+            "Free-body diagrams",
+            "Kinematics",
+            "Conservation principles"
+        ],
+        "prereqs": [
+            "Foundations of Physical World",
+            "Mathematics in Action",
+            "Analytical integration of ODEs",
+            "Linear systems of ODEs",
+            "Numerical integration of functions and ODEs",
+            "Scientific computing with MATLAB",
+            "Matrix operations",
+            "First-order ordinary differential equations",
+            "Basic algebra",
+            "Introduction to Physics",
+            "Kinematics",
+            "Dynamics",
+            "Statics",
+            "Conservation of energy and momentum"
+        ],
+        "learning_outcomes": [
+            "Isolate individual elements of the system of bodies and draw free-body diagrams",
+            "Describe motion of an object in space and time employing different coordinate systems",
+            "Apply laws of physics and conservation principles to derive governing equations",
+            "Solve equations of motion numerically and analytically",
+            "Understand the time evolution of displacement, velocity, and acceleration in dynamical systems"
+        ],
+        "skills": [
+            "Analytical integration of first-order ordinary differential equations (ODEs)",
+            "Numerical solution of differential equations for motion analysis",
+            "Graphical representation of motion from solved equations",
+            "Utilize different coordinate systems for kinematic analysis",
+            "Apply conservation principles to derive governing equations for dynamical systems"
+        ]
+    },
+    "RO3001": {
+        "semester": 5,
+        "course": "Sensing & Actuation",
+        "concepts": [
+            "Introduction to Systems Engineering Concepts",
+            "Building blocks of a sensor",
+            "Basic Signal/Data acquisition and Processing",
+            "Analog Concepts: Amplification, Modelling, Practical considerations",
+            "Physical quantities and international system of units",
+            "Analog Concepts: Instrumentation, CMRR, S/N",
+            "Analog Concepts: Buffering, Scaling, Filtering types and stages",
+            "Analog PID processor/controller",
+            "Capacitive sensing elements",
+            "Optical Sensors",
+            "Elastic sensing elements",
+            "Optical Encoders",
+            "Design case-studies"
+        ],
+        "prereqs": [
+            "Systems Engineering Concepts",
+            "Signal Processing Fundamentals",
+            "Analog Electronics",
+            "Control Systems Basics",
+            "Sensors and Transducers Principles"
+        ],
+        "learning_outcomes": [
+            "Understand the building blocks of a sensor",
+            "Analyze basic signal and data acquisition processes",
+            "Comprehend analog concepts like amplification and filtering",
+            "Identify different sensing elements such as resistive and capacitive elements",
+            "Evaluate design case studies related to optical encoders"
+        ],
+        "skills": [
+            "Implement sensor building techniques",
+            "Perform signal and data acquisition",
+            "Apply analog concepts in practical scenarios",
+            "Utilize different sensing elements in sensor design",
+            "Analyze and design optical encoder systems"
+        ]
+    },
+    "AI3004": {
+        "semester": 6,
+        "course": "Knowledge Respresentation and Reasoning",
+        "concepts": [
+            "Knowledge Representation",
+            "Reasoning",
+            "Symbolic Representations",
+            "Neural Networks",
+            "Logical Reasoning",
+            "Propositional Logic",
+            "First Order Logic",
+            "Horn Clauses",
+            "Description Logics",
+            "Event Calculus",
+            "Epistemic Logic",
+            "Inheritance",
+            "Default Reasoning",
+            "Taxonomies",
+            "Multi-agent Systems",
+            "Rule Based Systems",
+            "Frames",
+            "Semantic Nets",
+            "RDF",
+            "OWL",
+            "Conceptual Dependency",
+            "Knowledge Graphs",
+            "Scripts",
+            "Plans",
+            "Goals",
+            "Beliefs"
+        ],
+        "prereqs": [
+            "Logic",
+            "Truth",
+            "Inference",
+            "Mathematics",
+            "Symbol manipulation",
+            "Formal languages",
+            "Computing basics",
+            "Problem-solving",
+            "Artificial Intelligence fundamentals"
+        ],
+        "learning_outcomes": [
+            "Understand symbolic and explicit representations in classical AI",
+            "Apply propositional and first-order logic in reasoning",
+            "Analyze and create logic-based knowledge representations",
+            "Explore tractable subsets like Horn clause and description logics",
+            "Understand inheritance, default reasoning, and epistemic logic"
+        ],
+        "skills": [
+            "Manipulate mental models for knowledge representation",
+            "Reason with statements in logic using procedures",
+            "Utilize Prolog for logic programming",
+            "Implement rule-based systems using OPS5 and Rete Algorithm",
+            "Design knowledge graphs and semantic nets using RDF and OWL"
+        ]
+    },
+    "BE3004": {
+        "semester": 6,
+        "course": "Genetics and Genetic Engineering",
+        "concepts": [
+            "Genetics",
+            "Genetic Engineering",
+            "Human Genome Organization",
+            "Gene Expression Regulation",
+            "Genetics of Human Medical Conditions",
+            "DNA Sequencing",
+            "Gene Therapy",
+            "Genome Editing",
+            "Transgenic Animals",
+            "Ethical Aspects of Genetic Engineering"
+        ],
+        "prereqs": [
+            "Bioinformatics",
+            "Computational Biology",
+            "Biochemistry",
+            "Molecular Biology",
+            "Cell Biology",
+            "DNA Structure",
+            "Gene Expression",
+            "Inheritance Patterns",
+            "Genetic Diseases",
+            "DNA Editing Methods"
+        ],
+        "learning_outcomes": [
+            "Recognize genetics concepts in research and medicine",
+            "Explain patterns of inheritance and calculate risk score for genetic condition",
+            "Classify genetic diseases and correlate risk factors",
+            "Describe different DNA editing technologies and evaluate ethical concerns",
+            "Design strategies with engineered DNA to develop solutions for societal challenges"
+        ],
+        "skills": [
+            "Perform DNA diagnostic and editing methods",
+            "Apply in-silico and hands-on training for genetic engineering",
+            "Modify DNA molecules for different applications",
+            "Design solutions using engineered DNA",
+            "Evaluate and address ethical concerns in DNA editing"
+        ]
+    },
+    "BE3006": {
+        "semester": 6,
+        "course": "Networks & Systems Biology",
+        "concepts": [
+            "Systems Biology",
+            "Network Science",
+            "Graph Theory",
+            "Omics Data Integration",
+            "Dynamic Modeling",
+            "Machine Learning Applications",
+            "Evolutionary Systems Biology",
+            "Network Pharmacology",
+            "Biological Networks Analysis",
+            "Research-driven Questions"
+        ],
+        "prereqs": [
+            "Bioinformatics",
+            "Computational Biology",
+            "Graph Theory",
+            "Omics Data Analysis",
+            "Machine Learning",
+            "Biological Pathways",
+            "Cellular Behaviors"
+        ],
+        "learning_outcomes": [
+            "Develop a solid foundation in the principles of biological networks and systems biology",
+            "Acquire hands-on experience with network analysis tools and mathematical modeling techniques",
+            "Explore the integration of data from various omics levels",
+            "Investigate real-world applications of networks and systems biology",
+            "Foster critical thinking skills by analyzing and interpreting complex biological data"
+        ],
+        "skills": [
+            "Construct, visualize, and analyze biological networks",
+            "Preprocess and integrate multi-omics datasets for biological insights",
+            "Simulate biological processes using modeling techniques like Boolean models and Petri nets",
+            "Utilize machine learning and network pharmacology for predicting disease outcomes and drug targets",
+            "Formulate and address research-driven questions using systems and network biology approaches"
+        ]
+    },
+    "BE3007": {
+        "semester": 6,
+        "course": "Genetics & Genetics Engineering",
+        "concepts": [
+            "Genetics",
+            "Genetic Engineering",
+            "Human Genome Organization",
+            "Gene Expression Regulation",
+            "Genetics of Human Medical Conditions",
+            "DNA Sequencing",
+            "Genome Editing",
+            "Transgenic Animals",
+            "Gene Therapy",
+            "Ethical Aspects of Genetics"
+        ],
+        "prereqs": [
+            "Bioinformatics",
+            "Computational Biology",
+            "Biochemistry",
+            "Molecular Biology",
+            "Cell Biology",
+            "DNA Structure",
+            "Gene Function",
+            "Clinical Genetics",
+            "Inheritance Patterns",
+            "DNA Editing Technologies",
+            "Ethical Concerns in Genetics",
+            "DNA Replication",
+            "Gene Expression Regulation"
+        ],
+        "learning_outcomes": [
+            "Recognize genetics concepts in research and medicine",
+            "Explain patterns of inheritance and calculate risk score for genetic condition",
+            "Classify genetic diseases and correlate risk factors",
+            "Describe different DNA editing technologies and evaluate ethical concerns",
+            "Design strategies with engineered DNA to develop solutions for societal challenges"
+        ],
+        "skills": [
+            "Perform DNA diagnostic and editing methods",
+            "Apply in-silico and hands-on training for genetic engineering",
+            "Modify DNA molecules for various applications",
+            "Design gene therapy using DNA editing technologies",
+            "Identify, debate, and discuss aspects of genetics and genetic engineering"
+        ]
+    },
+    "BE3009": {
+        "semester": 6,
+        "course": "Introduction to Lab-on-chip Devices",
+        "concepts": [
+            "Lab-on-Chips",
+            "Microfluidics",
+            "Electrochemical Sensing",
+            "Optical Sensing",
+            "Mass-spectrometry",
+            "Nanofabrication",
+            "Microfluidic Device Design",
+            "Biomedical Applications",
+            "Diagnostic Applications"
+        ],
+        "prereqs": [
+            "Materials Science",
+            "Nanofabrication Basics",
+            "Microfluidics Fundamentals",
+            "Sensors & Actuation",
+            "Chemical Reactions",
+            "Fluid Behavior",
+            "Biochemical Analysis",
+            "Basic Sensing Techniques"
+        ],
+        "learning_outcomes": [
+            "Understanding of different sensing techniques relevant for lab-on-chip design",
+            "Knowledge of basics of nanofabrication and low-cost methods for chip production",
+            "Appreciation of microfluidic device design for bio-chemical analysis",
+            "Ability to analyze and discuss journal articles on lab-on-chip technologies",
+            "Understanding the impact of scaling-down dimensions on fluid behavior and chemical reactions"
+        ],
+        "skills": [
+            "Performing electrochemical sensing experiments",
+            "Fabricating microfluidic devices for specific applications",
+            "Analyzing data from sensing methods for biomedical and environmental monitoring",
+            "Writing technical reports based on scientific journal articles",
+            "Conducting lab assignments and experiments under supervision"
+        ]
+    },
+    "BE3105": {
+        "semester": 6,
+        "course": "Human Physiology",
+        "concepts": [
+            "Human Physiology",
+            "Homeostasis",
+            "Physiological Systems",
+            "Digestive System",
+            "Renal Physiology",
+            "Endocrinology",
+            "Reproductive System",
+            "Cardiovascular System",
+            "Respiratory System",
+            "Nervous System",
+            "Special Senses"
+        ],
+        "prereqs": [
+            "Human Biology",
+            "Health Sciences",
+            "Anatomy and Physiology",
+            "Cell Biology",
+            "Biochemistry",
+            "Basic Biology",
+            "Medical Terminology"
+        ],
+        "learning_outcomes": [
+            "Comprehend Fundamental Physiology",
+            "Explain Homeostasis",
+            "Describe System Functions",
+            "Understand System Interactions",
+            "Identify Disruptions and Disease"
+        ],
+        "skills": [
+            "Apply Knowledge to Real-World Scenarios",
+            "Develop Critical Thinking",
+            "Utilize understanding of human physiology to analyze case studies and practical examples",
+            "Engage in critical thinking and discussion",
+            "Synthesize knowledge from different physiological systems to form a comprehensive understanding of human body function"
+        ]
+    },
+    "BE3106": {
+        "semester": 6,
+        "course": "Biomedical & Pharmaceutical Polymers",
+        "concepts": [
+            "Biomedical & Pharmaceutical Polymers",
+            "Polymer Types",
+            "Polymer Structure",
+            "Polymer Properties",
+            "Polymer Morphology",
+            "Polymer Rheology",
+            "Polymer Characterization",
+            "Polymer Processing",
+            "Applications in Drug Delivery",
+            "Degradation Mechanisms",
+            "Release Mechanisms",
+            "Stimuli-Responsive Polymeric Biomaterials",
+            "Material Architecture Tailoring"
+        ],
+        "prereqs": [
+            "Material Science",
+            "Historical Development of Polymers",
+            "Material Properties of Polymers",
+            "Molecular Structure of Polymers",
+            "Thermal Properties of Polymers",
+            "Rheological Properties of Polymers",
+            "Polymer Processing Strategies",
+            "Biomedical Applications of Polymers",
+            "Biopharmaceutical Applications of Polymers",
+            "Drug Delivery Systems"
+        ],
+        "learning_outcomes": [
+            "Understand the historical background of polymers",
+            "Classify polymers based on material properties and molecular structure",
+            "Describe typical polymer structures including chain structure, repeat units, and crystallinity",
+            "Calculate molecular weights and degree of polymerization for specified polymers",
+            "Predict material property-based behavior of biomedical polymers under various conditions"
+        ],
+        "skills": [
+            "Predict thermal behavior of polymers under different conditions",
+            "Predict rheological behavior of polymers under different conditions",
+            "Predict stress-strain behavior of polymeric biomaterials",
+            "Compare polymer processing strategies and their impact on properties",
+            "Comprehend degradation behavior and release mechanisms in drug delivery systems"
+        ]
+    },
+    "BU3003": {
+        "semester": 6,
+        "course": "Industrial Organization",
+        "concepts": [
+            "Microeconomics",
+            "Industrial Organization",
+            "Market Structures",
+            "Consumer Behavior",
+            "Firm Behavior",
+            "Market Efficiency",
+            "Market Failure",
+            "Game Theory",
+            "Oligopoly Competition",
+            "Technology Impact on Market Structures",
+            "Mergers Impact on Market Structures",
+            "Firm Strategies Influence on Market Structures",
+            "Vertical Relations",
+            "Product Differentiation",
+            "Advertising Strategies",
+            "Innovation Impact on Market Dynamics",
+            "Networks in the Modern Digital Economy",
+            "Market Dynamics Analysis"
+        ],
+        "prereqs": [
+            "Microeconomics Principles",
+            "Game Theory Basics",
+            "Market Structures Understanding",
+            "Consumer Behavior Analysis",
+            "Firm Behavior Analysis",
+            "Basic Economics",
+            "Competition Concepts",
+            "Pricing Strategies",
+            "Demand and Supply Interaction",
+            "Technology Impact on Business",
+            "Mergers and Acquisitions Basics",
+            "Industrial Economics Fundamentals"
+        ],
+        "learning_outcomes": [
+            "Analyzing different market structures and firm behavior",
+            "Applying economic theories to real-world scenarios",
+            "Evaluating market failures and public policy",
+            "Analyzing innovation, mergers, and vertical relations",
+            "Understanding the policy framework for competitive markets"
+        ],
+        "skills": [
+            "Utilizing microeconomic principles and game theory in competitive strategy assessment",
+            "Identifying causes of market failure and assessing government policies",
+            "Examining the impact of innovation, mergers, and vertical integration on market dynamics",
+            "Synthesizing concepts to identify policies for fostering competition and innovation",
+            "Critically assessing complex market dynamics"
+        ]
+    },
+    "CP3001": {
+        "semester": 6,
+        "course": "Embedded Systems",
+        "concepts": [
+            "Embedded Systems",
+            "Cyber-Physical Systems",
+            "Computer Hardware",
+            "Software Design",
+            "Networks",
+            "Physical Processes",
+            "Modelling",
+            "Design",
+            "Analysis",
+            "State Machines",
+            "Concurrent Models of Computation",
+            "Processor Architectures",
+            "Memory Architectures",
+            "Input & Output",
+            "Multitasking",
+            "Scheduling",
+            "Invariants",
+            "Temporal Logic",
+            "Model Checking",
+            "Quantitative Analysis",
+            "Execution Time Analysis",
+            "Energy Usage",
+            "Memory Usage"
+        ],
+        "prereqs": [
+            "Electronic Systems Engineering",
+            "Fundamentals of Computing Systems",
+            "Modeling Systems",
+            "Abstraction",
+            "Embedded Processors",
+            "Interfacing with Sensors and Actuators",
+            "Verification Methods"
+        ],
+        "learning_outcomes": [
+            "Understand the basic principles underlying embedded systems with a focus on hardware-software interaction",
+            "Develop models of systems with an intuitive understanding of abstraction for system realization",
+            "Design embedded systems considering embedded processors, memory architectures, multitasking, and interfacing with sensors and actuators",
+            "Familiarize with methods of analysis and verification in embedded systems",
+            "Deploy a fully functional prototype of an embedded system based on theoretical and practical aspects"
+        ],
+        "skills": [
+            "Modeling systems with abstraction for practical realization",
+            "Designing embedded systems including processor architectures, memory, multitasking, and interfacing with sensors and actuators",
+            "Analyzing and verifying embedded systems",
+            "Hands-on experience in lab activities related to embedded systems hardware and software",
+            "Implementing and deploying functional prototypes of embedded systems"
+        ]
+    },
+    "CS3001": {
+        "semester": 6,
+        "course": "Operating Systems",
+        "concepts": [
+            "Process Management",
+            "Memory Management",
+            "I/O Management",
+            "Threads",
+            "Virtual Memory",
+            "Paging",
+            "Device Drivers",
+            "Filesystems",
+            "Concurrency",
+            "System Calls",
+            "Scheduling Policies",
+            "Locks",
+            "Semaphores",
+            "Concurrency Bugs",
+            "Trap Handling",
+            "Context Switching",
+            "User Process Creation",
+            "Memory Management Algorithms",
+            "Sleep/Wakeup Functionality",
+            "Network I/O"
+        ],
+        "prereqs": [
+            "Fundamentals of Computer Systems",
+            "Processes",
+            "Virtual Memory",
+            "Concurrency",
+            "System-Level Programming",
+            "Resource Management Policies",
+            "Address Translation",
+            "Demand Paging",
+            "Memory Allocation Algorithms",
+            "Operating System Internals"
+        ],
+        "learning_outcomes": [
+            "Explain the basic operating system concepts including processes, virtual memory, concurrency, and I/O management",
+            "Design and implement basic operating system components and validate their correctness",
+            "Find practical applications of operating system concepts in real systems",
+            "Explain differences between various resource management policies and their tradeoffs",
+            "Demonstrate understanding of operating system internals using examples from xv6"
+        ],
+        "skills": [
+            "Designing and implementing basic operating system components",
+            "Validating correctness of operating system components",
+            "Identifying practical applications of operating system concepts",
+            "Analyzing tradeoffs in resource management policies",
+            "Demonstrating understanding of operating system internals through practical examples"
+        ]
+    },
+    "CS3104": {
+        "semester": 6,
+        "course": "Geospatial Data Science",
+        "concepts": [
+            "Geospatial Data Science",
+            "Satellite Imagery",
+            "Computer Vision",
+            "Machine Learning",
+            "Systems Methods",
+            "Data Structures",
+            "File Formats",
+            "Geospatial Data Analysis",
+            "Large Geospatial Data Handling",
+            "Data Types",
+            "Geospatial Use Cases",
+            "Python Libraries for Geospatial Data",
+            "Imagery Types",
+            "Societal Applications of Geospatial Data",
+            "Case Studies in Geospatial Data",
+            "Data Products from Mapping and Satellite Companies"
+        ],
+        "prereqs": [
+            "Machine Learning",
+            "Computer Vision",
+            "Data Analysis",
+            "Python Programming",
+            "Data Handling",
+            "Databases",
+            "Physics of Imagery Acquisition",
+            "Urban and Rural Systems Understanding",
+            "Agricultural Practices",
+            "Ecological System Interconnectedness"
+        ],
+        "learning_outcomes": [
+            "Ability to do geospatial data analysis and handle large geospatial data",
+            "Derive insights from multiple modalities of data for geospatial applications",
+            "Exposure to a wide variety of geospatial use-cases in cities, agriculture, hydrology",
+            "Knowledge about various data products from mapping and satellite companies",
+            "Understand the different data types and products in geospatial applications"
+        ],
+        "skills": [
+            "Geospatial data analysis",
+            "Handling large geospatial datasets",
+            "Deriving insights from diverse data sources",
+            "Utilizing mapping and satellite data products",
+            "Understanding and working with various geospatial data types"
+        ]
+    },
+    "DS3002": {
+        "semester": 6,
+        "course": "Game Theory",
+        "concepts": [
+            "Game Theory",
+            "Static Games",
+            "Sequential-move Games",
+            "Nash Equilibrium",
+            "Sub-game Perfect Equilibrium",
+            "Repeated Games",
+            "Bayesian Games",
+            "Mechanism Design",
+            "Auctions"
+        ],
+        "prereqs": [
+            "Mathematics",
+            "Economics",
+            "Decision Making",
+            "Probability Theory",
+            "Sequential Decision Making",
+            "Equilibrium Concepts",
+            "Information Asymmetry"
+        ],
+        "learning_outcomes": [
+            "Describe/explain the various game formulations",
+            "Describe/explain the various game-theoretic solution concepts",
+            "Demonstrate solving game-theoretic problems",
+            "Understand fundamental principles of mechanism design",
+            "Analyze outcomes of game scenarios using Nash Equilibrium and Sub-game Perfect Equilibrium"
+        ],
+        "skills": [
+            "Apply game-theoretic solution concepts to analyze scenarios",
+            "Solve game-theoretic problems effectively",
+            "Design mechanisms inspired by game theory for desired outcomes",
+            "Apply Nash Equilibrium and Sub-game Perfect Equilibrium in analyzing game scenarios",
+            "Analyze and design auctions for efficient allocation of goods and services"
+        ]
+    },
+    "DS3003": {
+        "semester": 6,
+        "course": "Time Series Analysis",
+        "concepts": [
+            "Time Series Analysis",
+            "Exploratory Time Series Analysis",
+            "Stationary and Non-Stationary Stochastic Processes",
+            "ARIMA Models",
+            "Seasonal ARIMA Models",
+            "Spectral Analysis of Time Series",
+            "Multivariate Time Series Models",
+            "VAR Models",
+            "Granger Causality",
+            "Impulse Response Functions",
+            "Extensions to Specialized Topics"
+        ],
+        "prereqs": [
+            "Advanced Statistics",
+            "Linear Time Series Models",
+            "Information Criteria for Model Selection",
+            "Forecasting Techniques",
+            "Time Series Decomposition",
+            "Time Series Stationarity Testing",
+            "Time Series Model Parameter Estimation"
+        ],
+        "learning_outcomes": [
+            "Carry out exploratory analysis of time series data, including decomposition, filtering, and forecasting",
+            "Understand the concepts of stationarity in time series and solve related problems",
+            "Test the stationarity of a given time series",
+            "Apply linear time series models and select appropriate models using information criteria",
+            "Understand and apply theory related to the estimation of time series model parameters"
+        ],
+        "skills": [
+            "Perform exploratory analysis on time series data sets",
+            "Test for stationarity in time series data",
+            "Select and apply appropriate linear time series models",
+            "Use information criteria for model selection",
+            "Estimate time series model parameters and conduct forecasting"
+        ]
+    },
+    "EC3002": {
+        "semester": 6,
+        "course": "Advanced Microeconomics",
+        "concepts": [
+            "Consumer Theory",
+            "Producer Theory",
+            "General Equilibrium",
+            "Choice under Uncertainty",
+            "Market Failure",
+            "Utility Maximization",
+            "Demand Functions",
+            "Cost Functions",
+            "Profit Maximization",
+            "Pareto Efficiency",
+            "Competitive Equilibrium",
+            "Expected Utility Theory",
+            "Risk Preferences",
+            "Externalities",
+            "Public Goods",
+            "Asymmetric Information",
+            "Welfare Theorems"
+        ],
+        "prereqs": [
+            "Microeconomics Basics",
+            "Mathematical Modeling",
+            "Calculus",
+            "Optimization Methods",
+            "Utility",
+            "Budget Constraints",
+            "Preferences",
+            "Production Functions",
+            "Cost Structures",
+            "Market Structures",
+            "Risk and Uncertainty",
+            "Information Asymmetry"
+        ],
+        "learning_outcomes": [
+            "Develop and apply models to explain consumer preferences, utility maximization, and demand functions",
+            "Evaluate production and cost functions to determine profit-maximizing output and pricing strategies under different market structures",
+            "Examine the conditions for competitive equilibrium and assess its implications for efficiency and resource allocation",
+            "Use expected utility theory to analyze economic behavior in uncertain environments",
+            "Understand causes of market failures due to externalities, public goods, and information asymmetry, and propose economic solutions"
+        ],
+        "skills": [
+            "Develop mathematical models for analyzing consumer behavior and firm decision-making",
+            "Evaluate production processes and cost structures to optimize output",
+            "Analyze market conditions to determine competitive equilibrium and resource allocation",
+            "Apply expected utility theory to make decisions under risk and uncertainty",
+            "Propose economic solutions for market failures related to externalities, public goods, and information gaps"
+        ]
+    },
+    "EC3104": {
+        "semester": 6,
+        "course": "Macro Development",
+        "concepts": [
+            "Aggregate income determination",
+            "Income distribution",
+            "Macroeconomic theory",
+            "Economic growth models",
+            "Resource misallocation",
+            "Political and institutional factors in development",
+            "Structural transformation of economies",
+            "Cross-country differences in living standards",
+            "Productivity analysis",
+            "Policy evaluation for economic development"
+        ],
+        "prereqs": [
+            "Macroeconomics",
+            "Economic growth patterns",
+            "Empirical data analysis",
+            "Foundational growth models (Romer, Ramsey-Cass-Koopmans)",
+            "Resource allocation principles",
+            "Political institutions and their economic impact",
+            "Structural change in economies",
+            "Analyzing real-world case studies in economics"
+        ],
+        "learning_outcomes": [
+            "Explain Key Concepts in Macrodevelopment",
+            "Interpret and Analyze Economic Data",
+            "Apply Growth Models to Real-World Issues",
+            "Assess the Impact of Political Institutions",
+            "Evaluate Structural Transformation"
+        ],
+        "skills": [
+            "Utilize theoretical frameworks in economic analysis",
+            "Evaluate cross-country economic data effectively",
+            "Apply theoretical growth models to practical challenges",
+            "Critically analyze the influence of political institutions",
+            "Identify and explain processes of structural transformation in economies"
+        ]
+    },
+    "ME2001": {
+        "semester": 6,
+        "course": "Fluids in Action",
+        "concepts": [
+            "Fluid properties",
+            "Thermodynamics",
+            "Fluid statics",
+            "Fluid kinematics",
+            "Fluid dynamics",
+            "Laminar and turbulent flows",
+            "Boundary layer theory",
+            "Flow over bodies",
+            "Dimensional analysis"
+        ],
+        "prereqs": [
+            "Engineering Mathematics",
+            "Foundations of Physical world",
+            "Analytical integration of ODEs",
+            "Linear systems of ODEs",
+            "Programming languages",
+            "Matlab/Octave/Scilab",
+            "Fluid mechanics principles",
+            "Thermodynamics basics",
+            "Control volume analysis"
+        ],
+        "learning_outcomes": [
+            "Evaluate fluid properties and hydrostatic forces to solve engineering problems",
+            "Visualize and analyze fluid flow patterns in real-world applications",
+            "Apply Navier-Stokes and Bernoulli equations to design simple fluid systems",
+            "Use control volume principles to assess forces and energy in fluid machinery",
+            "Design efficient piping systems by calculating losses and pumping requirements"
+        ],
+        "skills": [
+            "Analytical integration of first-order ordinary differential equations (ODEs)",
+            "Understanding of linear systems of ODEs",
+            "Experience with programming languages like Fortran, C, C++, Python, Matlab, etc.",
+            "Applying theoretical fluid mechanics concepts to real-world engineering problems",
+            "Calculating and analyzing fluid dynamics parameters for system design"
+        ]
+    },
+    "RO2102": {
+        "semester": 6,
+        "course": "Dynamics & Simulation",
+        "concepts": [
+            "Dynamics",
+            "Simulation",
+            "Animation",
+            "Matlab",
+            "Python",
+            "Newton Euler",
+            "Lagrange",
+            "DAE (Differential Algebraic Equations)",
+            "2D Single Particle",
+            "Gravity",
+            "Springs",
+            "Fluid Friction",
+            "Linear Quadratic",
+            "Polar Coordinates",
+            "Path Coordinates",
+            "Central Force Motion",
+            "2-body Problem",
+            "3-body Problem",
+            "Multiple Bodies",
+            "Constraints",
+            "Particle on a Wire",
+            "Single Rigid Object",
+            "CoM (Center of Mass)",
+            "Moment of Inertia",
+            "EoM (Equations of Motion)",
+            "Non-holonomic Constraints",
+            "Double Pendulum",
+            "Triple Pendulum",
+            "4-bar Linkage",
+            "Rigid Object in 3D",
+            "Rotations with Matrices",
+            "Dyadics",
+            "Rotational Dynamics",
+            "Axisymmetric Object",
+            "Arbitrary Object"
+        ],
+        "prereqs": [
+            "Physics",
+            "Mathematics",
+            "Kinematics",
+            "Classical Mechanics",
+            "Newton's Laws",
+            "Calculus",
+            "Linear Algebra",
+            "Matrix Operations",
+            "Differential Equations"
+        ],
+        "learning_outcomes": [
+            "Understand principles of dynamics and motion",
+            "Analyze physical systems using Newtonian and Lagrangian mechanics",
+            "Apply differential algebraic equations (DAE) to modeling",
+            "Comprehend the concept of center of mass and moment of inertia",
+            "Explain rotational dynamics and matrices in 3D motion"
+        ],
+        "skills": [
+            "Utilize simulation and animation tools like Matlab and Python",
+            "Solve problems using multiple approaches: Newton Euler, Lagrange, DAE",
+            "Model and analyze 2D and 3D motion of particles and rigid bodies",
+            "Apply constraints to simulate multiple body systems",
+            "Implement rotational dynamics and matrices in practical scenarios"
+        ]
+    },
+    "RO3002": {
+        "semester": 6,
+        "course": "Reinforcement Learning Fundamentals",
+        "concepts": [
+            "Reinforcement Learning",
+            "Multi-armed Bandits",
+            "Markov Decision Processes",
+            "Q-Learning",
+            "Policy Gradient methods",
+            "Deep Reinforcement Learning",
+            "Multiagent RL",
+            "Inverse RL",
+            "Dynamic Programming",
+            "Value Iteration",
+            "Policy Iteration",
+            "Monte Carlo Methods",
+            "Temporal Difference Learning",
+            "Off-policy prediction",
+            "Off-policy Monte Carlo Control",
+            "REINFORCE",
+            "Exploration and Exploitation",
+            "Deep RL",
+            "DQN",
+            "Actor-critic",
+            "Imitation Learning"
+        ],
+        "prereqs": [
+            "Linear Algebra",
+            "Probability Theory",
+            "Model-Free Approaches",
+            "Model-Based Approaches",
+            "TensorFlow or PyTorch programming",
+            "Basic Programming Concepts",
+            "Machine Learning Fundamentals",
+            "Real-world Applications of RL",
+            "Collaboration and Communication Skills"
+        ],
+        "learning_outcomes": [
+            "Define key concepts in Reinforcement Learning such as agents, environments, rewards, policies, and value functions.",
+            "Implement basic Reinforcement Learning Algorithms like Q-learning, SARSA, and Monte Carlo methods.",
+            "Understand Markov Decision Processes (MDPs) and the Exploration-Exploitation Trade-offs.",
+            "Apply Model-Free and Model-Based approaches in Reinforcement Learning.",
+            "Demonstrate proficiency in Reinforcement Learning through a comprehensive capstone project."
+        ],
+        "skills": [
+            "Implement Reinforcement Learning Algorithms using popular libraries like TensorFlow or PyTorch.",
+            "Evaluate and analyze Reinforcement Learning Models.",
+            "Examine real-world applications of Reinforcement Learning in various fields.",
+            "Collaborate and communicate effectively through group projects, discussions, and presentations.",
+            "Apply theoretical knowledge to practical problem-solving in Reinforcement Learning."
+        ]
+    },
+    "RO3003": {
+        "semester": 6,
+        "course": "Control, Autonomy, Planning & Navigation",
+        "concepts": [
+            "Control Systems",
+            "Autonomous Navigation",
+            "Kinematics",
+            "Dynamics",
+            "Feedback Control",
+            "Path Planning",
+            "Obstacle Avoidance",
+            "Localization",
+            "Mapping",
+            "Integration of Concepts",
+            "Probabilistic Approaches",
+            "Bayes Filters",
+            "Mobile Robot Localization",
+            "Probabilistic Algorithms"
+        ],
+        "prereqs": [
+            "Intelligent Machines",
+            "Robot Perception",
+            "Robot Action",
+            "Probabilistic Modeling",
+            "Algorithm Applications",
+            "Sensor Limitations",
+            "Modeling Uncertainty",
+            "Computational Constraints"
+        ],
+        "learning_outcomes": [
+            "Understand fundamental principles of autonomy in robotics",
+            "Analyze various aspects of robotic systems under uncertainty",
+            "Apply algorithms for solving problems in mobile robot localization",
+            "Critically evaluate probabilistic algorithms in addressing challenges in robotics",
+            "Demonstrate the role of uncertainty in robot perception and action"
+        ],
+        "skills": [
+            "Implement probabilistic algorithms for localization and mapping in robotics",
+            "Model real-world uncertainty in robotic systems",
+            "Apply Bayes filters for posterior estimation in robot localization",
+            "Evaluate the effectiveness of probabilistic algorithms in robotics",
+            "Handle environmental unpredictability and sensor limitations in robotics"
+        ]
+    },
+    "AI4101": {
+        "semester": 7,
+        "course": "Machine Learning in Dynamic Environment",
+        "concepts": [
+            "Online Learning",
+            "Adaptive Learning",
+            "Recommender Systems",
+            "Multi-Arm Bandit Learning",
+            "Online Convex Optimization",
+            "Dynamic Environments",
+            "Algorithm Design"
+        ],
+        "prereqs": [
+            "Machine Learning Fundamentals",
+            "Algorithm Design",
+            "Basic Probability Theory",
+            "Linear Algebra"
+        ],
+        "learning_outcomes": [
+            "Describe/explain the various algorithms for machine learning in dynamic or online scenarios",
+            "Demonstrate problem-solving through algorithm design",
+            "Synthesize algorithms for learning in online/dynamic scenarios",
+            "Explain how to synthesize algorithms",
+            "Create and synthesize algorithms by identifying the right combination of elements"
+        ],
+        "skills": [
+            "Implement machine learning algorithms in dynamic environments",
+            "Design algorithms for online learning scenarios",
+            "Apply algorithmic techniques to solve practical problems",
+            "Synthesize algorithms for adaptive learning",
+            "Combine algorithmic elements effectively for problem-solving"
+        ]
+    },
+    "BE3103": {
+        "semester": 7,
+        "course": "Emerging Trends in Science and Innovation",
+        "concepts": [
+            "Scientific Research Mindset",
+            "Innovation",
+            "Biosystems Engineering",
+            "Grand Challenges",
+            "Research Trends",
+            "Human Impact on Environment",
+            "Technology and Science"
+        ],
+        "prereqs": [
+            "BSE Major (4th Sem)",
+            "Materials Science for Biomedical Engineers"
+        ],
+        "learning_outcomes": [
+            "Gain insights into recent research in biosystems engineering",
+            "Understand the pressing challenges of the current century",
+            "Analyze human impact on the environment",
+            "Re-assess technology and science requirements for informed decision making",
+            "Address future challenges based on acquired insights"
+        ],
+        "skills": [
+            "Participate in technical seminars",
+            "Conduct critical reading and analysis of reports/journal articles",
+            "Engage in discussions on research and innovation",
+            "Articulate ideas effectively in group discussions",
+            "Foster informed decisions and actions"
+        ]
+    },
+    "CS4101": {
+        "semester": 7,
+        "course": "Cryptography and Blockchain",
+        "concepts": [
+            "Cryptography",
+            "Blockchain",
+            "Encryption",
+            "Digital Signatures",
+            "Data Confidentiality",
+            "Data Integrity",
+            "Authenticity",
+            "Non-repudiation",
+            "Decentralized Consensus",
+            "Symmetric-key Encryption",
+            "Stream Ciphers",
+            "Block Ciphers",
+            "Hash Functions",
+            "Message Authentication Code",
+            "Public-key Cryptography",
+            "Key Exchange",
+            "Blockchain for Bitcoin",
+            "Security Models",
+            "Cryptanalysis",
+            "Perfect Secrecy",
+            "Random Oracle",
+            "MAC",
+            "Discrete Structures",
+            "Cryptographic Hard Problems",
+            "ElGamal Encryption",
+            "RSA Encryption",
+            "Proof of Work",
+            "Proof of Stake",
+            "Mining in Blockchain"
+        ],
+        "prereqs": [
+            "Design and Analysis of Algorithms (DAA)",
+            "Discrete Mathematics",
+            "Private-key Cryptography",
+            "Public-key Cryptography",
+            "Modular Arithmetic",
+            "Classical Ciphers",
+            "Cryptographic Attack/Security Models",
+            "Symmetric-key Encryption Principles",
+            "Stream Ciphers Principles",
+            "Block Ciphers Principles",
+            "Hash Functions Properties",
+            "Public-key Encryption Principles",
+            "Digital Signature Principles",
+            "Decentralized Consensus Mechanisms",
+            "Security Reduction",
+            "Cryptographic Primitives Applications"
+        ],
+        "learning_outcomes": [
+            "Explain data confidentiality, authenticity, integrity, and non-repudiation services",
+            "Describe the role of digital signature, encryption, and key-exchange in real-world communication",
+            "Demonstrate security models for different cryptographic primitives",
+            "Explain decentralized consensus mechanism of blockchain",
+            "Apply the knowledge of basic cryptographic building blocks to design new customized systems"
+        ],
+        "skills": [
+            "Demonstrate the implementation of cryptographic proposals",
+            "Apply different cryptographic primitives to design new systems",
+            "Explain how security reduction works at a high level",
+            "Implement cryptographic proposals",
+            "Understand the role of digital signature, encryption, and key-exchange in real-world communication"
+        ]
+    },
+    "CS4102": {
+        "semester": 7,
+        "course": "Intelligent Computing and Emerging IT Architectures",
+        "concepts": [
+            "Computer Networks Fundamentals",
+            "Routing and Switching",
+            "Next Generation Network Architectures",
+            "Software-Defined Networking (SDN)",
+            "Cellular Networks (4G, 5G)",
+            "Network Security and Management",
+            "Cloud Computing Fundamentals",
+            "Cloud Platforms and Services (AWS, Azure)",
+            "Virtualization Technologies",
+            "Intelligent Systems and Smart City",
+            "Smart Cities and IoT",
+            "Artificial Intelligence in Networking",
+            "Edge and Fog Computing",
+            "Blockchain and Decentralized Networks",
+            "Quantum Computing and Networking",
+            "Industry Case Studies and Applications"
+        ],
+        "prereqs": [
+            "Networking Fundamentals",
+            "OSI and TCP/IP Models",
+            "Routing and Switching Basics",
+            "Network Security Principles",
+            "Cloud Computing Basics",
+            "Virtualization Concepts",
+            "IoT Applications",
+            "Artificial Intelligence Basics",
+            "Blockchain Technology Fundamentals",
+            "Quantum Computing Basics"
+        ],
+        "learning_outcomes": [
+            "Comprehend network architectures and protocols (OSI and TCP/IP models)",
+            "Analyze routing and switching fundamentals and key protocols",
+            "Understand Next Generation Network Architectures (NGN) and Software-Defined Networking (SDN)",
+            "Explore Cloud Computing fundamentals and deployment models",
+            "Discuss the role of Artificial Intelligence and Machine Learning in network optimization"
+        ],
+        "skills": [
+            "Configure and manage routers, switches, firewalls, and VPNs",
+            "Utilize cloud platforms like AWS and Microsoft Azure for IT solutions",
+            "Implement virtualization technologies including Docker and Kubernetes",
+            "Apply predictive analytics for proactive network management",
+            "Analyze real-world case studies of network implementations and emerging technologies"
+        ]
+    },
+    "DS4101": {
+        "semester": 7,
+        "course": "Human Technology Interaction",
+        "concepts": [
+            "Human-Technology Interaction",
+            "Human Factors",
+            "Cognitive Factors",
+            "Computer Interaction",
+            "Affective Computing",
+            "Biosensing",
+            "Biomarkers",
+            "Multimodal Fusion",
+            "Social and Behavioral Computing",
+            "Human-AI Systems",
+            "Emerging Trends"
+        ],
+        "prereqs": [
+            "Psychology",
+            "Cognitive Science",
+            "Computer Science",
+            "Design Principles",
+            "Engineering Principles",
+            "Human Factors Engineering",
+            "Human Error Reduction",
+            "Productivity Enhancement",
+            "System Safety",
+            "Emotional Impact of Technology",
+            "User Experience Evaluation",
+            "Social Media Impact",
+            "Ethical Considerations in Technology",
+            "Basic Understanding of UI/UX Design",
+            "Usability Principles",
+            "Accessibility Principles"
+        ],
+        "learning_outcomes": [
+            "Understand the principles of Human-Technology Interaction (HTI)",
+            "Analyze Human Factors - Physical and Cognitive aspects in HTI",
+            "Examine the concept of Affective Computing and its applications",
+            "Explore Biosensing, Biomarkers, and Multimodal Fusion in HTI",
+            "Discuss Social and Behavioral Computing and its impact on HTI Systems"
+        ],
+        "skills": [
+            "Apply ergonomic principles to design products and systems for better user experience",
+            "Utilize Python for coding solutions related to HTI problems",
+            "Implement data fusion techniques for analyzing emotional data in HTI",
+            "Collaborate in group projects to develop solutions for real-world HTI problems",
+            "Present project findings effectively through abstracts, presentations, and code documentation"
+        ]
+    },
+    "DS4102": {
+        "semester": 7,
+        "course": "Financial Econometrics",
+        "concepts": [
+            "Financial Econometrics",
+            "Economics",
+            "Statistics",
+            "Finance",
+            "Applied Mathematics",
+            "Volatility Modelling",
+            "Multivariate Time Series Analysis",
+            "Cointegration",
+            "Error Correction Methods",
+            "Capital Asset Pricing Models",
+            "Modern Portfolio Theory",
+            "Financial Risk Analysis",
+            "High-Frequency Financial Data Analysis"
+        ],
+        "prereqs": [
+            "Economics",
+            "Statistics",
+            "Finance",
+            "Applied Mathematics",
+            "Econometric Techniques",
+            "Time Series Analysis",
+            "Risk Management",
+            "Portfolio Analysis",
+            "Factor Models",
+            "Options and Derivatives Pricing",
+            "Stochastic Processes"
+        ],
+        "learning_outcomes": [
+            "Familiarity with stylized facts of financial return series",
+            "Ability to model volatility in financial return series data",
+            "Estimation of basic models of volatility using software",
+            "Understanding mean-variance analysis of portfolios",
+            "Application of factor models in financial analysis"
+        ],
+        "skills": [
+            "Modeling financial data volatility",
+            "Estimating volatility models using software tools",
+            "Analyzing and interpreting financial return series data",
+            "Applying mean-variance analysis in portfolio management",
+            "Implementing factor models for financial risk analysis"
+        ]
+    },
+    "RO4101": {
+        "semester": 7,
+        "course": "Diagnostic Technologies",
+        "concepts": [
+            "Engineering Concepts",
+            "IT Techniques",
+            "Medical Diagnostic Demands",
+            "Human Body Systems",
+            "Diagnostic Radiology Principles",
+            "Imaging Modalities",
+            "Digital Imaging Techniques",
+            "Image Processing",
+            "Operating Principles of Diagnostic Technologies",
+            "Material Characterization Technologies",
+            "Digital Image Processing",
+            "Intelligent Analyses",
+            "System Models",
+            "ISO Standards",
+            "Medical Diagnostic Devices Classification",
+            "Safety and Regulatory Regimes",
+            "Deep Learning Techniques",
+            "Image Acquisition",
+            "Image Conditioning",
+            "Image Display",
+            "Image Analysis"
+        ],
+        "prereqs": [
+            "Anatomy",
+            "Physiology",
+            "Physics Principles",
+            "Design Principles",
+            "Bio-mechatronic Diagnostic Techniques",
+            "Radiological Modalities",
+            "Image Processing Techniques",
+            "Computer Vision",
+            "Machine Learning",
+            "Contrast Enhancement",
+            "Histogram Matching",
+            "Edge Enhancement",
+            "Noise Reduction",
+            "Image Restoration",
+            "Convolutional Neural Networks",
+            "Disease Detection Algorithms"
+        ],
+        "learning_outcomes": [
+            "Understand fundamental principles of various human body systems in relation to diagnostic techniques",
+            "Familiarize with radiological modalities and techniques used in medical diagnosis",
+            "Build and apply selection criteria for optimal use of diagnostic techniques",
+            "Implement deep-learning techniques for image acquisition, processing, and analysis",
+            "Appraise classification of medical diagnostic devices in terms of safety and regulatory regimes"
+        ],
+        "skills": [
+            "Apply selection criteria for diagnostic technique optimization",
+            "Implement deep-learning techniques for image analysis",
+            "Analyze and evaluate radiological modalities for medical diagnosis",
+            "Appraise safety and regulatory aspects of medical diagnostic devices",
+            "Understand and apply fundamental principles of human body systems in diagnostic contexts"
+        ]
+    }
+}
