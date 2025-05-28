@@ -4,14 +4,41 @@
   <meta charset="UTF-8">
   <title>Course Info Viewer</title>
   <style>
-    body { font-family: Arial; padding: 20px; }
-    select { font-size: 16px; margin-bottom: 10px; }
-    .info { margin-top: 20px; border: 1px solid #ccc; padding: 10px; width: fit-content; }
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+    select {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .info {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: fit-content;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    ul {
+      padding-left: 20px;
+    }
   </style>
 </head>
 <body>
 
-  <a href="index.html" style="text-decoration:none; font-size:16px;">← Back to Home</a>
+  <a href="index.html"><button>← Back to Home</button></a>
 
   <h2>Select a Course</h2>
   <select id="courseSelector">
@@ -64,10 +91,10 @@
             <strong>Course Name:</strong> ${course.course}<br>
             <strong>Semester:</strong> ${course.semester}<br>
             ${course.credits ? `<strong>Credits:</strong> ${course.credits}<br>` : ''}
-            ${formatList('Concepts', course.concepts)}
-            ${formatList('Prerequisites', course.prereqs)}
-            ${formatList('Learning Outcomes', course.learning_outcomes)}
-            ${formatList('Skills', course.skills)}
+            ${formatList('Concepts', course.concepts) ?? '<em>Not available</em>'}<br>
+            ${formatList('Prerequisites', course.prereqs) ?? '<em>Not available</em>'}<br>
+            ${formatList('Learning Outcomes', course.learning_outcomes) ?? '<em>Not available</em>'}<br>
+            ${formatList('Skills', course.skills) ?? '<em>Not available</em>'}<br>
           `;
           infoBox.style.display = 'block';
         });
