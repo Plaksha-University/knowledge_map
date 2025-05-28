@@ -1,10 +1,23 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <style>
+            button {
+              background-color: #007bff;
+              color: white;
+              border: none;
+              padding: 10px 15px;
+              font-size: 14px;
+              cursor: pointer;
+              margin-bottom: 20px;
+              border-radius: 4px;
+            }
+            button:hover {
+              background-color: #0056b3;
+            }
+        </style>
         
             <script>
-                <a href="course_viewer.html">View Course Information</a>
-
                 function neighbourhoodHighlight(params) {
   // console.log("in nieghbourhoodhighlight");
   allNodes = nodes.get({ returnType: "Object" });
@@ -250,6 +263,7 @@ function highlightFilter(filter) {
 
 
     <body>
+        <a href="course_viewer.html"><button>View Course Information</button></a>
         <div class="card" style="width: 100%">
             
                 <div id="select-menu" class="card-header">
