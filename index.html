@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course Similarity Graph</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#fff;color:#1a1a1a}
+@media(prefers-color-scheme:dark){body{background:#1a1a1a;color:#d0cec4}}
+#app{max-width:1100px;margin:0 auto;padding:16px}
+h1{font-size:16px;font-weight:500;margin-bottom:4px;color:#1a1a1a}
+@media(prefers-color-scheme:dark){h1{color:#d0cec4}}
+.sub{font-size:12px;color:#888;margin-bottom:12px}
+#cg-wrap{position:relative;width:100%;border:0.5px solid rgba(0,0,0,0.1);border-radius:8px;overflow:hidden}
+@media(prefers-color-scheme:dark){#cg-wrap{border-color:rgba(255,255,255,0.08)}}
+#cg{width:100%;display:block;cursor:default}
+#ct{position:absolute;display:none;background:#fff;border:0.5px solid rgba(0,0,0,0.2);border-radius:8px;padding:10px 12px;font-size:12px;max-width:260px;pointer-events:none;z-index:20;line-height:1.5;color:#1a1a1a}
+@media(prefers-color-scheme:dark){#ct{background:#242424;border-color:rgba(255,255,255,0.15);color:#d0cec4}}
+.ct-title{font-weight:500;font-size:13px;margin-bottom:3px}
+.ct-sub{color:#888;font-size:11px}
+.ct-row{display:flex;gap:8px;align-items:center;margin-top:5px}
+.ct-bar{height:4px;background:rgba(0,0,0,0.08);border-radius:2px;flex:1;overflow:hidden}
+@media(prefers-color-scheme:dark){.ct-bar{background:rgba(255,255,255,0.1)}}
+.ct-fill{height:100%;border-radius:2px}
+.ct-sep{border-top:0.5px solid rgba(0,0,0,0.1);margin-top:6px;padding-top:6px}
+@media(prefers-color-scheme:dark){.ct-sep{border-color:rgba(255,255,255,0.1)}}
+.ct-c{font-size:10px;color:#888;margin-top:2px}
+#cg-controls{display:flex;flex-wrap:wrap;gap:10px 20px;padding:10px 14px 12px;border-top:0.5px solid rgba(0,0,0,0.08);align-items:center}
+@media(prefers-color-scheme:dark){#cg-controls{border-color:rgba(255,255,255,0.08)}}
+.ctrl-group{display:flex;flex-direction:column;gap:5px;flex:1;min-width:200px}
+.ctrl-label{font-size:11px;color:#888;display:flex;justify-content:space-between;align-items:center}
+.ctrl-label span{font-weight:500;color:#1a1a1a}
+@media(prefers-color-scheme:dark){.ctrl-label span{color:#d0cec4}}
+#cg-meta{padding:6px 14px;font-size:11px;color:#888;border-top:0.5px solid rgba(0,0,0,0.08);display:flex;gap:16px;align-items:center}
+@media(prefers-color-scheme:dark){#cg-meta{border-color:rgba(255,255,255,0.08)}}
+#cg-leg{display:flex;flex-wrap:wrap;gap:6px 8px;padding:8px 14px 12px;border-top:0.5px solid rgba(0,0,0,0.08)}
+@media(prefers-color-scheme:dark){#cg-leg{border-color:rgba(255,255,255,0.08)}}
+.li{display:flex;align-items:center;gap:5px;padding:4px 8px;border-radius:6px;cursor:pointer;border:0.5px solid transparent;transition:all .15s;font-size:11px;user-select:none;color:#1a1a1a}
+@media(prefers-color-scheme:dark){.li{color:#d0cec4}}
+.li:hover{border-color:rgba(0,0,0,0.2)}
+@media(prefers-color-scheme:dark){.li:hover{border-color:rgba(255,255,255,0.2)}}
+.li.active{border-color:rgba(0,0,0,0.35)}
+@media(prefers-color-scheme:dark){.li.active{border-color:rgba(255,255,255,0.35)}}
+.ld{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.clear-btn{margin-left:auto;font-size:11px;color:#888;cursor:pointer;padding:2px 8px;border:0.5px solid rgba(0,0,0,0.2);border-radius:4px;background:none;line-height:1.6}
+@media(prefers-color-scheme:dark){.clear-btn{border-color:rgba(255,255,255,0.15)}}
+.clear-btn:hover{background:rgba(0,0,0,0.04)}
+@media(prefers-color-scheme:dark){.clear-btn:hover{background:rgba(255,255,255,0.06)}}
+input[type=range]{width:100%;accent-color:#378ADD}
+</style>
+</head>
+<body>
+<div id="app">
+  <h1>Course Similarity Graph</h1>
+  <p class="sub">77 courses · 7 semesters · connections between consecutive semesters only · hover nodes or edges for details</p>
+  <div id="cg-wrap"><canvas id="cg"></canvas><div id="ct"></div></div>
+  <div id="cg-controls">
+    <div class="ctrl-group">
+      <div class="ctrl-label">Similarity threshold <span id="thresh-val">0.18</span></div>
+      <input type="range" id="thresh" min="0" max="52" value="18" step="1">
+    </div>
+  </div>
+  <div id="cg-meta">
+    <span id="edge-count">— edges shown</span>
+    <span id="dept-hint">Click departments to highlight</span>
+    <button class="clear-btn" id="clear-btn" style="display:none">Clear filter</button>
+  </div>
+  <div id="cg-leg"></div>
+</div>
+<script>
+const GD={nodes:[{id:"AI2102",semester:4},{id:"AI3001",semester:5},{id:"AI3004",semester:6},{id:"AI3011",semester:4},{id:"AI3022",semester:5},{id:"AI4101",semester:7},{id:"BE2002",semester:4},{id:"BE2005",semester:4},{id:"BE2006",semester:4},{id:"BE2007",semester:4},{id:"BE3002",semester:5},{id:"BE3004",semester:6},{id:"BE3006",semester:6},{id:"BE3007",semester:6},{id:"BE3009",semester:6},{id:"BE3011",semester:5},{id:"BE3103",semester:7},{id:"BE3105",semester:6},{id:"BE3106",semester:6},{id:"BU3001",semester:5},{id:"BU3003",semester:6},{id:"BU3101",semester:5},{id:"CP2003",semester:4},{id:"CP3001",semester:6},{id:"CS2002",semester:4},{id:"CS2011",semester:5},{id:"CS2022",semester:4},{id:"CS2101",semester:4},{id:"CS2102",semester:4},{id:"CS2103",semester:4},{id:"CS3001",semester:6},{id:"CS3022",semester:5},{id:"CS3104",semester:6},{id:"CS4101",semester:7},{id:"CS4102",semester:7},{id:"DS3001",semester:4},{id:"DS3002",semester:6},{id:"DS3003",semester:6},{id:"DS4101",semester:7},{id:"DS4102",semester:7},{id:"EC2101",semester:4},{id:"EC3001",semester:5},{id:"EC3002",semester:6},{id:"EC3104",semester:6},{id:"EC3105",semester:5},{id:"FM102",semester:2},{id:"FM111",semester:1},{id:"FM116",semester:1},{id:"FM117",semester:1},{id:"FM118",semester:1},{id:"FM119",semester:2},{id:"FM120",semester:2},{id:"FM123",semester:2},{id:"FM126",semester:2},{id:"FM132",semester:2},{id:"FM133",semester:2},{id:"FM135",semester:3},{id:"FM213",semester:3},{id:"FM214",semester:3},{id:"FM216",semester:3},{id:"FM217",semester:3},{id:"HS1003",semester:1},{id:"HS2004",semester:2},{id:"HS3102",semester:5},{id:"IL102",semester:1},{id:"IL122",semester:2},{id:"IL213",semester:3},{id:"IL224",semester:4},{id:"IL315",semester:5},{id:"ME2001",semester:6},{id:"ME3001",semester:5},{id:"RO2001",semester:4},{id:"RO2102",semester:6},{id:"RO3001",semester:5},{id:"RO3002",semester:6},{id:"RO3003",semester:6},{id:"RO4101",semester:7}],edges:[{source:"AI3011",target:"AI3001",avg:0.46,max:1,concepts:["Artificial Intelligence","AI in Healthcare"]},{source:"FM111",target:"FM102",avg:0.434,max:1,concepts:["Computer programming fundamentals","Programming Skills"]},{source:"FM133",target:"FM217",avg:0.433,max:1,concepts:["Basic programming in Python/R","Basic software skills"]},{source:"FM116",target:"FM133",avg:0.418,max:1,concepts:["Basic programming in Python/R","Programming Skills"]},{source:"IL122",target:"IL213",avg:0.416,max:1,concepts:["Grand challenges in science","Addressing grand challenges"]},{source:"CS2011",target:"CS3001",avg:0.416,max:1,concepts:["Computer programming fundamentals","Basic software skills"]},{source:"FM111",target:"FM133",avg:0.411,max:1,concepts:["Basic programming in Python/R","Basic software skills"]},{source:"BE2002",target:"BE3002",avg:0.407,max:1,concepts:["Basic cell biology","Cell Biology"]},{source:"FM111",target:"FM126",avg:0.392,max:1,concepts:["Basic programming in Python/R","Basic programming concepts"]},{source:"HS1003",target:"HS2004",avg:0.392,max:1,concepts:["Interdisciplinary engineering","Prompt engineering"]},{source:"EC2101",target:"EC3001",avg:0.391,max:1,concepts:["Basic econometrics","Application to economics"]},{source:"CS3022",target:"RO3002",avg:0.388,max:1,concepts:["Basic programming concepts","Computer programming fundamentals"]},{source:"IL213",target:"IL224",avg:0.386,max:1,concepts:["Grand Challenges","Grand challenges in science"]},{source:"BE3011",target:"BE3006",avg:0.379,max:1,concepts:["Mathematical modeling in biology","Systems biology"]},{source:"CS2011",target:"RO3002",avg:0.378,max:1,concepts:["Computer programming fundamentals","Basic programming concepts"]},{source:"EC2101",target:"BU3001",avg:0.377,max:1,concepts:["Application to economics","Basic mathematics for economics"]},{source:"FM102",target:"FM217",avg:0.375,max:1,concepts:["Computer programming fundamentals","Programming Skills"]},{source:"AI2102",target:"CS2011",avg:0.374,max:1,concepts:["Programming skills","Basic Computer Literacy"]},{source:"DS3001",target:"EC3001",avg:0.374,max:1,concepts:["Basic statistics and empirical methods","Elementary statistics"]},{source:"FM116",target:"FM126",avg:0.371,max:1,concepts:["Basic programming in Python/R","Optimization algorithms"]},{source:"CS2022",target:"AI3022",avg:0.369,max:1,concepts:["Search algorithms","Depth-first search"]},{source:"EC2101",target:"BU3101",avg:0.367,max:1,concepts:["Basic econometrics","Application to economics"]},{source:"FM126",target:"FM216",avg:0.364,max:1,concepts:["Basic programming in Python/R","Basic programming concepts"]},{source:"BE2006",target:"BE3002",avg:0.362,max:1,concepts:["Molecular biology","Computational biology basics"]},{source:"BE3002",target:"BE3006",avg:0.362,max:1,concepts:["Molecular biology","Computational biology basics"]},{source:"BU3001",target:"BU3003",avg:0.362,max:1,concepts:["Application to economics"]},{source:"CS2101",target:"CS3022",avg:0.361,max:1,concepts:["Programming Skills","Basic software skills"]},{source:"FM133",target:"FM216",avg:0.36,max:1,concepts:["Basic programming in Python/R","Programming Skills"]},{source:"CS3001",target:"CS4102",avg:0.359,max:1,concepts:["Computer programming fundamentals","Computer architecture"]},{source:"FM217",target:"CS2103",avg:0.358,max:1,concepts:["Basic software skills","Data formats"]},{source:"AI2102",target:"CS3022",avg:0.358,max:1,concepts:["Programming skills","Programming Skills for ML"]},{source:"CS3022",target:"CS3001",avg:0.358,max:1,concepts:["Computer programming fundamentals","C programming"]},{source:"CS2011",target:"CP3001",avg:0.357,max:1,concepts:["Computer architecture basics","Programming fundamentals"]},{source:"CP2003",target:"CS2011",avg:0.356,max:1,concepts:["Basic programming concepts","Computer programming fundamentals"]},{source:"CS2101",target:"CS2011",avg:0.356,max:1,concepts:["Programming Skills","Basic software skills"]},{source:"FM126",target:"FM217",avg:0.352,max:1,concepts:["Basic programming in Python/R","Computer programming fundamentals"]},{source:"FM217",target:"AI2102",avg:0.352,max:1,concepts:["Programming Skills for ML","Programming skills"]},{source:"IL102",target:"IL122",avg:0.349,max:1,concepts:["Societal Challenges Analysis","Addressing grand challenges"]},{source:"EC3001",target:"EC3002",avg:0.346,max:1,concepts:["Basic econometrics","Application to economics"]},{source:"AI3001",target:"RO3002",avg:0.346,max:1,concepts:["Machine learning basics","Machine Learning Overview"]},{source:"BU3003",target:"DS4102",avg:0.345,max:1,concepts:["Microeconomic analytical models","Basic economic modeling"]},{source:"BU3001",target:"EC3002",avg:0.344,max:1,concepts:["Application to economics","Mathematics for economics"]},{source:"IL122",target:"FM135",avg:0.343,max:1,concepts:["Grand challenges in science","Societal grand challenges"]},{source:"CP2003",target:"CS3022",avg:0.343,max:1,concepts:["Basic programming in Python/R","Basic programming concepts"]},{source:"IL224",target:"IL315",avg:0.341,max:1,concepts:["Project management basics","Business innovation"]},{source:"EC3001",target:"EC3104",avg:0.341,max:1,concepts:["Introductory econometrics","Basic econometrics"]},{source:"HS2004",target:"FM213",avg:0.341,max:1,concepts:["Prompt engineering","Interdisciplinary engineering"]},{source:"AI3011",target:"AI3022",avg:0.34,max:1,concepts:["Artificial Intelligence","Classification Algorithms"]},{source:"EC3002",target:"DS4102",avg:0.34,max:1,concepts:["Basic econometrics","Microeconomic analytical models"]},{source:"FM116",target:"FM102",avg:0.339,max:1,concepts:["Programming Skills"]},{source:"FM216",target:"CS2101",avg:0.334,max:1,concepts:["Programming Skills","Mathematics for Engineering"]},{source:"FM217",target:"CS2101",avg:0.334,max:1,concepts:["Basic software skills","Programming Skills"]},{source:"FM217",target:"CP2003",avg:0.333,max:1,concepts:["Basic programming in Python/R","Computer programming fundamentals"]},{source:"BE2006",target:"BE3011",avg:0.33,max:1,concepts:["Systems biology networks","Computational systems biology"]},{source:"BU3101",target:"BU3003",avg:0.329,max:1,concepts:["Application to economics","Firm production decisions"]},{source:"BE2002",target:"BE3011",avg:0.328,max:1,concepts:["Systems biology networks","Cell biology basics"]},{source:"RO3002",target:"AI4101",avg:0.326,max:1,concepts:["Machine Learning Overview","Reinforcement Learning"]},{source:"BE3002",target:"BE3105",avg:0.325,max:1,concepts:["Basic human biology","Basic biology"]},{source:"CP3001",target:"CS4102",avg:0.325,max:1,concepts:["Computer architecture basics","Basic computer architecture"]},{source:"BE3006",target:"BE3103",avg:0.323,max:1,concepts:["Systems Biology Research","Systems biology"]},{source:"EC3104",target:"DS4102",avg:0.322,max:1,concepts:["Basic economic modeling","Introductory econometrics"]},{source:"FM216",target:"CP2003",avg:0.321,max:1,concepts:["Basic programming in Python/R","Basic programming concepts"]},{source:"EC3001",target:"BU3003",avg:0.319,max:1,concepts:["Application to economics"]},{source:"CS2102",target:"CS3022",avg:0.315,max:1,concepts:["Programming Skills","Elementary Programming Concepts"]},{source:"CS3022",target:"AI3004",avg:0.315,max:1,concepts:["Programming Skills","Elementary Programming Concepts"]},{source:"FM216",target:"CS2022",avg:0.313,max:1,concepts:["Algorithms Fundamentals","Technology and algorithms"]},{source:"FM214",target:"AI3011",avg:0.313,max:1,concepts:["Artificial Intelligence","AI in Healthcare"]},{source:"BU3101",target:"EC3002",avg:0.313,max:1,concepts:["Basic econometrics","Application to economics"]},{source:"AI3022",target:"RO3002",avg:0.312,max:1,concepts:["Basics of AI","Fundamentals of AI"]},{source:"FM102",target:"FM216",avg:0.311,max:1,concepts:["Programming Skills","Programming fundamentals"]},{source:"CS2103",target:"CS2011",avg:0.308,max:1,concepts:["Basic software skills","Data interpretation skills"]},{source:"EC2101",target:"EC3105",avg:0.308,max:1,concepts:["Environmental economics","Application to economics"]},{source:"BU3001",target:"EC3104",avg:0.306,max:0.756,concepts:["Financial econometrics","Basic mathematics for economics"]},{source:"BU3101",target:"EC3104",avg:0.298,max:1,concepts:["Economic productivity","Introductory econometrics"]},{source:"EC3001",target:"DS3003",avg:0.295,max:1,concepts:["Basic statistics","Elementary statistics"]},{source:"RO2001",target:"ME3001",avg:0.295,max:1,concepts:["Basic mechanics","Mechanical systems fundamentals"]},{source:"AI3011",target:"CS3022",avg:0.291,max:1,concepts:["Data interpretation skills","Programming Skills for ML"]},{source:"CS2011",target:"AI3004",avg:0.291,max:1,concepts:["Programming Skills","Elementary Programming Concepts"]},{source:"CS3022",target:"CP3001",avg:0.291,max:1,concepts:["Programming fundamentals","System-level programming"]},{source:"CS2102",target:"CS2011",avg:0.29,max:1,concepts:["Programming Skills","Programming skills"]},{source:"FM214",target:"RO2001",avg:0.29,max:1,concepts:["Sensors and actuators knowledge","Robotics fundamentals"]},{source:"FM117",target:"HS2004",avg:0.289,max:0.678,concepts:["Human-Centered Design","Basic engineering design"]},{source:"FM213",target:"AI2102",avg:0.288,max:0.454,concepts:["Basic web technologies","Programming skills"]},{source:"CS2101",target:"AI3022",avg:0.288,max:1,concepts:["Basic Problem Solving Skills","Computational thinking"]},{source:"AI2102",target:"AI3001",avg:0.287,max:1,concepts:["AI in Education"]},{source:"FM213",target:"CP2003",avg:0.283,max:1,concepts:["Systems Engineering Concepts","Computer systems fundamentals"]},{source:"CS2103",target:"CS3022",avg:0.283,max:1,concepts:["Basic software skills","Data interpretation skills"]},{source:"FM217",target:"AI3011",avg:0.282,max:1,concepts:["Data interpretation skills","Basic software skills"]},{source:"RO3002",target:"CS4102",avg:0.282,max:1,concepts:["Computer programming fundamentals","Introduction to programming"]},{source:"ME3001",target:"RO2102",avg:0.28,max:1,concepts:["Basic mechanics","Kinematics"]},{source:"HS2004",target:"IL213",avg:0.279,max:1,concepts:["Prompt engineering"]},{source:"FM132",target:"FM214",avg:0.279,max:0.864,concepts:["Kinematics","Kinematics of 2D mechanisms"]},{source:"AI3022",target:"RO3003",avg:0.278,max:0.703,concepts:["Algorithms","AI Algorithms and Parameters"]},{source:"BE3002",target:"BE3007",avg:0.277,max:1,concepts:["Molecular biology","Basic biology"]},{source:"FM111",target:"FM120",avg:0.276,max:1,concepts:["Problem Solving","Computers and Thinking"]},{source:"FM213",target:"IL224",avg:0.276,max:0.554,concepts:["Domain-specific knowledge","Fundamentals of Innovation"]},{source:"RO3003",target:"AI4101",avg:0.276,max:1,concepts:["Machine learning in robotics","Machine Learning Systems"]},{source:"BE3011",target:"BE3105",avg:0.275,max:1,concepts:["Basic human biology","Basic biology"]},{source:"FM102",target:"FM213",avg:0.273,max:0.618,concepts:["Programming fundamentals","Computer programming fundamentals"]},{source:"EC3105",target:"EC3002",avg:0.272,max:1,concepts:["Application to economics","Introductory econometrics"]},{source:"RO2001",target:"RO3001",avg:0.272,max:1,concepts:["Sensors and actuators","Systems Engineering Concepts"]},{source:"CS2022",target:"CS3022",avg:0.272,max:1,concepts:["Algorithms and computational thinking"]},{source:"FM135",target:"IL224",avg:0.271,max:1,concepts:["Definitions of technology","Grand challenges in science"]},{source:"FM120",target:"IL213",avg:0.27,max:1,concepts:["Brainstorming","Creative Thinking"]},{source:"FM216",target:"AI2102",avg:0.27,max:0.813,concepts:["Programming Skills"]},{source:"FM217",target:"CS2102",avg:0.268,max:1,concepts:["Programming Skills","Programming skills"]},{source:"FM216",target:"AI3011",avg:0.267,max:0.689,concepts:["Programming Skills","Algorithms"]},{source:"EC3105",target:"EC3104",avg:0.267,max:1,concepts:["Introductory econometrics","Sustainable development"]},{source:"ME3001",target:"ME2001",avg:0.267,max:1,concepts:["Engineering fundamentals","Mathematics for Engineering"]},{source:"AI3011",target:"CS2011",avg:0.266,max:1,concepts:["Basic software skills","Data interpretation skills"]},{source:"CP2003",target:"RO3001",avg:0.266,max:1,concepts:["Signals and systems basics","Basic Signal Acquisition"]},{source:"AI3022",target:"DS3002",avg:0.265,max:1,concepts:["Problem Solving Techniques","Basic Problem Solving Skills"]},{source:"DS3001",target:"BE3011",avg:0.265,max:1,concepts:["Statistical Modeling","Statistical analysis in biology"]},{source:"CS3001",target:"CS4101",avg:0.265,max:1,concepts:["Basic programming skills"]},{source:"AI3001",target:"CS3001",avg:0.265,max:0.687,concepts:["Basic Machine Learning Concepts","Basics of AI"]},{source:"FM213",target:"RO2001",avg:0.262,max:1,concepts:["Systems Engineering Concepts","Electronic systems engineering"]},{source:"CS2022",target:"CS2011",avg:0.262,max:0.855,concepts:["Algorithms and computational thinking","Fundamentals of Algorithms"]},{source:"CP2003",target:"AI3001",avg:0.26,max:0.687,concepts:["Basic Computer Science Concepts"]},{source:"AI3001",target:"AI3004",avg:0.26,max:1,concepts:["Artificial Intelligence","Basics of AI"]},{source:"DS3003",target:"DS4102",avg:0.26,max:0.585,concepts:["Data analysis fundamentals","Basic statistics"]},{source:"FM217",target:"BE2006",avg:0.259,max:1,concepts:["Bioinformatics tools","Bioinformatics fundamentals"]},{source:"BE2007",target:"BE3011",avg:0.258,max:0.69,concepts:["Basic microbiology","Biomimicry principles"]},{source:"AI3022",target:"AI3004",avg:0.258,max:1,concepts:["Artificial Intelligence","Problem-based learning"]},{source:"CS2101",target:"AI3001",avg:0.257,max:0.627,concepts:["Basic Computer Science Principles"]},{source:"AI3001",target:"RO3003",avg:0.257,max:0.582,concepts:["Artificial Intelligence"]},{source:"FM117",target:"FM120",avg:0.256,max:1,concepts:["Basic Research Skills","Design Thinking Process"]},{source:"BE3002",target:"BE3004",avg:0.255,max:1,concepts:["Molecular biology","Basic biology"]},{source:"AI3004",target:"AI4101",avg:0.254,max:1,concepts:["Artificial Intelligence","Problem-based learning"]},{source:"CP3001",target:"BE3103",avg:0.253,max:0.546,concepts:["Biosystems engineering fundamentals","Systems biology"]},{source:"FM216",target:"CS2103",avg:0.252,max:1,concepts:["Data-analytic applications in Python","Python for data analysis"]},{source:"FM217",target:"DS3001",avg:0.252,max:1,concepts:["Basic software skills","Python for statistics"]},{source:"CS2103",target:"AI3022",avg:0.252,max:1,concepts:["Data science fundamentals","Data mining"]},{source:"EC3105",target:"BU3003",avg:0.252,max:1,concepts:["Application to economics"]},{source:"ME3001",target:"RO3003",avg:0.251,max:0.864,concepts:["Kinematics","Rigid Body Kinematics"]},{source:"CS2101",target:"ME3001",avg:0.25,max:1,concepts:["Mathematics for Engineering"]},{source:"HS1003",target:"IL122",avg:0.249,max:0.507,concepts:["Business Communication","Scientific Communication"]},{source:"AI3022",target:"CS3001",avg:0.248,max:0.73,concepts:["Fundamentals of Algorithms","Algorithms Fundamentals"]},{source:"CP2003",target:"AI3022",avg:0.247,max:0.73,concepts:["Fundamentals of computing systems"]},{source:"CS2102",target:"AI3022",avg:0.247,max:1,concepts:["Basic Problem Solving Skills","Computational Thinking"]},{source:"CS2103",target:"AI3001",avg:0.247,max:0.687,concepts:["Basic Computer Science Concepts"]},{source:"CS2002",target:"CS2011",avg:0.247,max:1,concepts:["Computer architecture fundamentals","Computer architecture basics"]},{source:"AI3011",target:"BE3011",avg:0.246,max:0.665,concepts:["Machine Learning Systems","ML in stochastic modeling"]},{source:"FM214",target:"CP2003",avg:0.246,max:0.849,concepts:["Cyber-Physical Systems","Basic Computer Science Concepts"]},{source:"FM132",target:"FM213",avg:0.244,max:0.619,concepts:["Mathematics for Engineering","Fundamentals of physics"]},{source:"CS3022",target:"RO3003",avg:0.244,max:0.599,concepts:["Language and technology","Artificial Intelligence"]},{source:"BE2007",target:"BE3002",avg:0.243,max:1,concepts:["Basic microbiology"]},{source:"DS3002",target:"AI4101",avg:0.243,max:1,concepts:["Reinforcement Learning Concepts"]},{source:"CP2003",target:"BE3011",avg:0.242,max:1,concepts:["Systems biology"]},{source:"CP2003",target:"ME3001",avg:0.242,max:0.726,concepts:["System modelling","Engineering systems applications"]},{source:"AI2102",target:"AI3022",avg:0.241,max:1,concepts:["AI in Education","Basic programming skills"]},{source:"BE3011",target:"RO3002",avg:0.241,max:0.644,concepts:["Stochastic simulation algorithms","Basic Computational Biology"]},{source:"FM118",target:"FM120",avg:0.24,max:0.605,concepts:["Fundamentals of AI","Robots and Imagination"]},{source:"FM118",target:"FM133",avg:0.24,max:1,concepts:["Data interpretation skills","Basics of AI"]},{source:"ME3001",target:"RO3002",avg:0.24,max:0.618,concepts:["Engineering fundamentals"]},{source:"CS3022",target:"BE3006",avg:0.24,max:1,concepts:["Computational biology basics","Computational systems biology"]},{source:"CS3022",target:"DS3002",avg:0.24,max:1,concepts:["Basic Problem Solving Skills","Problem Solving Techniques"]},{source:"FM118",target:"FM102",avg:0.239,max:0.632,concepts:["Basic Machine Learning Concepts","Basics of AI"]},{source:"FM216",target:"BE2006",avg:0.236,max:1,concepts:["Computational biology basics","Basic Computational Biology"]},{source:"FM217",target:"CS2022",avg:0.236,max:0.653,concepts:["Computer programming fundamentals"]},{source:"ME3001",target:"CP3001",avg:0.235,max:0.618,concepts:["Engineering fundamentals","Basic engineering principles"]},{source:"FM213",target:"CS2101",avg:0.235,max:0.619,concepts:["Engineering fundamentals","Technical Knowledge in Engineering"]},{source:"FM216",target:"CS2102",avg:0.234,max:1,concepts:["Programming Skills","Algorithms and computational thinking"]},{source:"CS3001",target:"AI4101",avg:0.233,max:0.819,concepts:["Programming Skills for ML"]},{source:"CS2102",target:"AI3001",avg:0.232,max:0.562,concepts:["Basic programming"]},{source:"FM214",target:"AI2102",avg:0.23,max:0.627,concepts:["AI in Education"]},{source:"CS2022",target:"AI3001",avg:0.23,max:0.593,concepts:["Basic algorithms"]},{source:"BE2005",target:"ME3001",avg:0.229,max:0.604,concepts:["Mechanical systems fundamentals","Engineering fundamentals"]},{source:"BE2006",target:"CS3022",avg:0.228,max:1,concepts:["Computational biology basics","Basic Computational Biology"]},{source:"FM213",target:"CS2103",avg:0.228,max:0.629,concepts:["Basic Computer Science Concepts"]},{source:"AI3001",target:"BE3006",avg:0.228,max:0.514,concepts:["Computational biology basics","Basic Computational Biology"]},{source:"BE3105",target:"BE3103",avg:0.228,max:0.644,concepts:["Biomimicry principles"]},{source:"IL102",target:"HS2004",avg:0.227,max:0.694,concepts:["Interdisciplinary Teamwork"]},{source:"ME3001",target:"CS3001",avg:0.227,max:0.618,concepts:["Engineering fundamentals","Basic engineering principles"]},{source:"RO2001",target:"CS3022",avg:0.227,max:1,concepts:["Basic programming concepts"]},{source:"FM116",target:"FM132",avg:0.226,max:1,concepts:["Mathematics for Engineering","High school calculus"]},{source:"BE3011",target:"BE3007",avg:0.226,max:1,concepts:["Basic biology","Basic human biology"]},{source:"CS2011",target:"BE3006",avg:0.226,max:0.704,concepts:["Computational systems biology","Network Architectures"]},{source:"FM117",target:"FM102",avg:0.225,max:1,concepts:["Programming skills","Basic programming skills"]},{source:"BU3001",target:"DS3003",avg:0.225,max:0.585,concepts:["Data science in finance"]},{source:"RO3001",target:"CP3001",avg:0.225,max:0.688,concepts:["Systems Engineering Concepts"]},{source:"RO3002",target:"CS4101",avg:0.225,max:1,concepts:["Basic programming skills","Programming skills"]},{source:"FM213",target:"CS2002",avg:0.224,max:0.65,concepts:["Electronic systems engineering fundamentals"]},{source:"FM111",target:"FM132",avg:0.222,max:0.477,concepts:["Basic programming"]},{source:"FM132",target:"FM216",avg:0.222,max:1,concepts:["Mathematics for Engineering","Mathematical modeling"]},{source:"CS2011",target:"CS3104",avg:0.222,max:1,concepts:["Programming Skills","Basic software skills"]},{source:"CS2002",target:"CS3022",avg:0.222,max:1,concepts:["Introduction to Computer Science"]},{source:"RO2001",target:"CS2011",avg:0.221,max:1,concepts:["Basic programming concepts","Systems Engineering Concepts"]},{source:"AI2102",target:"ME3001",avg:0.22,max:0.427,concepts:["Programming skills","Basic programming skills"]},{source:"BE2006",target:"AI3001",avg:0.22,max:0.514,concepts:["Computational biology basics","Bioinformatics foundations"]},{source:"BE3007",target:"BE3103",avg:0.22,max:0.558,concepts:["Molecular biology","Basic biology"]},{source:"AI3001",target:"DS3003",avg:0.22,max:0.509,concepts:["Basic statistics","Data analysis fundamentals"]},{source:"FM118",target:"FM126",avg:0.219,max:0.632,concepts:["Basic Machine Learning Concepts","Basics of AI"]},{source:"FM120",target:"FM135",avg:0.219,max:1,concepts:["Technology as thinking, knowing, and making"]},{source:"AI3022",target:"BE3006",avg:0.219,max:0.573,concepts:["Basic algorithms","Data science fundamentals"]},{source:"RO3001",target:"CS3001",avg:0.219,max:1,concepts:["Systems Engineering Concepts"]},{source:"DS3003",target:"AI4101",avg:0.219,max:1,concepts:["Data interpretation skills","Data analysis fundamentals"]},{source:"CS3001",target:"BE3103",avg:0.219,max:0.609,concepts:["Systems biology"]},{source:"CP3001",target:"CS4101",avg:0.219,max:1,concepts:["Basic programming skills"]},{source:"CS2103",target:"EC3001",avg:0.218,max:0.592,concepts:["Data Collection and Analysis"]},{source:"CS2002",target:"AI3001",avg:0.218,max:0.603,concepts:["AI in Networking","Introduction to Computer Science"]},{source:"DS3001",target:"AI3001",avg:0.218,max:0.53,concepts:["Basic software skills","Basic statistics"]},{source:"CS2101",target:"BE3011",avg:0.217,max:0.638,concepts:["Computational systems biology","Mathematical modeling"]},{source:"RO2001",target:"BE3011",avg:0.217,max:0.677,concepts:["Mathematical modeling","Ecological systems modeling"]},{source:"FM216",target:"DS3001",avg:0.216,max:1,concepts:["Python for statistics","Python for data analysis"]},{source:"FM214",target:"CS2102",avg:0.216,max:0.562,concepts:["Basic programming"]},{source:"BE3006",target:"CS4102",avg:0.216,max:1,concepts:["Network Architectures","Next Generation Networks"]},{source:"AI3001",target:"CP3001",avg:0.216,max:0.54,concepts:["Basics of AI"]},{source:"FM102",target:"FM214",avg:0.215,max:0.617,concepts:["Basic programming concepts","Computer programming fundamentals"]},{source:"BE3011",target:"CS3001",avg:0.215,max:0.612,concepts:["Computational systems biology","Systems biology"]},{source:"CS3022",target:"CS3104",avg:0.215,max:1,concepts:["Programming Skills","Basic software skills"]},{source:"CS3001",target:"DS4101",avg:0.215,max:0.571,concepts:["Computer systems fundamentals","Basic Computer Literacy"]},{source:"AI3011",target:"EC3001",avg:0.214,max:0.555,concepts:["Basic software skills","Machine learning basics"]},{source:"FM118",target:"FM132",avg:0.213,max:0.504,concepts:["Fundamentals of AI","Deep Learning Fundamentals"]},{source:"FM216",target:"RO2001",avg:0.213,max:1,concepts:["Basic programming concepts","Programming fundamentals"]},{source:"BE2006",target:"CS2011",avg:0.213,max:0.704,concepts:["Computational systems biology","Bioinformatics foundations"]},{source:"FM214",target:"CS2101",avg:0.213,max:0.608,concepts:["Basics of AI"]},{source:"BE3009",target:"BE3103",avg:0.212,max:0.556,concepts:["Bio-chemical analysis on chips","Nanotechnology fundamentals"]},{source:"FM214",target:"CS2022",avg:0.212,max:0.703,concepts:["Robotic algorithms","Fundamentals of AI"]},{source:"AI3011",target:"ME3001",avg:0.211,max:0.477,concepts:["Deep Learning Fundamentals","Fundamentals of AI"]},{source:"FM213",target:"AI3011",avg:0.211,max:0.477,concepts:["Deep Learning Fundamentals","Fundamentals of AI"]},{source:"CS2022",target:"BE3011",avg:0.211,max:0.573,concepts:["Basic Computational Biology","Computational biology basics"]},{source:"BE3105",target:"RO4101",avg:0.211,max:1,concepts:["Medical device standards","Human body systems anatomy"]},{source:"CP3001",target:"DS4101",avg:0.211,max:0.482,concepts:["Hardware-software co-design","Programming fundamentals"]},{source:"FM135",target:"AI2102",avg:0.21,max:0.522,concepts:["Definitions of technology","Basic awareness of technology"]},{source:"AI2102",target:"IL315",avg:0.21,max:0.581,concepts:["Programming Skills for ML","AI in Education"]},{source:"BE3011",target:"BE3004",avg:0.21,max:1,concepts:["Basic biology","Basic human biology"]},{source:"AI3004",target:"CS4102",avg:0.21,max:0.782,concepts:["Basic programming"]},{source:"FM213",target:"BE2007",avg:0.209,max:0.581,concepts:["Biosystems engineering fundamentals"]},{source:"BE3011",target:"RO2102",avg:0.209,max:1,concepts:["Computational biology basics","Basic Computational Biology"]},{source:"BE2006",target:"AI3022",avg:0.208,max:0.573,concepts:["Basic Computational Biology","Bioinformatics fundamentals"]},{source:"FM118",target:"HS2004",avg:0.207,max:1,concepts:["Prompt engineering"]},{source:"FM126",target:"FM214",avg:0.207,max:0.617,concepts:["Basic programming concepts","Computer programming fundamentals"]},{source:"AI3001",target:"DS3002",avg:0.207,max:0.628,concepts:["Reinforcement Learning Concepts"]},{source:"CS2011",target:"DS3002",avg:0.207,max:0.636,concepts:["Basic Problem Solving Skills"]},{source:"FM133",target:"FM214",avg:0.206,max:0.562,concepts:["Basic programming"]},{source:"IL213",target:"AI2102",avg:0.206,max:0.427,concepts:["Prompt engineering"]},{source:"IL102",target:"FM120",avg:0.205,max:0.528,concepts:["Innovation","Interdisciplinary Teamwork"]},{source:"RO3001",target:"RO3003",avg:0.205,max:0.532,concepts:["Sensor and actuator interfacing","Sensors and actuators"]},{source:"BE3004",target:"BE3103",avg:0.205,max:0.558,concepts:["Molecular biology","Basic biology"]},{source:"FM118",target:"IL122",avg:0.204,max:0.476,concepts:["AI in Business and Technology","Fundamentals of AI"]},{source:"HS1003",target:"FM102",avg:0.204,max:0.579,concepts:["Basic Communication Skills","Communication skills"]},{source:"FM120",target:"FM213",avg:0.204,max:0.519,concepts:["Technology as thinking, knowing, and making"]},{source:"IL224",target:"EC3105",avg:0.204,max:0.778,concepts:["Sustainable Development Goals"]},{source:"CS2011",target:"RO3003",avg:0.204,max:0.531,concepts:["Basic programming","Programming concepts"]},{source:"DS3001",target:"AI3022",avg:0.203,max:0.519,concepts:["Basic Problem Solving Skills","Selection algorithms"]},{source:"ME3001",target:"AI3004",avg:0.203,max:1,concepts:["Prompt engineering","Engineering fundamentals"]},{source:"RO3001",target:"BE3009",avg:0.202,max:0.606,concepts:["Amperometric sensing","Electronics and instrumentation"]},{source:"RO2001",target:"AI3001",avg:0.202,max:0.547,concepts:["Basic Control Systems","Basic programming concepts"]},{source:"CS3022",target:"RO2102",avg:0.202,max:1,concepts:["Basic programming in Python/R","Computational labs and simulations"]},{source:"CS2103",target:"BE3011",avg:0.201,max:0.56,concepts:["Data mining","Basic Computer Science Principles"]},{source:"AI3004",target:"CS4101",avg:0.201,max:1,concepts:["Basic programming skills","Programming skills"]},{source:"FM117",target:"IL122",avg:0.2,max:0.447,concepts:["Design Thinking Process"]}]};
+
+const DEPT_COLORS={FM:'#1D9E75',CS:'#378ADD',BE:'#639922',AI:'#7F77DD',RO:'#D85A30',EC:'#BA7517',DS:'#0F6E56',HS:'#D4537E',IL:'#888780',BU:'#EF9F27',ME:'#185FA5',CP:'#E24B4A'};
+const ALL_DEPTS=Object.keys(DEPT_COLORS);
+function deptOf(id){const m=id.match(/^([A-Z]+)/);return m?m[1]:'XX';}
+function colorOf(id){return DEPT_COLORS[deptOf(id)]||'#888';}
+
+const cv=document.getElementById('cg');
+const cx=cv.getContext('2d');
+const tip=document.getElementById('ct');
+const wrap=document.getElementById('cg-wrap');
+
+let NP={},W=0,H=760,dpr=window.devicePixelRatio||1;
+let hovN=null,hovE=null;
+const isDark=window.matchMedia('(prefers-color-scheme: dark)').matches;
+let threshold=0.18,selDepts=new Set(),activeEdges=[];
+
+const connMap={};
+GD.nodes.forEach(n=>{connMap[n.id]=[];});
+GD.edges.forEach((e,i)=>{e._i=i;connMap[e.source].push(e);connMap[e.target].push(e);});
+
+function computeActiveEdges(){activeEdges=GD.edges.filter(e=>e.avg>=threshold);}
+
+function initLayout(){
+  W=cv.clientWidth;
+  const L=62,R=62,T=78,B=30,UW=W-L-R,UH=H-T-B,cs=UW/6;
+  const bySem={};for(let i=1;i<=7;i++)bySem[i]=[];
+  GD.nodes.forEach(n=>bySem[n.semester].push(n.id));
+  NP={};
+  for(let s=1;s<=7;s++){
+    const ids=bySem[s],n=ids.length,x=L+(s-1)*cs;
+    const sp=Math.min(40,UH/Math.max(n-1,1)),span=(n-1)*sp,sy=T+(UH-span)/2;
+    ids.forEach((id,i)=>{NP[id]={x,y:sy+i*sp,s};});
+  }
+}
+
+function initCv(){
+  W=cv.clientWidth;cv.width=W*dpr;cv.height=H*dpr;
+  cv.style.height=H+'px';cx.scale(dpr,dpr);initLayout();
+}
+
+const NR=11;
+function cpOf(p0,p3){const dx=p3.x-p0.x;return{cp1:{x:p0.x+dx*.42,y:p0.y},cp2:{x:p3.x-dx*.42,y:p3.y}};}
+function ptBez(t,p0,c1,c2,p3){const m=1-t;return{x:m*m*m*p0.x+3*m*m*t*c1.x+3*m*t*t*c2.x+t*t*t*p3.x,y:m*m*m*p0.y+3*m*m*t*c1.y+3*m*t*t*c2.y+t*t*t*p3.y};}
+function distEdge(mx,my,e){
+  const p0=NP[e.source],p3=NP[e.target];if(!p0||!p3)return 999;
+  const{cp1,cp2}=cpOf(p0,p3);let md=999;
+  for(let t=0;t<=1;t+=0.06){const p=ptBez(t,p0,cp1,cp2,p3);const d=Math.hypot(mx-p.x,my-p.y);if(d<md)md=d;}
+  return md;
+}
+function eColor(avg){const t=Math.min(1,Math.max(0,avg/0.4));if(t<0.5){const f=t*2;return`rgb(${Math.round(70+f*80)},${Math.round(120+f*80)},${Math.round(210-f*30)})`;}const f=(t-.5)*2;return`rgb(${Math.round(150+f*80)},${Math.round(200+f*30)},${Math.round(180-f*80)})`;}
+
+function getDeptHighlight(){
+  if(selDepts.size===0)return null;
+  const hlNodes=new Set(),hlEdges=new Set();
+  GD.nodes.forEach(n=>{if(selDepts.has(deptOf(n.id)))hlNodes.add(n.id);});
+  activeEdges.forEach(e=>{if(selDepts.has(deptOf(e.source))||selDepts.has(deptOf(e.target))){hlNodes.add(e.source);hlNodes.add(e.target);hlEdges.add(e._i);}});
+  return{hlNodes,hlEdges};
+}
+
+function draw(){
+  cx.clearRect(0,0,W,H);
+  const lc=isDark?'rgba(255,255,255,0.055)':'rgba(0,0,0,0.055)';
+  const sc=isDark?'rgba(255,255,255,0.04)':'rgba(0,0,0,0.016)';
+  const L=62,cs=(W-124)/6;
+  for(let s=1;s<=7;s++){if(s%2===0){cx.fillStyle=sc;cx.fillRect(L+(s-1)*cs-cs/2,0,cs,H);}}
+  for(let s=1;s<=7;s++){
+    const x=L+(s-1)*cs;
+    cx.fillStyle=isDark?'rgba(255,255,255,0.35)':'rgba(0,0,0,0.4)';
+    cx.font='500 11px system-ui,-apple-system,sans-serif';cx.textAlign='center';cx.fillText('Sem '+s,x,28);
+    cx.strokeStyle=lc;cx.lineWidth=0.5;cx.beginPath();cx.moveTo(x,38);cx.lineTo(x,H-15);cx.stroke();
+  }
+  const dh=getDeptHighlight();
+  let hlN=null,hlE=null;
+  if(hovN){hlN=new Set([hovN]);hlE=new Set();connMap[hovN].forEach(e=>{if(activeEdges.includes(e)){hlE.add(e._i);hlN.add(e.source);hlN.add(e.target);}});}
+  else if(hovE){hlN=new Set([hovE.source,hovE.target]);hlE=new Set([hovE._i]);}
+  activeEdges.forEach(e=>{
+    const p0=NP[e.source],p3=NP[e.target];if(!p0||!p3)return;
+    const{cp1,cp2}=cpOf(p0,p3);
+    const hHL=hlE?hlE.has(e._i):false,dHL=dh?dh.hlEdges.has(e._i):false;
+    const hasHover=hovN||hovE,hasDept=dh!==null;
+    let al,lw,col;
+    if(hasHover){if(hHL){al=0.9;lw=1.5+e.avg*2.2;col=eColor(e.avg);}else{al=hasDept?(dHL?0.06:0.015):0.02;lw=0.35;col=isDark?'#6a7090':'#9090aa';}}
+    else if(hasDept){if(dHL){al=0.75;lw=1.2+e.avg*2;col=eColor(e.avg);}else{al=0.018;lw=0.3;col=isDark?'#6a7090':'#9090aa';}}
+    else{al=0.04+e.avg*.6;lw=0.4+e.avg*1.8;col=isDark?'#6a7090':'#9090aa';}
+    cx.globalAlpha=al;cx.strokeStyle=col;cx.lineWidth=lw;
+    cx.beginPath();cx.moveTo(p0.x,p0.y);cx.bezierCurveTo(cp1.x,cp1.y,cp2.x,cp2.y,p3.x,p3.y);cx.stroke();cx.globalAlpha=1;
+  });
+  GD.nodes.forEach(n=>{
+    const p=NP[n.id];if(!p)return;
+    const color=colorOf(n.id),isHov=hovN===n.id;
+    const hasHover=hovN||hovE,hasDept=dh!==null;
+    const inHHL=hlN?hlN.has(n.id):false,inDHL=dh?dh.hlNodes.has(n.id):false;
+    const isSelDept=selDepts.has(deptOf(n.id));
+    let nodeAl=hasHover?inHHL?1:0.12:hasDept?inDHL?1:0.1:1;
+    cx.globalAlpha=nodeAl;
+    const r=isHov?NR+2:NR;
+    cx.beginPath();cx.arc(p.x,p.y,r,0,Math.PI*2);
+    cx.fillStyle=color+(isDark?'25':'1e');cx.fill();
+    cx.strokeStyle=color;cx.lineWidth=isSelDept&&hasDept?2:isHov?1.8:0.8;cx.stroke();
+    cx.fillStyle=nodeAl>0.3?(isDark?'#d0cec4':'#1a1a1a'):(isDark?'#333':'#ddd');
+    cx.font=(isHov||isSelDept&&hasDept?'500':'400')+' 8.5px monospace';
+    cx.textAlign='center';cx.fillText(n.id,p.x,p.y+3.5);cx.globalAlpha=1;
+  });
+}
+
+function pct(v,max){return Math.round(Math.min(1,v/max)*100)+'%';}
+function bar(v,max,color){return`<div class="ct-bar"><div class="ct-fill" style="width:${pct(v,max)};background:${color}"></div></div>`;}
+
+function showNTip(id){
+  const p=NP[id],color=colorOf(id);
+  const s=GD.nodes.find(n=>n.id===id)?.semester;
+  const conns=connMap[id].filter(e=>activeEdges.includes(e));
+  const top=[...conns].sort((a,b)=>b.avg-a.avg).slice(0,5);
+  let h=`<div class="ct-title" style="color:${color}">${id}</div><div class="ct-sub">Semester ${s} · ${deptOf(id)} · ${conns.length} visible connections</div>`;
+  if(top.length){h+=`<div class="ct-sep"><div style="font-size:10px;color:#888;margin-bottom:4px">Top connections</div>`;top.forEach(e=>{const oth=e.source===id?e.target:e.source;h+=`<div class="ct-row"><span style="font-size:10px;font-family:monospace;min-width:58px">${oth}</span>${bar(e.avg,.52,eColor(e.avg))}<span style="font-size:10px;min-width:34px;text-align:right">${e.avg.toFixed(3)}</span></div>`;});h+=`</div>`;}
+  tip.innerHTML=h;posTip(p.x,p.y);
+}
+
+function showETip(e){
+  const sc=colorOf(e.source),tc=colorOf(e.target),ec=eColor(e.avg);
+  const sp=NP[e.source]?.s||'',tp=NP[e.target]?.s||'';
+  let h=`<div class="ct-title"><span style="color:${sc}">${e.source}</span><span style="color:#888"> → </span><span style="color:${tc}">${e.target}</span></div><div class="ct-sub">Sem ${sp} → Sem ${tp}</div>`;
+  h+=`<div class="ct-row" style="margin-top:5px"><span style="font-size:11px;min-width:90px;color:#888">Avg similarity</span>${bar(e.avg,.52,ec)}<span style="font-weight:500;min-width:36px;text-align:right">${e.avg.toFixed(3)}</span></div>`;
+  h+=`<div class="ct-row"><span style="font-size:11px;min-width:90px;color:#888">Max similarity</span>${bar(e.max,1,ec)}<span style="font-size:11px;min-width:36px;text-align:right">${e.max.toFixed(2)}</span></div>`;
+  if(e.concepts?.length){h+=`<div class="ct-sep"><div style="font-size:10px;color:#888;margin-bottom:3px">Shared concepts</div>`;[...new Set(e.concepts)].slice(0,2).forEach(c=>{h+=`<div class="ct-c">· ${c}</div>`;});h+=`</div>`;}
+  tip.innerHTML=h;const p0=NP[e.source],p3=NP[e.target];posTip((p0.x+p3.x)/2,(p0.y+p3.y)/2);
+}
+
+function posTip(lx,ly){
+  tip.style.display='block';const tw=260,th=180;
+  let tx=lx+18,ty=ly-22;
+  if(tx+tw>W-8)tx=lx-tw-18;if(ty+th>H-8)ty=H-th-8;if(ty<8)ty=8;
+  tip.style.left=tx+'px';tip.style.top=ty+'px';
+}
+
+function updateMeta(){
+  document.getElementById('edge-count').textContent=activeEdges.length+' connections shown';
+  const clearBtn=document.getElementById('clear-btn'),hint=document.getElementById('dept-hint');
+  if(selDepts.size>0){clearBtn.style.display='';hint.textContent=[...selDepts].join(', ')+' highlighted';}
+  else{clearBtn.style.display='none';hint.textContent='Click departments to highlight';}
+}
+
+document.getElementById('thresh').addEventListener('input',function(){
+  threshold=parseInt(this.value)/100;
+  document.getElementById('thresh-val').textContent=threshold.toFixed(2);
+  computeActiveEdges();updateMeta();draw();
+});
+
+const leg=document.getElementById('cg-leg');
+ALL_DEPTS.forEach(d=>{
+  const el=document.createElement('div');el.className='li';el.dataset.dept=d;
+  el.innerHTML=`<div class="ld" style="background:${DEPT_COLORS[d]}"></div><span>${d}</span>`;
+  el.addEventListener('click',()=>{
+    if(selDepts.has(d)){selDepts.delete(d);el.classList.remove('active');}
+    else{selDepts.add(d);el.classList.add('active');}
+    hovN=null;hovE=null;tip.style.display='none';updateMeta();draw();
+  });
+  leg.appendChild(el);
+});
+
+document.getElementById('clear-btn').addEventListener('click',()=>{
+  selDepts.clear();document.querySelectorAll('.li.active').forEach(el=>el.classList.remove('active'));updateMeta();draw();
+});
+
+cv.addEventListener('mousemove',ev=>{
+  const r=cv.getBoundingClientRect(),lx=ev.clientX-r.left,ly=ev.clientY-r.top;
+  let fn=null;
+  for(const n of GD.nodes){const p=NP[n.id];if(!p)continue;if(Math.hypot(lx-p.x,ly-p.y)<=NR+3){fn=n.id;break;}}
+  let fe=null;
+  if(!fn){let md=8;for(const e of activeEdges){const d=distEdge(lx,ly,e);if(d<md){md=d;fe=e;}}}
+  const ch=fn!==hovN||fe!==hovE;hovN=fn;hovE=fe;
+  if(fn)showNTip(fn);else if(fe)showETip(fe);else tip.style.display='none';
+  if(ch)draw();
+});
+cv.addEventListener('mouseleave',()=>{hovN=null;hovE=null;tip.style.display='none';draw();});
+
+computeActiveEdges();initCv();draw();updateMeta();
+window.addEventListener('resize',()=>{cx.setTransform(1,0,0,1,0,0);initCv();draw();});
+</script>
+</body>
+</html>
