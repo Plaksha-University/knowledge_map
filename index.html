@@ -163,10 +163,14 @@ const COURSE_MAJORS = {
   "RO4101":{CSAI:"OEC",RAS:"PEC"}
 };
 
-// Dept colors (always used for nodes)
+// Dept colors (used for nodes in default view)
 const DEPT_COLORS={FM:'#1D9E75',CS:'#378ADD',BE:'#639922',AI:'#7F77DD',RO:'#D85A30',EC:'#BA7517',DS:'#0F6E56',HS:'#D4537E',IL:'#888780',BU:'#EF9F27',ME:'#185FA5',CP:'#E24B4A'};
 function deptOf(id){const m=id.match(/^([A-Z]+)/);return m?m[1]:'XX';}
 function colorOf(id){return DEPT_COLORS[deptOf(id)]||'#888';}
+
+// Course type colors (used for nodes when a major is selected)
+const TYPE_COLORS={FM:'#888780',PCC:'#1a7abf',PEC:'#9b59b6',OEC:'#e67e22',OELS:'#c0392b'};
+const TYPE_LABELS={FM:'Freshmore',PCC:'Program Core',PEC:'Program Elective',OEC:'Open Elective',OELS:'Mandatory'};
 
 const ALL_MAJORS=['CSAI','DSEB','RAS','BSE'];
 
@@ -217,19 +221,21 @@ function eColor(avg){const t=Math.min(1,Math.max(0,avg/0.4));if(t<0.5){const f=t
 // For a node, get highlight membership given active majors
 function getMajorHighlight(){
   if(selMajors.size===0)return null;
-  const hlNodes=new Set(),hlEdges=new Set();
+  // hlNodes: Map<id, typeColor>; hlEdges: Set<edgeIdx> (within-major); dimEdges: Set<edgeIdx> (touch at least one non-hl node)
+  const hlNodes=new Map(),hlEdges=new Set(),dimEdges=new Set();
   GD.nodes.forEach(n=>{
     const id=n.id;
     for(const m of selMajors){
-      if(COURSE_MAJORS[id]?.[m]){hlNodes.add(id);break;}
+      const t=COURSE_MAJORS[id]?.[m];
+      if(t){if(!hlNodes.has(id))hlNodes.set(id,TYPE_COLORS[t]||colorOf(id));break;}
     }
   });
-  if(showEdges){
-    activeEdges.forEach(e=>{
-      if(hlNodes.has(e.source)&&hlNodes.has(e.target)) hlEdges.add(e._i);
-    });
-  }
-  return{hlNodes,hlEdges};
+  activeEdges.forEach(e=>{
+    const sIn=hlNodes.has(e.source),tIn=hlNodes.has(e.target);
+    if(sIn&&tIn){if(showEdges)hlEdges.add(e._i);}
+    else dimEdges.add(e._i);
+  });
+  return{hlNodes,hlEdges,dimEdges};
 }
 
 function draw(){
@@ -255,14 +261,16 @@ function draw(){
     const{cp1,cp2}=cpOf(p0,p3);
     const hHL=hlE?hlE.has(e._i):false;
     const mHL=mh?mh.hlEdges.has(e._i):false;
+    const mDim=mh?mh.dimEdges.has(e._i):false;
     const hasHover=hovN||hovE,hasMajor=mh!==null;
     let al,lw,col;
     if(hasHover){
       if(hHL){al=0.9;lw=1.5+e.avg*2.2;col=eColor(e.avg);}
-      else{al=hasMajor&&showEdges?(mHL?0.06:0.012):0.02;lw=0.35;col=isDark?'#6a7090':'#9090aa';}
-    } else if(hasMajor&&showEdges){
+      else{al=0.015;lw=0.35;col=isDark?'#6a7090':'#9090aa';}
+    } else if(hasMajor){
       if(mHL){al=0.75;lw=1.2+e.avg*2;col=eColor(e.avg);}
-      else{al=0.015;lw=0.3;col=isDark?'#6a7090':'#9090aa';}
+      else if(mDim){al=0.015;lw=0.3;col=isDark?'#6a7090':'#9090aa';}
+      else{al=0.04+e.avg*.6;lw=0.4+e.avg*1.8;col=isDark?'#6a7090':'#9090aa';}
     } else {
       al=0.04+e.avg*.6;lw=0.4+e.avg*1.8;col=isDark?'#6a7090':'#9090aa';
     }
@@ -270,14 +278,15 @@ function draw(){
     cx.beginPath();cx.moveTo(p0.x,p0.y);cx.bezierCurveTo(cp1.x,cp1.y,cp2.x,cp2.y,p3.x,p3.y);cx.stroke();cx.globalAlpha=1;
   });
 
-  // Draw nodes — always use dept color
+  // Draw nodes — dept color by default, type color when major active
   GD.nodes.forEach(n=>{
     const p=NP[n.id];if(!p)return;
-    const color=colorOf(n.id);
     const isHov=hovN===n.id;
     const hasHover=hovN||hovE,hasMajor=mh!==null;
     const inHHL=hlN?hlN.has(n.id):false;
-    const inMHL=mh?mh.hlNodes.has(n.id):false;
+    const typeCol=mh?mh.hlNodes.get(n.id):null;
+    const inMHL=typeCol!=null;
+    const color=hasMajor?(inMHL?typeCol:colorOf(n.id)):colorOf(n.id);
 
     let nodeAl,ringW;
     if(hasHover){
@@ -307,8 +316,7 @@ function bar(v,max,color){return`<div class="ct-bar"><div class="ct-fill" style=
 
 function majorTagsFor(id){
   const cm=COURSE_MAJORS[id];if(!cm)return'';
-  const TYPE_COLORS={FM:'#888780',PCC:'#1a7abf',PEC:'#9b59b6',OEC:'#e67e22',OELS:'#c0392b'};
-  return Object.entries(cm).map(([m,t])=>`<span class="ct-tag" style="background:${TYPE_COLORS[t]}22;color:${TYPE_COLORS[t]};border:1px solid ${TYPE_COLORS[t]}44">${m}: ${t}</span>`).join('');
+  return Object.entries(cm).map(([m,t])=>`<span class="ct-tag" style="background:${TYPE_COLORS[t]||'#888'}22;color:${TYPE_COLORS[t]||'#888'};border:1px solid ${TYPE_COLORS[t]||'#888'}44">${m}: ${t}</span>`).join('');
 }
 
 function showNTip(id){
@@ -368,8 +376,10 @@ function updateMeta(){
 function buildLegend(){
   const leg=document.getElementById('cg-leg');
   leg.innerHTML='';
+
+  // Major buttons row
   const majorWrap=document.createElement('div');
-  majorWrap.style.cssText='display:flex;flex-wrap:wrap;gap:8px';
+  majorWrap.style.cssText='display:flex;flex-wrap:wrap;gap:8px;width:100%';
   ALL_MAJORS.forEach(m=>{
     const el=document.createElement('div');
     el.className='major-btn';el.dataset.major=m;
@@ -382,6 +392,15 @@ function buildLegend(){
     majorWrap.appendChild(el);
   });
   leg.appendChild(majorWrap);
+
+  // Course type legend row
+  const typeRow=document.createElement('div');
+  typeRow.style.cssText='display:flex;flex-wrap:wrap;gap:5px 14px;width:100%;padding-top:8px;border-top:0.5px solid rgba(0,0,0,0.08);margin-top:6px';
+  typeRow.innerHTML='<div style="font-size:10px;color:#888;width:100%;margin-bottom:2px;font-weight:500">Course type (shown when major selected)</div>';
+  Object.entries(TYPE_LABELS).forEach(([k,v])=>{
+    typeRow.innerHTML+=`<div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#888"><div style="width:10px;height:10px;border-radius:2px;background:${TYPE_COLORS[k]};flex-shrink:0"></div><span><strong style="color:${TYPE_COLORS[k]}">${k}</strong> — ${v}</span></div>`;
+  });
+  leg.appendChild(typeRow);
 }
 
 document.getElementById('thresh').addEventListener('input',function(){
