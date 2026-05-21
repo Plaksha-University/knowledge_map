@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Course Similarity Graph v3</title>
+<title>Course Similarity Graph</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system,sans-serif;background:#fff;color:#1a1a1a}
@@ -26,49 +26,53 @@ h1{font-size:16px;font-weight:500;margin-bottom:4px;color:#1a1a1a}
 .ct-sep{border-top:0.5px solid rgba(0,0,0,0.1);margin-top:6px;padding-top:6px}
 @media(prefers-color-scheme:dark){.ct-sep{border-color:rgba(255,255,255,0.1)}}
 .ct-c{font-size:10px;color:#888;margin-top:2px}
+.ct-tag{display:inline-block;font-size:9px;padding:1px 5px;border-radius:3px;margin-right:3px;margin-top:3px;font-weight:600;letter-spacing:0.03em}
 #cg-controls{display:flex;flex-wrap:wrap;gap:10px 20px;padding:10px 14px 12px;border-top:0.5px solid rgba(0,0,0,0.08);align-items:center}
 @media(prefers-color-scheme:dark){#cg-controls{border-color:rgba(255,255,255,0.08)}}
 .ctrl-group{display:flex;flex-direction:column;gap:5px;flex:1;min-width:200px}
 .ctrl-label{font-size:11px;color:#888;display:flex;justify-content:space-between;align-items:center}
 .ctrl-label span{font-weight:500;color:#1a1a1a}
 @media(prefers-color-scheme:dark){.ctrl-label span{color:#d0cec4}}
-#cg-meta{padding:6px 14px;font-size:11px;color:#888;border-top:0.5px solid rgba(0,0,0,0.08);display:flex;gap:16px;align-items:center}
+#cg-meta{padding:6px 14px;font-size:11px;color:#888;border-top:0.5px solid rgba(0,0,0,0.08);display:flex;gap:16px;align-items:center;flex-wrap:wrap}
 @media(prefers-color-scheme:dark){#cg-meta{border-color:rgba(255,255,255,0.08)}}
-#cg-leg{display:flex;flex-wrap:wrap;gap:6px 8px;padding:8px 14px 12px;border-top:0.5px solid rgba(0,0,0,0.08)}
+#cg-leg{display:flex;flex-wrap:wrap;gap:8px 10px;padding:10px 14px 12px;border-top:0.5px solid rgba(0,0,0,0.08);align-items:flex-start}
 @media(prefers-color-scheme:dark){#cg-leg{border-color:rgba(255,255,255,0.08)}}
-.li{display:flex;align-items:center;gap:5px;padding:4px 8px;border-radius:6px;cursor:pointer;border:0.5px solid transparent;transition:all .15s;font-size:11px;user-select:none;color:#1a1a1a}
-@media(prefers-color-scheme:dark){.li{color:#d0cec4}}
-.li:hover{border-color:rgba(0,0,0,0.2)}
-@media(prefers-color-scheme:dark){.li:hover{border-color:rgba(255,255,255,0.2)}}
-.li.active{border-color:rgba(0,0,0,0.35)}
-@media(prefers-color-scheme:dark){.li.active{border-color:rgba(255,255,255,0.35)}}
-.ld{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.clear-btn{margin-left:auto;font-size:11px;color:#888;cursor:pointer;padding:2px 8px;border:0.5px solid rgba(0,0,0,0.2);border-radius:4px;background:none;line-height:1.6}
+.major-btn{display:flex;flex-direction:column;gap:4px;padding:7px 12px;border-radius:8px;cursor:pointer;border:1.5px solid transparent;transition:all .15s;user-select:none;background:rgba(0,0,0,0.03);min-width:90px}
+@media(prefers-color-scheme:dark){.major-btn{background:rgba(255,255,255,0.05)}}
+.major-btn:hover{border-color:rgba(0,0,0,0.2)}
+@media(prefers-color-scheme:dark){.major-btn:hover{border-color:rgba(255,255,255,0.2)}}
+.major-btn.active{border-color:rgba(0,0,0,0.45);background:rgba(0,0,0,0.06)}
+@media(prefers-color-scheme:dark){.major-btn.active{border-color:rgba(255,255,255,0.45);background:rgba(255,255,255,0.09)}}
+.major-name{font-size:12px;font-weight:600;color:#1a1a1a}
+@media(prefers-color-scheme:dark){.major-name{color:#d0cec4}}
+.clear-btn{font-size:11px;color:#888;cursor:pointer;padding:2px 8px;border:0.5px solid rgba(0,0,0,0.2);border-radius:4px;background:none;line-height:1.6;margin-left:auto}
 @media(prefers-color-scheme:dark){.clear-btn{border-color:rgba(255,255,255,0.15)}}
 .clear-btn:hover{background:rgba(0,0,0,0.04)}
 @media(prefers-color-scheme:dark){.clear-btn:hover{background:rgba(255,255,255,0.06)}}
 input[type=range]{width:100%;accent-color:#378ADD}
+.ct-name{font-size:11px;color:#888;margin-bottom:3px;font-style:italic}
+.ct-peer{font-size:10px;font-family:monospace}
+.ct-peername{font-size:10px;color:#888;font-style:italic;margin-top:1px;padding-left:2px}
 </style>
 </head>
 <body>
 <div id="app">
   <h1>Course Similarity Graph</h1>
   <p class="sub">77 courses · 7 semesters · connections between consecutive semesters only · hover nodes or edges for details</p>
-  <style>
-    .ct-name{font-size:11px;color:#888;margin-bottom:3px;font-style:italic}
-    .ct-peer{font-size:10px;font-family:monospace}
-    .ct-peername{font-size:10px;color:#888;font-style:italic;margin-top:1px;padding-left:2px}
-  </style>
   <div id="cg-wrap"><canvas id="cg"></canvas><div id="ct"></div></div>
   <div id="cg-controls">
     <div class="ctrl-group">
       <div class="ctrl-label">Similarity threshold <span id="thresh-val">0.18</span></div>
       <input type="range" id="thresh" min="0" max="52" value="18" step="1">
     </div>
+    <label id="edge-toggle-wrap" style="display:flex;align-items:center;gap:7px;font-size:11px;color:#888;cursor:pointer;user-select:none;padding:4px 0">
+      <input type="checkbox" id="edge-toggle" style="accent-color:#378ADD;width:13px;height:13px;cursor:pointer">
+      <span>Show connections within major</span>
+    </label>
   </div>
   <div id="cg-meta">
     <span id="edge-count">— edges shown</span>
-    <span id="dept-hint">Click departments to highlight</span>
+    <span id="dept-hint">Click a major to highlight its curriculum</span>
     <button class="clear-btn" id="clear-btn" style="display:none">Clear filter</button>
   </div>
   <div id="cg-leg"></div>
@@ -79,20 +83,101 @@ const GD={nodes:[{id:"AI2102",semester:4},{id:"AI3001",semester:5},{id:"AI3004",
 const NAMES={"FM111":"Fundamentals of Computational Thinking","FM116":"Advanced Calculus with Python","FM117":"Design and Innovation","FM118":"The World of AI","HS1003":"Integrated Communication for Engineering - 1","IL102":"Innovation Lab & Grand Challenge Studio I","FM102":"Coding Café","FM119":"Fundamentals of Economics","FM120":"Art of Thinking","FM123":"Nature's Machines","FM126":"Computational Linear Algebra","FM132":"Foundations of Physical World","FM133":"Probability and Statistics","HS2004":"Integrated Communication for Engineering - 2","IL122":"Innovation Lab & Grand Challenge Studio II","FM135":"Reimagining Technology and Society","FM213":"Electronic Systems Engineering","FM214":"Intelligent Machines","FM216":"Computational Methods and Optimization","FM217":"Introduction to Data Science","IL213":"Innovation Lab & Grand Challenge Studio III","AI2102":"Web Development using AI","AI3011":"Machine Learning and Pattern Recognition","BE2002":"Biochemistry and Molecular Biology","BE2005":"Material Science for Bioengineering","BE2006":"Introductory Bioinformatics","BE2007":"Bioprocess Engineering","CP2003":"Signals and Systems","CS2002":"Computer Networks","CS2022":"Design and Analysis of Algorithms","CS2101":"Discrete Maths","CS2102":"Introduction to Logic","CS2103":"Databases Management Systems and Data Mining","DS3001":"Advanced Statistics","EC2101":"Experimental Economics","IL224":"Innovation Lab & Grand Challenge Studio IV","RO2001":"System Dynamics and Control","AI3001":"Deep Learning","AI3022":"Search Methods in AI","BE3002":"Cell Biology","BE3011":"Stochastic Modelling in Biology","BU3001":"Finance","BU3101":"Personnel Economics","CS2011":"Foundations of Computer Systems","CS3022":"Theory of Computation","EC3001":"Econometrics","EC3105":"Environmental Economics","HS3102":"Memory, Time and Consciousness","IL315":"Innovation Lab & Grand Challenge Studio V","ME3001":"Engineering Mechanics","RO3001":"Sensing & Actuation","AI3004":"Knowledge Representation and Reasoning","BE3004":"Genetics and Genetic Engineering","BE3006":"Networks & Systems Biology","BE3007":"Genetics & Genetic Engineering","BE3009":"Introduction to Lab-on-chip Devices","BE3105":"Human Physiology","BE3106":"Biomedical & Pharmaceutical Polymers","BU3003":"Industrial Organization","CP3001":"Embedded Systems","CS3001":"Operating Systems","CS3104":"Geospatial Data Science","DS3002":"Game Theory","DS3003":"Time Series Analysis","EC3002":"Advanced Microeconomics","EC3104":"Macro Development","ME2001":"Fluids in Action","RO2102":"Dynamics & Simulation","RO3002":"Reinforcement Learning Fundamentals","RO3003":"Control, Autonomy, Planning & Navigation","AI4101":"Machine Learning in Dynamic Environment","BE3103":"Emerging Trends in Science and Innovation","CS4101":"Cryptography and Blockchain","CS4102":"Intelligent Computing and Emerging IT Architectures","DS4101":"Human Technology Interaction","DS4102":"Financial Econometrics","RO4101":"Diagnostic Technologies"};
 function name(id){return NAMES[id]||id;}
 
+// Course → major → type mapping
+const COURSE_MAJORS = {
+  "FM111":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM116":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM117":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM118":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "HS1003":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "IL102":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM102":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM119":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM120":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM123":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM126":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM132":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM133":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "HS2004":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "IL122":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM135":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM213":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM214":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM216":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "FM217":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "IL213":{BSE:"FM",CSAI:"FM",DSEB:"FM",RAS:"FM"},
+  "AI2102":{CSAI:"PEC"},
+  "AI3011":{BSE:"PEC",CSAI:"PCC",DSEB:"PCC",RAS:"PCC"},
+  "BE2002":{BSE:"PCC"},
+  "BE2005":{BSE:"PCC",DSEB:"OEC",RAS:"OEC"},
+  "BE2006":{BSE:"PCC",CSAI:"OEC"},
+  "BE2007":{BSE:"PCC"},
+  "CP2003":{CSAI:"OEC",DSEB:"OEC",RAS:"PCC"},
+  "CS2022":{CSAI:"PCC",DSEB:"PCC"},
+  "CS2101":{CSAI:"PEC"},
+  "CS2102":{CSAI:"PEC"},
+  "CS2103":{CSAI:"PCC",DSEB:"PCC"},
+  "DS3001":{BSE:"PEC",CSAI:"PEC",DSEB:"PCC"},
+  "EC2101":{BSE:"OEC",CSAI:"OEC",DSEB:"PEC"},
+  "IL224":{BSE:"OEC",CSAI:"OEC",DSEB:"OEC",RAS:"OEC"},
+  "RO2001":{DSEB:"OEC",RAS:"PCC"},
+  "AI3001":{BSE:"PEC",CSAI:"PCC",DSEB:"PCC",RAS:"PCC"},
+  "AI3022":{CSAI:"PCC"},
+  "BE3002":{BSE:"PCC"},
+  "BE3011":{BSE:"PCC",CSAI:"PEC"},
+  "BU3001":{BSE:"OEC",CSAI:"OEC",DSEB:"PCC",RAS:"OEC"},
+  "BU3101":{DSEB:"PEC"},
+  "CS2011":{CSAI:"PCC",RAS:"PCC"},
+  "CS3022":{CSAI:"PCC"},
+  "EC3001":{CSAI:"OEC",DSEB:"PCC"},
+  "EC3105":{BSE:"OEC",CSAI:"OEC",DSEB:"PEC"},
+  "HS3102":{BSE:"OEC",CSAI:"OEC",DSEB:"OEC",RAS:"OEC"},
+  "IL315":{BSE:"OEC",CSAI:"OEC",DSEB:"OEC",RAS:"OEC"},
+  "ME3001":{RAS:"PCC"},
+  "RO3001":{BSE:"PCC",RAS:"PCC"},
+  "AI3004":{CSAI:"PCC"},
+  "BE3004":{BSE:"PCC"},
+  "BE3006":{BSE:"PCC"},
+  "BE3007":{BSE:"PCC"},
+  "BE3009":{BSE:"PCC"},
+  "BE3105":{BSE:"PEC"},
+  "BE3106":{BSE:"PEC"},
+  "BU3003":{CSAI:"OEC",DSEB:"PCC"},
+  "CP3001":{CSAI:"PEC",RAS:"PCC"},
+  "CS3001":{CSAI:"PCC"},
+  "CS3104":{CSAI:"PEC",DSEB:"PEC"},
+  "DS3002":{CSAI:"PEC",DSEB:"PCC"},
+  "DS3003":{CSAI:"OEC",DSEB:"PCC"},
+  "EC3002":{DSEB:"PCC"},
+  "EC3104":{DSEB:"PEC"},
+  "ME2001":{RAS:"PCC"},
+  "RO2102":{CSAI:"OEC",RAS:"PEC"},
+  "RO3002":{CSAI:"PCC",DSEB:"OEC",RAS:"PCC"},
+  "RO3003":{RAS:"PCC"},
+  "AI4101":{CSAI:"PEC",DSEB:"PEC",RAS:"PEC"},
+  "BE3103":{BSE:"PEC"},
+  "CS4101":{CSAI:"PEC"},
+  "CS4102":{CSAI:"PEC"},
+  "DS4101":{BSE:"OEC",CSAI:"PEC",DSEB:"OEC",RAS:"OEC"},
+  "DS4102":{CSAI:"OEC",DSEB:"PEC"},
+  "RO4101":{CSAI:"OEC",RAS:"PEC"}
+};
+
+// Dept colors (always used for nodes)
 const DEPT_COLORS={FM:'#1D9E75',CS:'#378ADD',BE:'#639922',AI:'#7F77DD',RO:'#D85A30',EC:'#BA7517',DS:'#0F6E56',HS:'#D4537E',IL:'#888780',BU:'#EF9F27',ME:'#185FA5',CP:'#E24B4A'};
-const ALL_DEPTS=Object.keys(DEPT_COLORS);
 function deptOf(id){const m=id.match(/^([A-Z]+)/);return m?m[1]:'XX';}
 function colorOf(id){return DEPT_COLORS[deptOf(id)]||'#888';}
+
+const ALL_MAJORS=['CSAI','DSEB','RAS','BSE'];
 
 const cv=document.getElementById('cg');
 const cx=cv.getContext('2d');
 const tip=document.getElementById('ct');
-const wrap=document.getElementById('cg-wrap');
 
 let NP={},W=0,H=760,dpr=window.devicePixelRatio||1;
 let hovN=null,hovE=null;
 const isDark=window.matchMedia('(prefers-color-scheme: dark)').matches;
-let threshold=0.18,selDepts=new Set(),activeEdges=[];
+let threshold=0.18,selMajors=new Set(),activeEdges=[],showEdges=false;
 
 const connMap={};
 GD.nodes.forEach(n=>{connMap[n.id]=[];});
@@ -129,11 +214,21 @@ function distEdge(mx,my,e){
 }
 function eColor(avg){const t=Math.min(1,Math.max(0,avg/0.4));if(t<0.5){const f=t*2;return`rgb(${Math.round(70+f*80)},${Math.round(120+f*80)},${Math.round(210-f*30)})`;}const f=(t-.5)*2;return`rgb(${Math.round(150+f*80)},${Math.round(200+f*30)},${Math.round(180-f*80)})`;}
 
-function getDeptHighlight(){
-  if(selDepts.size===0)return null;
+// For a node, get highlight membership given active majors
+function getMajorHighlight(){
+  if(selMajors.size===0)return null;
   const hlNodes=new Set(),hlEdges=new Set();
-  GD.nodes.forEach(n=>{if(selDepts.has(deptOf(n.id)))hlNodes.add(n.id);});
-  activeEdges.forEach(e=>{if(selDepts.has(deptOf(e.source))||selDepts.has(deptOf(e.target))){hlNodes.add(e.source);hlNodes.add(e.target);hlEdges.add(e._i);}});
+  GD.nodes.forEach(n=>{
+    const id=n.id;
+    for(const m of selMajors){
+      if(COURSE_MAJORS[id]?.[m]){hlNodes.add(id);break;}
+    }
+  });
+  if(showEdges){
+    activeEdges.forEach(e=>{
+      if(hlNodes.has(e.source)&&hlNodes.has(e.target)) hlEdges.add(e._i);
+    });
+  }
   return{hlNodes,hlEdges};
 }
 
@@ -149,36 +244,60 @@ function draw(){
     cx.font='500 11px system-ui,-apple-system,sans-serif';cx.textAlign='center';cx.fillText('Sem '+s,x,28);
     cx.strokeStyle=lc;cx.lineWidth=0.5;cx.beginPath();cx.moveTo(x,38);cx.lineTo(x,H-15);cx.stroke();
   }
-  const dh=getDeptHighlight();
+  const mh=getMajorHighlight();
   let hlN=null,hlE=null;
   if(hovN){hlN=new Set([hovN]);hlE=new Set();connMap[hovN].forEach(e=>{if(activeEdges.includes(e)){hlE.add(e._i);hlN.add(e.source);hlN.add(e.target);}});}
   else if(hovE){hlN=new Set([hovE.source,hovE.target]);hlE=new Set([hovE._i]);}
+
+  // Draw edges
   activeEdges.forEach(e=>{
     const p0=NP[e.source],p3=NP[e.target];if(!p0||!p3)return;
     const{cp1,cp2}=cpOf(p0,p3);
-    const hHL=hlE?hlE.has(e._i):false,dHL=dh?dh.hlEdges.has(e._i):false;
-    const hasHover=hovN||hovE,hasDept=dh!==null;
+    const hHL=hlE?hlE.has(e._i):false;
+    const mHL=mh?mh.hlEdges.has(e._i):false;
+    const hasHover=hovN||hovE,hasMajor=mh!==null;
     let al,lw,col;
-    if(hasHover){if(hHL){al=0.9;lw=1.5+e.avg*2.2;col=eColor(e.avg);}else{al=hasDept?(dHL?0.06:0.015):0.02;lw=0.35;col=isDark?'#6a7090':'#9090aa';}}
-    else if(hasDept){if(dHL){al=0.75;lw=1.2+e.avg*2;col=eColor(e.avg);}else{al=0.018;lw=0.3;col=isDark?'#6a7090':'#9090aa';}}
-    else{al=0.04+e.avg*.6;lw=0.4+e.avg*1.8;col=isDark?'#6a7090':'#9090aa';}
+    if(hasHover){
+      if(hHL){al=0.9;lw=1.5+e.avg*2.2;col=eColor(e.avg);}
+      else{al=hasMajor&&showEdges?(mHL?0.06:0.012):0.02;lw=0.35;col=isDark?'#6a7090':'#9090aa';}
+    } else if(hasMajor&&showEdges){
+      if(mHL){al=0.75;lw=1.2+e.avg*2;col=eColor(e.avg);}
+      else{al=0.015;lw=0.3;col=isDark?'#6a7090':'#9090aa';}
+    } else {
+      al=0.04+e.avg*.6;lw=0.4+e.avg*1.8;col=isDark?'#6a7090':'#9090aa';
+    }
     cx.globalAlpha=al;cx.strokeStyle=col;cx.lineWidth=lw;
     cx.beginPath();cx.moveTo(p0.x,p0.y);cx.bezierCurveTo(cp1.x,cp1.y,cp2.x,cp2.y,p3.x,p3.y);cx.stroke();cx.globalAlpha=1;
   });
+
+  // Draw nodes — always use dept color
   GD.nodes.forEach(n=>{
     const p=NP[n.id];if(!p)return;
-    const color=colorOf(n.id),isHov=hovN===n.id;
-    const hasHover=hovN||hovE,hasDept=dh!==null;
-    const inHHL=hlN?hlN.has(n.id):false,inDHL=dh?dh.hlNodes.has(n.id):false;
-    const isSelDept=selDepts.has(deptOf(n.id));
-    let nodeAl=hasHover?inHHL?1:0.12:hasDept?inDHL?1:0.1:1;
+    const color=colorOf(n.id);
+    const isHov=hovN===n.id;
+    const hasHover=hovN||hovE,hasMajor=mh!==null;
+    const inHHL=hlN?hlN.has(n.id):false;
+    const inMHL=mh?mh.hlNodes.has(n.id):false;
+
+    let nodeAl,ringW;
+    if(hasHover){
+      nodeAl=inHHL?1:0.1;
+      ringW=isHov?1.8:0.8;
+    } else if(hasMajor){
+      nodeAl=inMHL?1:0.08;
+      ringW=inMHL?1.6:0.5;
+    } else {
+      nodeAl=1;
+      ringW=isHov?1.8:0.8;
+    }
+
     cx.globalAlpha=nodeAl;
     const r=isHov?NR+2:NR;
     cx.beginPath();cx.arc(p.x,p.y,r,0,Math.PI*2);
     cx.fillStyle=color+(isDark?'25':'1e');cx.fill();
-    cx.strokeStyle=color;cx.lineWidth=isSelDept&&hasDept?2:isHov?1.8:0.8;cx.stroke();
+    cx.strokeStyle=color;cx.lineWidth=inMHL&&hasMajor?2:ringW;cx.stroke();
     cx.fillStyle=nodeAl>0.3?(isDark?'#d0cec4':'#1a1a1a'):(isDark?'#333':'#ddd');
-    cx.font=(isHov||isSelDept&&hasDept?'500':'400')+' 8.5px monospace';
+    cx.font=(isHov||inMHL?'500':'400')+' 8.5px monospace';
     cx.textAlign='center';cx.fillText(n.id,p.x,p.y+3.5);cx.globalAlpha=1;
   });
 }
@@ -186,15 +305,31 @@ function draw(){
 function pct(v,max){return Math.round(Math.min(1,v/max)*100)+'%';}
 function bar(v,max,color){return`<div class="ct-bar"><div class="ct-fill" style="width:${pct(v,max)};background:${color}"></div></div>`;}
 
+function majorTagsFor(id){
+  const cm=COURSE_MAJORS[id];if(!cm)return'';
+  const TYPE_COLORS={FM:'#888780',PCC:'#1a7abf',PEC:'#9b59b6',OEC:'#e67e22',OELS:'#c0392b'};
+  return Object.entries(cm).map(([m,t])=>`<span class="ct-tag" style="background:${TYPE_COLORS[t]}22;color:${TYPE_COLORS[t]};border:1px solid ${TYPE_COLORS[t]}44">${m}: ${t}</span>`).join('');
+}
+
 function showNTip(id){
-  const p=NP[id],color=colorOf(id);
+  const p=NP[id];
+  const color=colorOf(id);
   const s=GD.nodes.find(n=>n.id===id)?.semester;
   const conns=connMap[id].filter(e=>activeEdges.includes(e));
   const top=[...conns].sort((a,b)=>b.avg-a.avg).slice(0,5);
   let h=`<div class="ct-title" style="color:${color}">${id}</div>`;
   h+=`<div class="ct-name">${name(id)}</div>`;
   h+=`<div class="ct-sub">Semester ${s} · ${deptOf(id)} · ${conns.length} visible connections</div>`;
-  if(top.length){h+=`<div class="ct-sep"><div style="font-size:10px;color:#888;margin-bottom:5px">Top connections</div>`;top.forEach(e=>{const oth=e.source===id?e.target:e.source;h+=`<div style="margin-bottom:5px"><div class="ct-row" style="margin-top:0"><span class="ct-peer" style="min-width:58px;color:${colorOf(oth)}">${oth}</span>${bar(e.avg,.52,eColor(e.avg))}<span style="font-size:10px;min-width:34px;text-align:right">${e.avg.toFixed(3)}</span></div><div class="ct-peername">${name(oth)}</div></div>`;});h+=`</div>`;}
+  const tags=majorTagsFor(id);
+  if(tags) h+=`<div style="margin-top:4px">${tags}</div>`;
+  if(top.length){
+    h+=`<div class="ct-sep"><div style="font-size:10px;color:#888;margin-bottom:5px">Top connections</div>`;
+    top.forEach(e=>{
+      const oth=e.source===id?e.target:e.source;
+      h+=`<div style="margin-bottom:5px"><div class="ct-row" style="margin-top:0"><span class="ct-peer" style="min-width:58px;color:${colorOf(oth)}">${oth}</span>${bar(e.avg,.52,eColor(e.avg))}<span style="font-size:10px;min-width:34px;text-align:right">${e.avg.toFixed(3)}</span></div><div class="ct-peername">${name(oth)}</div></div>`;
+    });
+    h+=`</div>`;
+  }
   tip.innerHTML=h;posTip(p.x,p.y);
 }
 
@@ -211,7 +346,7 @@ function showETip(e){
 }
 
 function posTip(lx,ly){
-  tip.style.display='block';const tw=280,th=210;
+  tip.style.display='block';const tw=280,th=220;
   let tx=lx+18,ty=ly-22;
   if(tx+tw>W-8)tx=lx-tw-18;if(ty+th>H-8)ty=H-th-8;if(ty<8)ty=8;
   tip.style.left=tx+'px';tip.style.top=ty+'px';
@@ -220,8 +355,33 @@ function posTip(lx,ly){
 function updateMeta(){
   document.getElementById('edge-count').textContent=activeEdges.length+' connections shown';
   const clearBtn=document.getElementById('clear-btn'),hint=document.getElementById('dept-hint');
-  if(selDepts.size>0){clearBtn.style.display='';hint.textContent=[...selDepts].join(', ')+' highlighted';}
-  else{clearBtn.style.display='none';hint.textContent='Click departments to highlight';}
+  if(selMajors.size>0){
+    clearBtn.style.display='';
+    hint.textContent=[...selMajors].join(' + ')+' highlighted';
+  } else {
+    clearBtn.style.display='none';
+    hint.textContent='Click a major to highlight its curriculum';
+  }
+}
+
+// Build legend
+function buildLegend(){
+  const leg=document.getElementById('cg-leg');
+  leg.innerHTML='';
+  const majorWrap=document.createElement('div');
+  majorWrap.style.cssText='display:flex;flex-wrap:wrap;gap:8px';
+  ALL_MAJORS.forEach(m=>{
+    const el=document.createElement('div');
+    el.className='major-btn';el.dataset.major=m;
+    el.innerHTML=`<div class="major-name">${m}</div>`;
+    el.addEventListener('click',()=>{
+      if(selMajors.has(m)){selMajors.delete(m);el.classList.remove('active');}
+      else{selMajors.add(m);el.classList.add('active');}
+      hovN=null;hovE=null;tip.style.display='none';updateMeta();draw();
+    });
+    majorWrap.appendChild(el);
+  });
+  leg.appendChild(majorWrap);
 }
 
 document.getElementById('thresh').addEventListener('input',function(){
@@ -230,20 +390,10 @@ document.getElementById('thresh').addEventListener('input',function(){
   computeActiveEdges();updateMeta();draw();
 });
 
-const leg=document.getElementById('cg-leg');
-ALL_DEPTS.forEach(d=>{
-  const el=document.createElement('div');el.className='li';el.dataset.dept=d;
-  el.innerHTML=`<div class="ld" style="background:${DEPT_COLORS[d]}"></div><span>${d}</span>`;
-  el.addEventListener('click',()=>{
-    if(selDepts.has(d)){selDepts.delete(d);el.classList.remove('active');}
-    else{selDepts.add(d);el.classList.add('active');}
-    hovN=null;hovE=null;tip.style.display='none';updateMeta();draw();
-  });
-  leg.appendChild(el);
-});
-
 document.getElementById('clear-btn').addEventListener('click',()=>{
-  selDepts.clear();document.querySelectorAll('.li.active').forEach(el=>el.classList.remove('active'));updateMeta();draw();
+  selMajors.clear();
+  document.querySelectorAll('.major-btn.active').forEach(el=>el.classList.remove('active'));
+  updateMeta();draw();
 });
 
 cv.addEventListener('mousemove',ev=>{
@@ -258,7 +408,11 @@ cv.addEventListener('mousemove',ev=>{
 });
 cv.addEventListener('mouseleave',()=>{hovN=null;hovE=null;tip.style.display='none';draw();});
 
-computeActiveEdges();initCv();draw();updateMeta();
+document.getElementById('edge-toggle').addEventListener('change',function(){
+  showEdges=this.checked;draw();
+});
+
+computeActiveEdges();initCv();buildLegend();draw();updateMeta();
 window.addEventListener('resize',()=>{cx.setTransform(1,0,0,1,0,0);initCv();draw();});
 </script>
 </body>
